@@ -49,7 +49,15 @@ export default function Terms({ kcContext }: TermsProps) {
                                 onEditComplete={() => {}}
                                 size="md"
                             />
-                            <label>{t('acceptTerms')}</label>
+                            <label
+                                onClick={() => setAccepted(!accepted)}
+                                onKeyDown={(e) => e.key === 'Enter' && setAccepted((prev) => !prev)}
+                                style={{ cursor: 'pointer', userSelect: 'none' }}
+                                role="button"
+                                tabIndex={0}
+                            >
+                                {t('acceptTerms')}
+                            </label>
                         </div>
 
                         <Button type="submit" color="primary" disabled={!accepted}>

@@ -184,6 +184,14 @@
   "@email": {
     "description": "Label for email input field"
   },
+  "firstName": "First name",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Last name",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
   "oauthGrantTitle": "Grant Access",
   "@oauthGrantTitle": {
     "description": "OAuth grant title"

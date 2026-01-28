@@ -70,7 +70,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                         <>
                             <input type="hidden" name="selectedCredentialId" value={selectedCredentialId} />
 
-                            <div className="mb-6">
+                            <div className="mb-4">
                                 <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
                                     {({ id, ariaAttributes }) => (
                                         <SelectUncontrolled
@@ -94,7 +94,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                         <input type="hidden" name="selectedCredentialId" value={credentials[0].id} />
                     ) : null}
 
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout label={t('otp')} invalidDescription={translateError(otpError)} required>
                             {({ id, ariaAttributes }) => (
                                 <Input

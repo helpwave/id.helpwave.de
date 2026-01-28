@@ -67,7 +67,7 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('loginTotpOneTime')}
                             invalidDescription={translateError(totpError)}

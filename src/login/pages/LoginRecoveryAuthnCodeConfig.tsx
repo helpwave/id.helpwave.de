@@ -62,7 +62,7 @@ export default function LoginRecoveryAuthnCodeConfig({ kcContext }: LoginRecover
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('recoveryCode')}
                             invalidDescription={translateError(recoveryCodeError)}

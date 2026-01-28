@@ -64,7 +64,7 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('passwordNew')}
                             invalidDescription={translateError(passwordError)}
@@ -86,7 +86,7 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                         </FormFieldLayout>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('passwordConfirm')}
                             invalidDescription={translateError(passwordConfirmError)}

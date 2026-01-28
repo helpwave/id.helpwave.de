@@ -184,6 +184,14 @@
   "@email": {
     "description": "Label für E-Mail Eingabefeld"
   },
+  "firstName": "Vorname",
+  "@firstName": {
+    "description": "Label für Vorname Eingabefeld"
+  },
+  "lastName": "Nachname",
+  "@lastName": {
+    "description": "Label für Nachname Eingabefeld"
+  },
   "oauthGrantTitle": "Zugriff gewähren",
   "@oauthGrantTitle": {
     "description": "OAuth-Gewährung Titel"

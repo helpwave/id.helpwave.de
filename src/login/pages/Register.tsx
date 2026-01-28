@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
+import type { HelpwaveIdTranslationEntries } from '../../i18n/translations'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type RegisterProps = {
@@ -25,8 +26,24 @@ export default function Register({ kcContext }: RegisterProps) {
         Object.values(attributes).forEach((attr) => {
             initial[attr.name] = attr.value ?? ''
         })
+        if (!('password' in initial)) initial['password'] = ''
+        if (!('password-confirm' in initial)) initial['password-confirm'] = ''
         return initial
     })
+    const [termsAccepted, setTermsAccepted] = useState(false)
+
+    const getFieldLabel = (attrName: string, displayName: string | undefined): string => {
+        const keyMap: Record<string, keyof HelpwaveIdTranslationEntries> = {
+            'username': 'username',
+            'email': 'email',
+            'firstName': 'firstName',
+            'lastName': 'lastName',
+            'password': 'password',
+            'password-confirm': 'passwordConfirm',
+        }
+        const key = keyMap[attrName]
+        return key ? t(key) : (displayName ?? attrName)
+    }
 
     const message = kcContext.message
 
@@ -45,9 +62,9 @@ export default function Register({ kcContext }: RegisterProps) {
         const inputType = isPassword ? 'password' : fieldType === 'email' ? 'email' : 'text'
 
         return (
-            <div key={attrName} className="mb-6">
+            <div key={attrName} className="mb-4">
                 <FormFieldLayout
-                    label={attr.displayName ?? attrName}
+                    label={getFieldLabel(attrName, attr.displayName)}
                     invalidDescription={translateError(getFieldError(attrName))}
                     required={attr.required}
                 >
@@ -111,26 +128,76 @@ export default function Register({ kcContext }: RegisterProps) {
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
                     {Object.keys(attributes).map((attrName) => {
-                        if (attrName === 'password-confirm') return null
+                        if (attrName === 'password' || attrName === 'password-confirm') return null
                         return renderField(attrName)
                     })}
 
-                    {attributes['password-confirm'] && renderField('password-confirm')}
+                    {attributes['password'] ? renderField('password') : (
+                        <div className="mb-4">
+                            <FormFieldLayout
+                                label={t('password')}
+                                invalidDescription={translateError(getFieldError('password'))}
+                                required
+                            >
+                                {({ id, ariaAttributes }) => (
+                                    <Input
+                                        id={id}
+                                        name="password"
+                                        type="password"
+                                        value={formData['password'] ?? ''}
+                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                        autoComplete="new-password"
+                                        required
+                                        {...ariaAttributes}
+                                    />
+                                )}
+                            </FormFieldLayout>
+                        </div>
+                    )}
+
+                    {attributes['password-confirm'] ? renderField('password-confirm') : (
+                        <div className="mb-4">
+                            <FormFieldLayout
+                                label={t('passwordConfirm')}
+                                invalidDescription={translateError(getFieldError('password-confirm'))}
+                                required
+                            >
+                                {({ id, ariaAttributes }) => (
+                                    <Input
+                                        id={id}
+                                        name="password-confirm"
+                                        type="password"
+                                        value={formData['password-confirm'] ?? ''}
+                                        onChange={(e) => setFormData({ ...formData, 'password-confirm': e.target.value })}
+                                        autoComplete="new-password"
+                                        required
+                                        {...ariaAttributes}
+                                    />
+                                )}
+                            </FormFieldLayout>
+                        </div>
+                    )}
 
                     {kcContext.termsAcceptanceRequired && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <CheckboxUncontrolled
-                                value={false}
-                                onValueChange={() => {}}
+                                value={termsAccepted}
+                                onValueChange={(value) => setTermsAccepted(value)}
                                 onEditComplete={() => {}}
                                 size="md"
                             />
-                            <label>
+                            <label
+                                onClick={() => setTermsAccepted(!termsAccepted)}
+                                onKeyDown={(e) => e.key === 'Enter' && setTermsAccepted((prev) => !prev)}
+                                style={{ cursor: 'pointer', userSelect: 'none' }}
+                                role="button"
+                                tabIndex={0}
+                            >
                                 <a href={(() => {
                                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                     const url = kcContext.url as any
                                     return url.termsUrl ?? kcContext.url.loginUrl.replace('/login', '/terms')
-                                })()} target="_blank" rel="noopener noreferrer">
+                                })()} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                                     {t('acceptTerms')}
                                 </a>
                             </label>

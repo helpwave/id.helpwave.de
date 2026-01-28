@@ -77,7 +77,7 @@ export default function Login({ kcContext }: LoginProps) {
                     }}
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t(
                                 kcContext.realm?.loginWithEmailAllowed
@@ -104,7 +104,7 @@ export default function Login({ kcContext }: LoginProps) {
                         </FormFieldLayout>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('password')}
                             invalidDescription={translateError(passwordError)}

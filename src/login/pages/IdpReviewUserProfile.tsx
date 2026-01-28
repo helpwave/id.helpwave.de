@@ -43,7 +43,7 @@ export default function IdpReviewUserProfile({ kcContext }: IdpReviewUserProfile
         const inputType = fieldType === 'email' ? 'email' : 'text'
 
         return (
-            <div key={attrName} className="mb-6">
+            <div key={attrName} className="mb-4">
                 <FormFieldLayout
                     label={attr.displayName ?? attrName}
                     invalidDescription={translateError(getFieldError(attrName))}

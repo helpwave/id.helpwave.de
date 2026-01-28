@@ -58,7 +58,7 @@ export default function LoginIdpLinkEmail({ kcContext }: LoginIdpLinkEmailProps)
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('email')}
                             invalidDescription={translateError(emailError)}

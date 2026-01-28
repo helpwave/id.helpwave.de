@@ -56,7 +56,7 @@ export default function Code({ kcContext }: CodeProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <FormFieldLayout
                             label={t('loginOtp') || t('otp')}
                             invalidDescription={translateError(codeError)}
