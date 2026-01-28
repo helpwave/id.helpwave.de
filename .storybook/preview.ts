@@ -49,7 +49,6 @@ const preview: Preview = {
                 {},
                 React.createElement(
                     LocaleProvider,
-                    { locale: 'en-US' },
                     React.createElement(Story)
                 )
             )

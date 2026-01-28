@@ -21,7 +21,7 @@ export function PageLayout({ kcContext, children }: PageLayoutProps) {
             >
                 <div className="absolute top-4 right-4 flex gap-2 z-[1000] sm:top-2 sm:right-2 sm:gap-1">
                     <ThemeSwitcher />
-                    <LanguageSwitcher kcContext={kcContext} />
+                    <LanguageSwitcher />
                 </div>
 
                 <div className="flex flex-col items-center justify-center flex-1 w-[360px] max-w-[360px] mx-auto py-8 px-4 md:w-full md:max-w-[360px] md:py-6 md:px-4 sm:w-full sm:max-w-full sm:py-4 sm:px-2">

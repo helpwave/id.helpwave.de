@@ -1,20 +1,9 @@
 import { useState } from 'react'
 import { Button, LanguageDialog } from '@helpwave/hightide'
-import type { KcContext } from '../KcContext'
 import { Languages } from 'lucide-react'
 
-type LanguageSwitcherProps = {
-    kcContext: KcContext,
-}
-
-export function LanguageSwitcher({ kcContext }: LanguageSwitcherProps) {
+export function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false)
-
-    const handleLanguageChange = (locale: string) => {
-        const url = new URL(window.location.href)
-        url.searchParams.set('kc_locale', locale)
-        window.location.href = url.toString()
-    }
 
     return (
         <>
@@ -30,21 +19,7 @@ export function LanguageSwitcher({ kcContext }: LanguageSwitcherProps) {
             <LanguageDialog
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
-            >
-                {kcContext.locale?.supported?.map((lang: { languageTag: string, label: string, url: string }) => (
-                    <Button
-                        key={lang.languageTag}
-                        type="button"
-                        color={kcContext.locale?.currentLanguageTag === lang.languageTag ? 'primary' : 'neutral'}
-                        onClick={() => {
-                            handleLanguageChange(lang.languageTag)
-                            setIsOpen(false)
-                        }}
-                    >
-                        {lang.label}
-                    </Button>
-                ))}
-            </LanguageDialog>
+            />
         </>
     )
 }
