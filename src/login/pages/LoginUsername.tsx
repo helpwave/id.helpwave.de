@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginUsernameProps = {
     kcContext: Extract<KcContext, { pageId: 'login-username.ftl' }>,
@@ -13,6 +14,7 @@ type LoginUsernameProps = {
 export default function LoginUsername({ kcContext }: LoginUsernameProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [username, setUsername] = useState(kcContext.login?.username ?? '')
 
     const usernameError = kcContext.messagesPerField?.existsError('username')
@@ -56,29 +58,31 @@ export default function LoginUsername({ kcContext }: LoginUsernameProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t(
-                            kcContext.realm?.loginWithEmailAllowed
-                                ? 'usernameOrEmail'
-                                : 'username'
-                        )}
-                        invalidDescription={usernameError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="username"
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                autoFocus
-                                autoComplete="username"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t(
+                                kcContext.realm?.loginWithEmailAllowed
+                                    ? 'usernameOrEmail'
+                                    : 'username'
+                            )}
+                            invalidDescription={translateError(usernameError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="username"
+                                    type="text"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    autoFocus
+                                    autoComplete="username"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doLogIn')}

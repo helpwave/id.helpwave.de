@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginPasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-password.ftl' }>,
@@ -13,6 +14,7 @@ type LoginPasswordProps = {
 export default function LoginPassword({ kcContext }: LoginPasswordProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [password, setPassword] = useState('')
 
     const passwordError = kcContext.messagesPerField?.existsError('password')
@@ -56,25 +58,27 @@ export default function LoginPassword({ kcContext }: LoginPasswordProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('password')}
-                        invalidDescription={passwordError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="password"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                autoFocus
-                                autoComplete="current-password"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('password')}
+                            invalidDescription={translateError(passwordError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    autoFocus
+                                    autoComplete="current-password"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doLogIn')}

@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginOtpProps = {
     kcContext: Extract<KcContext, { pageId: 'login-otp.ftl' }>,
@@ -13,6 +14,7 @@ type LoginOtpProps = {
 export default function LoginOtp({ kcContext }: LoginOtpProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
 
     const [otp, setOtp] = useState('')
 
@@ -68,43 +70,47 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                         <>
                             <input type="hidden" name="selectedCredentialId" value={selectedCredentialId} />
 
-                            <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
-                                {({ id, ariaAttributes }) => (
-                                    <SelectUncontrolled
-                                        id={id}
-                                        value={selectedCredentialId}
-                                        onValueChange={(value) => setSelectedCredentialId(value)}
-                                        onEditComplete={() => { }}
-                                        {...ariaAttributes}
-                                    >
-                                        {credentials.map((c) => (
-                                            <SelectOption key={c.id} value={c.id}>
-                                                {c.userLabel}
-                                            </SelectOption>
-                                        ))}
-                                    </SelectUncontrolled>
-                                )}
-                            </FormFieldLayout>
+                            <div className="mb-6">
+                                <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
+                                    {({ id, ariaAttributes }) => (
+                                        <SelectUncontrolled
+                                            id={id}
+                                            value={selectedCredentialId}
+                                            onValueChange={(value) => setSelectedCredentialId(value)}
+                                            onEditComplete={() => { }}
+                                            {...ariaAttributes}
+                                        >
+                                            {credentials.map((c) => (
+                                                <SelectOption key={c.id} value={c.id}>
+                                                    {c.userLabel}
+                                                </SelectOption>
+                                            ))}
+                                        </SelectUncontrolled>
+                                    )}
+                                </FormFieldLayout>
+                            </div>
                         </>
                     ) : credentials.length === 1 ? (
                         <input type="hidden" name="selectedCredentialId" value={credentials[0].id} />
                     ) : null}
 
-                    <FormFieldLayout label={t('otp')} invalidDescription={otpError} required>
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="otp"
-                                type="text"
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value)}
-                                autoFocus
-                                autoComplete="one-time-code"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout label={t('otp')} invalidDescription={translateError(otpError)} required>
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="otp"
+                                    type="text"
+                                    value={otp}
+                                    onChange={(e) => setOtp(e.target.value)}
+                                    autoFocus
+                                    autoComplete="one-time-code"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doLogIn')}

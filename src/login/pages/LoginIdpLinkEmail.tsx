@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginIdpLinkEmailProps = {
     kcContext: Extract<KcContext, { pageId: 'login-idp-link-email.ftl' }>,
@@ -13,6 +14,7 @@ type LoginIdpLinkEmailProps = {
 export default function LoginIdpLinkEmail({ kcContext }: LoginIdpLinkEmailProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [email, setEmail] = useState('')
 
     const emailError = kcContext.messagesPerField?.existsError('email')
@@ -56,25 +58,27 @@ export default function LoginIdpLinkEmail({ kcContext }: LoginIdpLinkEmailProps)
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('email')}
-                        invalidDescription={emailError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="email"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                autoFocus
-                                autoComplete="email"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('email')}
+                            invalidDescription={translateError(emailError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="email"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    autoFocus
+                                    autoComplete="email"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doSubmit')}

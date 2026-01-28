@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginUpdateProfileProps = {
     kcContext: Extract<KcContext, { pageId: 'login-update-profile.ftl' }>,
@@ -13,6 +14,7 @@ type LoginUpdateProfileProps = {
 export default function LoginUpdateProfile({ kcContext }: LoginUpdateProfileProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
 
     const profile = kcContext.profile
     const attributes = profile?.attributesByName ?? {}
@@ -41,27 +43,28 @@ export default function LoginUpdateProfile({ kcContext }: LoginUpdateProfileProp
         const inputType = fieldType === 'email' ? 'email' : 'text'
 
         return (
-            <FormFieldLayout
-                key={attrName}
-                label={attr.displayName ?? attrName}
-                invalidDescription={getFieldError(attrName)}
-                required={attr.required}
-            >
-                {({ id, ariaAttributes }) => (
-                    <Input
-                        id={id}
-                        name={attrName}
-                        type={inputType}
-                        value={formData[attrName] ?? ''}
-                        onChange={(e) => setFormData({ ...formData, [attrName]: e.target.value })}
-                        autoComplete={attr.autocomplete ?? 'off'}
-                        required={attr.required}
-                        readOnly={attr.readOnly}
-                        disabled={attr.readOnly}
-                        {...ariaAttributes}
-                    />
-                )}
-            </FormFieldLayout>
+            <div key={attrName} className="mb-6">
+                <FormFieldLayout
+                    label={attr.displayName ?? attrName}
+                    invalidDescription={translateError(getFieldError(attrName))}
+                    required={attr.required}
+                >
+                    {({ id, ariaAttributes }) => (
+                        <Input
+                            id={id}
+                            name={attrName}
+                            type={inputType}
+                            value={formData[attrName] ?? ''}
+                            onChange={(e) => setFormData({ ...formData, [attrName]: e.target.value })}
+                            autoComplete={attr.autocomplete ?? 'off'}
+                            required={attr.required}
+                            readOnly={attr.readOnly}
+                            disabled={attr.readOnly}
+                            {...ariaAttributes}
+                        />
+                    )}
+                </FormFieldLayout>
+            </div>
         )
     }
 

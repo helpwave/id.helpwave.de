@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginUpdatePasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-update-password.ftl' }>,
@@ -13,6 +14,7 @@ type LoginUpdatePasswordProps = {
 export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
 
@@ -62,44 +64,48 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('passwordNew')}
-                        invalidDescription={passwordError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="password-new"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                autoFocus
-                                autoComplete="new-password"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('passwordNew')}
+                            invalidDescription={translateError(passwordError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="password-new"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    autoFocus
+                                    autoComplete="new-password"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
-                    <FormFieldLayout
-                        label={t('passwordConfirm')}
-                        invalidDescription={passwordConfirmError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="password-confirm"
-                                type="password"
-                                value={passwordConfirm}
-                                onChange={(e) => setPasswordConfirm(e.target.value)}
-                                autoComplete="new-password"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('passwordConfirm')}
+                            invalidDescription={translateError(passwordConfirmError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="password-confirm"
+                                    type="password"
+                                    value={passwordConfirm}
+                                    onChange={(e) => setPasswordConfirm(e.target.value)}
+                                    autoComplete="new-password"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doSubmit')}

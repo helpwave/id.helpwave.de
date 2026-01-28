@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type ForgotPasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-reset-password.ftl' }>,
@@ -14,6 +15,7 @@ type ForgotPasswordProps = {
 export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [username, setUsername] = useState(kcContext.auth?.attemptedUsername ?? '')
 
     const usernameError = kcContext.messagesPerField?.existsError('username')
@@ -62,29 +64,31 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t(
-                            kcContext.realm?.loginWithEmailAllowed
-                                ? 'usernameOrEmail'
-                                : 'username'
-                        )}
-                        invalidDescription={usernameError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="username"
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                autoFocus
-                                autoComplete="username"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t(
+                                kcContext.realm?.loginWithEmailAllowed
+                                    ? 'usernameOrEmail'
+                                    : 'username'
+                            )}
+                            invalidDescription={translateError(usernameError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="username"
+                                    type="text"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    autoFocus
+                                    autoComplete="username"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" color="primary">

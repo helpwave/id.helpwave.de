@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type RegisterProps = {
     kcContext: Extract<KcContext, { pageId: 'register.ftl' }>,
@@ -14,6 +15,7 @@ type RegisterProps = {
 export default function Register({ kcContext }: RegisterProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
 
     const profile = kcContext.profile
     const attributes = profile?.attributesByName ?? {}
@@ -43,12 +45,12 @@ export default function Register({ kcContext }: RegisterProps) {
         const inputType = isPassword ? 'password' : fieldType === 'email' ? 'email' : 'text'
 
         return (
-            <FormFieldLayout
-                key={attrName}
-                label={attr.displayName ?? attrName}
-                invalidDescription={getFieldError(attrName)}
-                required={attr.required}
-            >
+            <div key={attrName} className="mb-6">
+                <FormFieldLayout
+                    label={attr.displayName ?? attrName}
+                    invalidDescription={translateError(getFieldError(attrName))}
+                    required={attr.required}
+                >
                 {({ id, ariaAttributes }) => (
                     <Input
                         id={id}
@@ -63,7 +65,8 @@ export default function Register({ kcContext }: RegisterProps) {
                         {...ariaAttributes}
                     />
                 )}
-            </FormFieldLayout>
+                </FormFieldLayout>
+            </div>
         )
     }
 

@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginRecoveryAuthnCodeInputProps = {
     kcContext: Extract<KcContext, { pageId: 'login-recovery-authn-code-input.ftl' }>,
@@ -13,6 +14,7 @@ type LoginRecoveryAuthnCodeInputProps = {
 export default function LoginRecoveryAuthnCodeInput({ kcContext }: LoginRecoveryAuthnCodeInputProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [recoveryCode, setRecoveryCode] = useState('')
 
     const recoveryCodeError = kcContext.messagesPerField?.existsError('recoveryCode')
@@ -56,24 +58,26 @@ export default function LoginRecoveryAuthnCodeInput({ kcContext }: LoginRecovery
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('recoveryCode')}
-                        invalidDescription={recoveryCodeError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="recoveryCode"
-                                type="text"
-                                value={recoveryCode}
-                                onChange={(e) => setRecoveryCode(e.target.value)}
-                                autoFocus
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('recoveryCode')}
+                            invalidDescription={translateError(recoveryCodeError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="recoveryCode"
+                                    type="text"
+                                    value={recoveryCode}
+                                    onChange={(e) => setRecoveryCode(e.target.value)}
+                                    autoFocus
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doSubmit')}

@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginConfigTotpProps = {
     kcContext: Extract<KcContext, { pageId: 'login-config-totp.ftl' }>,
@@ -13,6 +14,7 @@ type LoginConfigTotpProps = {
 export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [totp, setTotp] = useState('')
 
     const totpError = kcContext.messagesPerField?.existsError('totp')
@@ -65,25 +67,27 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('loginTotpOneTime')}
-                        invalidDescription={totpError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="totp"
-                                type="text"
-                                value={totp}
-                                onChange={(e) => setTotp(e.target.value)}
-                                autoFocus
-                                autoComplete="one-time-code"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('loginTotpOneTime')}
+                            invalidDescription={translateError(totpError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="totp"
+                                    type="text"
+                                    value={totp}
+                                    onChange={(e) => setTotp(e.target.value)}
+                                    autoFocus
+                                    autoComplete="one-time-code"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doSubmit')}

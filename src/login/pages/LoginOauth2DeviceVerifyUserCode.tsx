@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type LoginOauth2DeviceVerifyUserCodeProps = {
     kcContext: Extract<KcContext, { pageId: 'login-oauth2-device-verify-user-code.ftl' }>,
@@ -13,6 +14,7 @@ type LoginOauth2DeviceVerifyUserCodeProps = {
 export default function LoginOauth2DeviceVerifyUserCode({ kcContext }: LoginOauth2DeviceVerifyUserCodeProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [userCode, setUserCode] = useState('')
 
     const userCodeError = kcContext.messagesPerField?.existsError('userCode')
@@ -60,24 +62,26 @@ export default function LoginOauth2DeviceVerifyUserCode({ kcContext }: LoginOaut
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('userCode')}
-                        invalidDescription={userCodeError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="userCode"
-                                type="text"
-                                value={userCode}
-                                onChange={(e) => setUserCode(e.target.value)}
-                                autoFocus
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-1.5">
+                        <FormFieldLayout
+                            label={t('userCode')}
+                            invalidDescription={translateError(userCodeError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="userCode"
+                                    type="text"
+                                    value={userCode}
+                                    onChange={(e) => setUserCode(e.target.value)}
+                                    autoFocus
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doSubmit')}

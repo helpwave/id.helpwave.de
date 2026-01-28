@@ -263,5 +263,41 @@
   "userCode": "Benutzercode",
   "@userCode": {
     "description": "Label für Benutzercode Eingabefeld"
+  },
+  "errorInvalidUsernameOrPassword": "Ungültiger Benutzername oder Passwort",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login-Formularfeldfehler"
+  },
+  "errorInvalidUsername": "Ungültiger Benutzername",
+  "@errorInvalidUsername": {
+    "description": "Benutzername-Feldfehler"
+  },
+  "errorInvalidPassword": "Ungültiges Passwort",
+  "@errorInvalidPassword": {
+    "description": "Passwort-Feldfehler"
+  },
+  "errorInvalidEmail": "Ungültige E-Mail",
+  "@errorInvalidEmail": {
+    "description": "E-Mail-Feldfehler"
+  },
+  "errorInvalidCode": "Ungültiger Code",
+  "@errorInvalidCode": {
+    "description": "Bestätigungscode-Feldfehler"
+  },
+  "errorInvalidRecoveryCode": "Ungültiger Wiederherstellungscode",
+  "@errorInvalidRecoveryCode": {
+    "description": "Wiederherstellungscode-Feldfehler"
+  },
+  "errorInvalidUserCode": "Ungültiger Benutzercode",
+  "@errorInvalidUserCode": {
+    "description": "Benutzercode-Feldfehler"
+  },
+  "errorPasswordMismatch": "Passwörter stimmen nicht überein",
+  "@errorPasswordMismatch": {
+    "description": "Passwort-Bestätigungsfeldfehler"
+  },
+  "errorAccountTemporarilyDisabled": "Konto ist vorübergehend deaktiviert. Wenden Sie sich an Ihren Administrator oder versuchen Sie es später erneut.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Konto deaktiviert Fehler"
   }
 }

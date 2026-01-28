@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useTranslatedFieldError } from '../utils/translateFieldError'
 
 type CodeProps = {
     kcContext: Extract<KcContext, { pageId: 'code.ftl' }>,
@@ -13,6 +14,7 @@ type CodeProps = {
 export default function Code({ kcContext }: CodeProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const translateError = useTranslatedFieldError()
     const [code, setCode] = useState('')
 
     const codeError = kcContext.messagesPerField?.existsError('code')
@@ -54,25 +56,27 @@ export default function Code({ kcContext }: CodeProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('loginOtp') || t('otp')}
-                        invalidDescription={codeError}
-                        required
-                    >
-                        {({ id, ariaAttributes }) => (
-                            <Input
-                                id={id}
-                                name="code"
-                                type="text"
-                                value={code}
-                                onChange={(e) => setCode(e.target.value)}
-                                autoFocus
-                                autoComplete="one-time-code"
-                                required
-                                {...ariaAttributes}
-                            />
-                        )}
-                    </FormFieldLayout>
+                    <div className="mb-6">
+                        <FormFieldLayout
+                            label={t('loginOtp') || t('otp')}
+                            invalidDescription={translateError(codeError)}
+                            required
+                        >
+                            {({ id, ariaAttributes }) => (
+                                <Input
+                                    id={id}
+                                    name="code"
+                                    type="text"
+                                    value={code}
+                                    onChange={(e) => setCode(e.target.value)}
+                                    autoFocus
+                                    autoComplete="one-time-code"
+                                    required
+                                    {...ariaAttributes}
+                                />
+                            )}
+                        </FormFieldLayout>
+                    </div>
 
                     <Button type="submit" color="primary">
                         {t('doSubmit')}
