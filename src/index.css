@@ -7,3 +7,7 @@
         @apply bg-background text-on-background;
     }
 }
+
+*:focus-visible {
+    @apply !outline-none;
+}

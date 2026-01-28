@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, SelectUncontrolled, SelectOption } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -13,6 +13,7 @@ type LoginOtpProps = {
 export default function LoginOtp({ kcContext }: LoginOtpProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+
     const [otp, setOtp] = useState('')
 
     const otpError = kcContext.messagesPerField?.existsError('otp')
@@ -20,6 +21,12 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
         : undefined
 
     const message = kcContext.message
+
+    const otpLogin = kcContext.otpLogin
+    const credentials = otpLogin?.userOtpCredentials ?? []
+    const hasMultipleSources = credentials.length > 1
+
+    const [selectedCredentialId, setSelectedCredentialId] = useState(credentials[0]?.id ?? '')
 
     return (
         <Template
@@ -44,7 +51,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-900)'
                                     : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
+                            marginBottom: '1rem',
                         }}
                     >
                         {message.summary}
@@ -57,11 +64,33 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    <FormFieldLayout
-                        label={t('otp')}
-                        invalidDescription={otpError}
-                        required
-                    >
+                    {hasMultipleSources ? (
+                        <>
+                            <input type="hidden" name="selectedCredentialId" value={selectedCredentialId} />
+
+                            <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
+                                {({ id, ariaAttributes }) => (
+                                    <SelectUncontrolled
+                                        id={id}
+                                        value={selectedCredentialId}
+                                        onValueChange={(value) => setSelectedCredentialId(value)}
+                                        onEditComplete={() => { }}
+                                        {...ariaAttributes}
+                                    >
+                                        {credentials.map((c) => (
+                                            <SelectOption key={c.id} value={c.id}>
+                                                {c.userLabel}
+                                            </SelectOption>
+                                        ))}
+                                    </SelectUncontrolled>
+                                )}
+                            </FormFieldLayout>
+                        </>
+                    ) : credentials.length === 1 ? (
+                        <input type="hidden" name="selectedCredentialId" value={credentials[0].id} />
+                    ) : null}
+
+                    <FormFieldLayout label={t('otp')} invalidDescription={otpError} required>
                         {({ id, ariaAttributes }) => (
                             <Input
                                 id={id}
@@ -85,3 +114,4 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
         </Template>
     )
 }
+
