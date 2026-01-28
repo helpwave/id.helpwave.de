@@ -1,0 +1,13 @@
+{
+  "realm": "customer",
+  "enabled": true,
+  "displayName": "Customer Realm",
+  "loginTheme": "helpwave-id",
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": false,
+  "rememberMe": true,
+  "resetPasswordAllowed": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "password": true
+}

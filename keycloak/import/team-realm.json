@@ -1,0 +1,13 @@
+{
+  "realm": "team",
+  "enabled": true,
+  "displayName": "Team Realm",
+  "loginTheme": "helpwave-id",
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": false,
+  "rememberMe": true,
+  "resetPasswordAllowed": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "password": true
+}
