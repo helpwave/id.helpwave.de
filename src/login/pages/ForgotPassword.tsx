@@ -13,8 +13,7 @@ type ForgotPasswordProps = {
 
 export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [username, setUsername] = useState(kcContext.auth?.attemptedUsername ?? '')
 
     const usernameError = kcContext.messagesPerField?.existsError('username')
@@ -94,7 +93,7 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
 
                         <Button
                             type="button"
-                            color="secondary"
+                            color="neutral"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}

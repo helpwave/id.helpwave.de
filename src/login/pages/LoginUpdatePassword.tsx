@@ -12,8 +12,7 @@ type LoginUpdatePasswordProps = {
 
 export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
 

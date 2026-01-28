@@ -12,8 +12,7 @@ type LoginUsernameProps = {
 
 export default function LoginUsername({ kcContext }: LoginUsernameProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [username, setUsername] = useState(kcContext.login?.username ?? '')
 
     const usernameError = kcContext.messagesPerField?.existsError('username')

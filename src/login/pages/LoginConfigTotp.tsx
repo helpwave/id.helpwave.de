@@ -12,8 +12,7 @@ type LoginConfigTotpProps = {
 
 export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [totp, setTotp] = useState('')
 
     const totpError = kcContext.messagesPerField?.existsError('totp')

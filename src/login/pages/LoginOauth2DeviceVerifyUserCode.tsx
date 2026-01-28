@@ -12,8 +12,7 @@ type LoginOauth2DeviceVerifyUserCodeProps = {
 
 export default function LoginOauth2DeviceVerifyUserCode({ kcContext }: LoginOauth2DeviceVerifyUserCodeProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [userCode, setUserCode] = useState('')
 
     const userCodeError = kcContext.messagesPerField?.existsError('userCode')

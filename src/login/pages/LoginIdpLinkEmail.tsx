@@ -12,8 +12,7 @@ type LoginIdpLinkEmailProps = {
 
 export default function LoginIdpLinkEmail({ kcContext }: LoginIdpLinkEmailProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [email, setEmail] = useState('')
 
     const emailError = kcContext.messagesPerField?.existsError('email')

@@ -13,8 +13,7 @@ type RegisterProps = {
 
 export default function Register({ kcContext }: RegisterProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     const profile = kcContext.profile
     const attributes = profile?.attributesByName ?? {}
@@ -142,7 +141,7 @@ export default function Register({ kcContext }: RegisterProps) {
 
                         <Button
                             type="button"
-                            color="secondary"
+                            color="neutral"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}

@@ -11,8 +11,7 @@ type LoginX509InfoProps = {
 
 export default function LoginX509Info({ kcContext }: LoginX509InfoProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template

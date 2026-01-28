@@ -12,8 +12,7 @@ type FrontchannelLogoutProps = {
 
 export default function FrontchannelLogout({ kcContext }: FrontchannelLogoutProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     useEffect(() => {
         const form = document.getElementById('kc-frontchannel-logout-form') as HTMLFormElement

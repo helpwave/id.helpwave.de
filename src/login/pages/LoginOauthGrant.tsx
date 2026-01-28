@@ -11,8 +11,7 @@ type LoginOauthGrantProps = {
 
 export default function LoginOauthGrant({ kcContext }: LoginOauthGrantProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template
@@ -44,7 +43,7 @@ export default function LoginOauthGrant({ kcContext }: LoginOauthGrantProps) {
                         <Button type="submit" name="accept" color="primary">
                             {t('doAccept')}
                         </Button>
-                        <Button type="submit" name="cancel" color="secondary">
+                        <Button type="submit" name="cancel" color="neutral">
                             {t('doCancel')}
                         </Button>
                     </form>

@@ -12,8 +12,7 @@ type WebauthnAuthenticateProps = {
 
 export default function WebauthnAuthenticate({ kcContext }: WebauthnAuthenticateProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     const webauthnScriptUrl = (kcContext.url as { webauthnScriptUrl?: string }).webauthnScriptUrl
     useEffect(() => {

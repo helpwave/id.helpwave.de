@@ -12,8 +12,7 @@ type LoginOtpProps = {
 
 export default function LoginOtp({ kcContext }: LoginOtpProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [otp, setOtp] = useState('')
 
     const otpError = kcContext.messagesPerField?.existsError('otp')

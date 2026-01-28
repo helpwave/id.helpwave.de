@@ -5,7 +5,7 @@
 import type { Translation } from '@helpwave/internationalization'
 import { TranslationGen } from '@helpwave/internationalization'
 
-export const helpwaveIdTranslationLocales = ['de', 'en'] as const
+export const helpwaveIdTranslationLocales = ['de-DE', 'en-US'] as const
 
 export type HelpwaveIdTranslationLocales = typeof helpwaveIdTranslationLocales[number]
 
@@ -78,7 +78,7 @@ export type HelpwaveIdTranslationEntries = {
 }
 
 export const helpwaveIdTranslation: Translation<HelpwaveIdTranslationLocales, Partial<HelpwaveIdTranslationEntries>> = {
-  'de': {
+  'de-DE': {
     'acceptTerms': `Ich akzeptiere die Allgemeinen Geschäftsbedingungen`,
     'backToApplication': `Zurück zur Anwendung`,
     'backToLogin': `Zurück zur Anmeldung`,
@@ -150,7 +150,7 @@ export const helpwaveIdTranslation: Translation<HelpwaveIdTranslationLocales, Pa
     'x509InfoMessage': `Bitte geben Sie Ihre X.509 Zertifikatsinformationen an`,
     'x509InfoTitle': `X.509 Zertifikatsinformationen`
   },
-  'en': {
+  'en-US': {
     'acceptTerms': `I accept the terms and conditions`,
     'backToApplication': `Back to Application`,
     'backToLogin': `Back to Login`,
