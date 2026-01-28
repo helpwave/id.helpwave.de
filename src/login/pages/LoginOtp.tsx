@@ -14,9 +14,6 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
     const [otp, setOtp] = useState('')
-    const [selectedAuthExecId, setSelectedAuthExecId] = useState(
-        kcContext.auth?.authenticationSelections?.[0]?.authExecId ?? ''
-    )
 
     const otpError = kcContext.messagesPerField?.existsError('otp')
         ? kcContext.messagesPerField.get('otp')
@@ -24,8 +21,12 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
 
     const message = kcContext.message
 
-    const authenticationSelections = kcContext.auth?.authenticationSelections
+    const auth = kcContext.auth as { authenticationSelections?: Array<{ authExecId: string; displayName: string }> } | undefined
+    const authenticationSelections = auth?.authenticationSelections
     const hasMultipleSources = authenticationSelections && authenticationSelections.length > 1
+    const [selectedAuthExecId, setSelectedAuthExecId] = useState(
+        authenticationSelections?.[0]?.authExecId ?? ''
+    )
 
     return (
         <Template
@@ -82,7 +83,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                         onEditComplete={() => {}}
                                         {...ariaAttributes}
                                     >
-                                        {authenticationSelections.map((selection) => (
+                                        {authenticationSelections.map((selection: { authExecId: string; displayName: string }) => (
                                             <SelectOption key={selection.authExecId} value={selection.authExecId}>
                                                 {selection.displayName}
                                             </SelectOption>
