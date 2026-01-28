@@ -1,8 +1,4 @@
-import { combineTranslation } from '@helpwave/internationalization'
-import { helpwaveIdTranslation, type HelpwaveIdTranslationLocales } from './translations'
+import { helpwaveIdTranslation } from './translations'
+import { useHightideTranslation } from '@helpwave/hightide'
 
-export function useTranslation(locale?: string) {
-    const lang = (locale ?? 'en') as HelpwaveIdTranslationLocales
-    console.log(locale, lang)
-    return combineTranslation(helpwaveIdTranslation, lang)
-}
+export const useTranslation = () => useHightideTranslation(helpwaveIdTranslation)

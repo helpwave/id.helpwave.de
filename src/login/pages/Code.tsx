@@ -12,8 +12,7 @@ type CodeProps = {
 
 export default function Code({ kcContext }: CodeProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [code, setCode] = useState('')
 
     const codeError = kcContext.messagesPerField?.existsError('code')

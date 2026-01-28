@@ -11,8 +11,7 @@ type DeleteCredentialProps = {
 
 export default function DeleteCredential({ kcContext }: DeleteCredentialProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template
@@ -30,7 +29,7 @@ export default function DeleteCredential({ kcContext }: DeleteCredentialProps) {
                         <Button type="submit" name="submitAction" value="Delete" color="primary">
                             {t('doDelete')}
                         </Button>
-                        <Button type="submit" name="submitAction" value="Cancel" color="secondary">
+                        <Button type="submit" name="submitAction" value="Cancel" color="neutral">
                             {t('doCancel')}
                         </Button>
                     </form>

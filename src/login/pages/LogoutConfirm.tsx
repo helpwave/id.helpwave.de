@@ -11,8 +11,7 @@ type LogoutConfirmProps = {
 
 export default function LogoutConfirm({ kcContext }: LogoutConfirmProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template
@@ -31,7 +30,7 @@ export default function LogoutConfirm({ kcContext }: LogoutConfirmProps) {
                         <Button type="submit" name="confirmLogout" color="primary">
                             {t('doLogout')}
                         </Button>
-                        <Button type="submit" name="cancelLogout" color="secondary">
+                        <Button type="submit" name="cancelLogout" color="neutral">
                             {t('doCancel')}
                         </Button>
                     </form>

@@ -12,8 +12,7 @@ type ErrorProps = {
 
 export default function Error({ kcContext }: ErrorProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template
@@ -53,7 +52,7 @@ export default function Error({ kcContext }: ErrorProps) {
                     {kcContext.url.loginUrl && (
                         <Button
                             type="button"
-                            color="secondary"
+                            color="neutral"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}

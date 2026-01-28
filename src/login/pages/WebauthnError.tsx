@@ -11,8 +11,7 @@ type WebauthnErrorProps = {
 
 export default function WebauthnError({ kcContext }: WebauthnErrorProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template

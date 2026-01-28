@@ -12,8 +12,7 @@ type LinkIdpActionProps = {
 
 export default function LinkIdpAction({ kcContext }: LinkIdpActionProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     useEffect(() => {
         const form = document.getElementById('kc-link-idp-form') as HTMLFormElement

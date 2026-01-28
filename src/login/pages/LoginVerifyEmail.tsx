@@ -11,8 +11,7 @@ type LoginVerifyEmailProps = {
 
 export default function LoginVerifyEmail({ kcContext }: LoginVerifyEmailProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template

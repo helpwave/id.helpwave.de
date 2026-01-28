@@ -9,7 +9,7 @@ export function ThemeSwitcher() {
         <>
             <Button
                 type="button"
-                color="secondary"
+                color="neutral"
                 onClick={() => setIsOpen(true)}
                 style={{ padding: '0.5rem', minWidth: 'auto' }}
                 aria-label="Change theme"

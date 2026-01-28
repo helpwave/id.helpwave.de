@@ -18,10 +18,6 @@ export function PageLayout({ kcContext, children }: PageLayoutProps) {
             <style>{hideKeycloakStyles}</style>
             <div
                 className="flex flex-col min-h-screen p-4 relative"
-                style={{
-                    backgroundColor:
-                        'var(--hw-color-background, var(--hw-color-neutral-0, #ffffff))'
-                }}
             >
                 <div className="absolute top-4 right-4 flex gap-2 z-[1000] sm:top-2 sm:right-2 sm:gap-1">
                     <ThemeSwitcher />
@@ -37,7 +33,7 @@ export function PageLayout({ kcContext, children }: PageLayoutProps) {
                     </div>
                 </div>
 
-                <Footer kcContext={kcContext} />
+                <Footer />
             </div>
         </>
     )

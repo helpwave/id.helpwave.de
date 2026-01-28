@@ -12,8 +12,7 @@ type SamlPostFormProps = {
 
 export default function SamlPostForm({ kcContext }: SamlPostFormProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     useEffect(() => {
         const form = document.getElementById('kc-saml-post-form') as HTMLFormElement

@@ -12,8 +12,7 @@ type LoginRecoveryAuthnCodeInputProps = {
 
 export default function LoginRecoveryAuthnCodeInput({ kcContext }: LoginRecoveryAuthnCodeInputProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [recoveryCode, setRecoveryCode] = useState('')
 
     const recoveryCodeError = kcContext.messagesPerField?.existsError('recoveryCode')

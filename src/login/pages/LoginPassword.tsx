@@ -12,8 +12,7 @@ type LoginPasswordProps = {
 
 export default function LoginPassword({ kcContext }: LoginPasswordProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [password, setPassword] = useState('')
 
     const passwordError = kcContext.messagesPerField?.existsError('password')

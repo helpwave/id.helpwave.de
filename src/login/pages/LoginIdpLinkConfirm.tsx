@@ -11,8 +11,7 @@ type LoginIdpLinkConfirmProps = {
 
 export default function LoginIdpLinkConfirm({ kcContext }: LoginIdpLinkConfirmProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template
@@ -30,7 +29,7 @@ export default function LoginIdpLinkConfirm({ kcContext }: LoginIdpLinkConfirmPr
                         <Button type="submit" name="submitAction" value="Link" color="primary">
                             {t('doLink')}
                         </Button>
-                        <Button type="submit" name="submitAction" value="Cancel" color="secondary">
+                        <Button type="submit" name="submitAction" value="Cancel" color="neutral">
                             {t('doCancel')}
                         </Button>
                     </form>

@@ -12,8 +12,7 @@ type TermsProps = {
 
 export default function Terms({ kcContext }: TermsProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [accepted, setAccepted] = useState(false)
 
     return (
@@ -58,7 +57,7 @@ export default function Terms({ kcContext }: TermsProps) {
                         </Button>
                         <Button
                             type="button"
-                            color="secondary"
+                            color="neutral"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}

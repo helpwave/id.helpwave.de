@@ -20,7 +20,7 @@ export function LanguageSwitcher({ kcContext }: LanguageSwitcherProps) {
         <>
             <Button
                 type="button"
-                color="secondary"
+                color="neutral"
                 onClick={() => setIsOpen(true)}
                 style={{ padding: '0.5rem', minWidth: 'auto' }}
                 aria-label="Change language"
@@ -35,7 +35,7 @@ export function LanguageSwitcher({ kcContext }: LanguageSwitcherProps) {
                     <Button
                         key={lang.languageTag}
                         type="button"
-                        color={kcContext.locale?.currentLanguageTag === lang.languageTag ? 'primary' : 'secondary'}
+                        color={kcContext.locale?.currentLanguageTag === lang.languageTag ? 'primary' : 'neutral'}
                         onClick={() => {
                             handleLanguageChange(lang.languageTag)
                             setIsOpen(false)

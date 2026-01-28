@@ -11,8 +11,7 @@ type LoginIdpLinkConfirmOverrideProps = {
 
 export default function LoginIdpLinkConfirmOverride({ kcContext }: LoginIdpLinkConfirmOverrideProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
 
     return (
         <Template
@@ -30,7 +29,7 @@ export default function LoginIdpLinkConfirmOverride({ kcContext }: LoginIdpLinkC
                         <Button type="submit" name="submitAction" value="Override" color="primary">
                             {t('doOverride')}
                         </Button>
-                        <Button type="submit" name="submitAction" value="Cancel" color="secondary">
+                        <Button type="submit" name="submitAction" value="Cancel" color="neutral">
                             {t('doCancel')}
                         </Button>
                     </form>

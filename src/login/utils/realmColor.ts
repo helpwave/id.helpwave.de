@@ -2,11 +2,10 @@ import type { ChipColor } from '@helpwave/hightide'
 
 const chipColors: ChipColor[] = [
     'primary',
-    'secondary',
+    'neutral',
     'positive',
     'warning',
-    'negative',
-    'neutral'
+    'negative'
 ]
 
 function hashString(str: string): number {
@@ -23,10 +22,10 @@ export function getRealmColor(realmName: string): ChipColor {
     const normalizedName = realmName.toLowerCase()
 
     if (normalizedName === 'customer') {
-        return 'secondary'
+        return 'primary'
     }
     if (normalizedName === 'team') {
-        return 'primary'
+        return 'secondary'
     }
     if (normalizedName === 'master') {
         return 'negative'

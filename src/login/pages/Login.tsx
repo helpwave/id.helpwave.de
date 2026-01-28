@@ -12,8 +12,7 @@ type LoginProps = {
 
 export default function Login({ kcContext }: LoginProps) {
     const { i18n } = useI18n({ kcContext })
-    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
-    const t = useTranslation(locale)
+    const t = useTranslation()
     const [username, setUsername] = useState(kcContext.login?.username ?? '')
     const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
@@ -140,7 +139,7 @@ export default function Login({ kcContext }: LoginProps) {
                         {kcContext.realm?.resetPasswordAllowed && (
                             <Button
                                 type="button"
-                                color="secondary"
+                                color="neutral"
                                 onClick={() => {
                                     window.location.href = kcContext.url.loginResetCredentialsUrl
                                 }}
@@ -152,7 +151,7 @@ export default function Login({ kcContext }: LoginProps) {
                         {kcContext.realm?.registrationAllowed && (
                             <Button
                                 type="button"
-                                color="secondary"
+                                color="neutral"
                                 onClick={() => {
                                     window.location.href = kcContext.url.registrationUrl
                                 }}
@@ -170,7 +169,7 @@ export default function Login({ kcContext }: LoginProps) {
                             <Button
                                 key={provider.alias}
                                 type="button"
-                                color="secondary"
+                                color="neutral"
                                 onClick={() => {
                                     window.location.href = provider.loginUrl
                                 }}
