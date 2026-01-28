@@ -22,10 +22,10 @@ export function getRealmColor(realmName: string): ChipColor {
     const normalizedName = realmName.toLowerCase()
 
     if (normalizedName === 'customer') {
-        return 'neutral'
+        return 'primary'
     }
     if (normalizedName === 'team') {
-        return 'primary'
+        return 'secondary'
     }
     if (normalizedName === 'master') {
         return 'negative'
