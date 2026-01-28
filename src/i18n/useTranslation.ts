@@ -3,5 +3,6 @@ import { helpwaveIdTranslation, type HelpwaveIdTranslationLocales } from './tran
 
 export function useTranslation(locale?: string) {
     const lang = (locale ?? 'en') as HelpwaveIdTranslationLocales
+    console.log(locale, lang)
     return combineTranslation(helpwaveIdTranslation, lang)
 }

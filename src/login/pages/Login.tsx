@@ -3,7 +3,8 @@ import { Button, Input, FormFieldLayout, CheckboxUncontrolled } from '@helpwave/
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
-import { RealmChip } from '../components/RealmChip'
+import { PageLayout } from '../components/PageLayout'
+import { useTranslation } from '../../i18n/useTranslation'
 
 type LoginProps = {
     kcContext: Extract<KcContext, { pageId: 'login.ftl' }>,
@@ -11,6 +12,8 @@ type LoginProps = {
 
 export default function Login({ kcContext }: LoginProps) {
     const { i18n } = useI18n({ kcContext })
+    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
+    const t = useTranslation(locale)
     const [username, setUsername] = useState(kcContext.login?.username ?? '')
     const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
@@ -26,43 +29,14 @@ export default function Login({ kcContext }: LoginProps) {
     const message = kcContext.message
 
     return (
-        <>
-            <style>{`
-                #kc-header,
-                #kc-header-wrapper,
-                .kc-header,
-                .kc-logo-text,
-                [id*="kc-logo"],
-                [class*="kc-logo"],
-                [id*="header"],
-                [class*="header"]:not([class*="Helpwave"]):not([class*="helpwave"]),
-                [id*="brand"],
-                [class*="brand"],
-                [id*="kc-brand"],
-                [class*="kc-brand"] {
-                    display: none !important;
-                }
-            `}</style>
-            <Template
-                kcContext={kcContext}
-                i18n={i18n}
-                displayMessage={!!message}
-                headerNode={null}
-                doUseDefaultCss={false}
-            >
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1rem',
-                    width: '100%',
-                    maxWidth: '400px',
-                    margin: '0 auto',
-                    padding: '1rem'
-                }}
-            >
-                <RealmChip kcContext={kcContext} />
-
+        <Template
+            kcContext={kcContext}
+            i18n={i18n}
+            displayMessage={!!message}
+            headerNode={null}
+            doUseDefaultCss={false}
+        >
+            <PageLayout kcContext={kcContext}>
                 {message && (
                     <div
                         role="alert"
@@ -71,16 +45,17 @@ export default function Login({ kcContext }: LoginProps) {
                             borderRadius: '0.5rem',
                             backgroundColor:
                                 message.type === 'error'
-                                    ? 'var(--hw-color-negative-50, #fee)'
+                                    ? 'var(--hw-color-negative-50)'
                                     : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-50, #ffa)'
-                                      : 'var(--hw-color-positive-50, #efe)',
+                                      ? 'var(--hw-color-warning-50)'
+                                      : 'var(--hw-color-positive-50)',
                             color:
                                 message.type === 'error'
-                                    ? 'var(--hw-color-negative-900, #c00)'
+                                    ? 'var(--hw-color-negative-900)'
                                     : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-900, #880)'
-                                      : 'var(--hw-color-positive-900, #060)',
+                                      ? 'var(--hw-color-warning-900)'
+                                      : 'var(--hw-color-positive-900)',
+                            marginBottom: '1rem'
                         }}
                     >
                         {message.summary}
@@ -102,7 +77,7 @@ export default function Login({ kcContext }: LoginProps) {
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
                     <FormFieldLayout
-                        label={i18n.msgStr(
+                        label={t(
                             kcContext.realm?.loginWithEmailAllowed
                                 ? 'usernameOrEmail'
                                 : 'username'
@@ -127,7 +102,7 @@ export default function Login({ kcContext }: LoginProps) {
                     </FormFieldLayout>
 
                     <FormFieldLayout
-                        label={i18n.msgStr('password')}
+                        label={t('password')}
                         invalidDescription={passwordError}
                         required
                     >
@@ -153,13 +128,13 @@ export default function Login({ kcContext }: LoginProps) {
                                 onEditComplete={() => {}}
                                 size="md"
                             />
-                            <label htmlFor="rememberMe">{i18n.msgStr('rememberMe')}</label>
+                            <label htmlFor="rememberMe">{t('rememberMe')}</label>
                         </div>
                     )}
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" color="primary">
-                            {i18n.msgStr('doLogIn')}
+                            {t('doLogIn')}
                         </Button>
 
                         {kcContext.realm?.resetPasswordAllowed && (
@@ -170,7 +145,7 @@ export default function Login({ kcContext }: LoginProps) {
                                     window.location.href = kcContext.url.loginResetCredentialsUrl
                                 }}
                             >
-                                {i18n.msgStr('doForgotPassword')}
+                                {t('doForgotPassword')}
                             </Button>
                         )}
 
@@ -182,15 +157,15 @@ export default function Login({ kcContext }: LoginProps) {
                                     window.location.href = kcContext.url.registrationUrl
                                 }}
                             >
-                                {i18n.msgStr('noAccount')} {i18n.msgStr('doRegister')}
+                                {t('noAccount')} {t('doRegister')}
                             </Button>
                         )}
                     </div>
                 </form>
 
                 {kcContext.social?.providers && kcContext.social.providers.length > 0 && (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <div>{i18n.msgStr('identity-provider-redirector')}</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
+                        <div>{t('identity-provider-redirector')}</div>
                         {kcContext.social.providers.map((provider) => (
                             <Button
                                 key={provider.alias}
@@ -205,8 +180,7 @@ export default function Login({ kcContext }: LoginProps) {
                         ))}
                     </div>
                 )}
-            </div>
+            </PageLayout>
         </Template>
-        </>
     )
 }

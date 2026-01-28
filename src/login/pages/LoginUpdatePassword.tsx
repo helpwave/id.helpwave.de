@@ -4,21 +4,25 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
-import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
 
-type ForgotPasswordProps = {
-    kcContext: Extract<KcContext, { pageId: 'login-reset-password.ftl' }>,
+type LoginUpdatePasswordProps = {
+    kcContext: Extract<KcContext, { pageId: 'login-update-password.ftl' }>,
 };
 
-export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
+export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordProps) {
     const { i18n } = useI18n({ kcContext })
     const locale = kcContext.locale?.currentLanguageTag ?? 'en'
     const t = useTranslation(locale)
-    const [username, setUsername] = useState(kcContext.auth?.attemptedUsername ?? '')
+    const [password, setPassword] = useState('')
+    const [passwordConfirm, setPasswordConfirm] = useState('')
 
-    const usernameError = kcContext.messagesPerField?.existsError('username')
-        ? kcContext.messagesPerField.get('username')
+    const passwordError = kcContext.messagesPerField?.existsError('password')
+        ? kcContext.messagesPerField.get('password')
+        : undefined
+
+    const passwordConfirmError = kcContext.messagesPerField?.existsError('password-confirm')
+        ? kcContext.messagesPerField.get('password-confirm')
         : undefined
 
     const message = kcContext.message
@@ -41,15 +45,11 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
                             backgroundColor:
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-50)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-50)'
-                                      : 'var(--hw-color-positive-50)',
+                                    : 'var(--hw-color-positive-50)',
                             color:
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-900)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-900)'
-                                      : 'var(--hw-color-positive-900)',
+                                    : 'var(--hw-color-positive-900)',
                             marginBottom: '1rem'
                         }}
                     >
@@ -58,51 +58,53 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
                 )}
 
                 <form
-                    id="kc-reset-password-form"
+                    id="kc-passwd-update-form"
                     action={kcContext.url.loginAction}
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
                     <FormFieldLayout
-                        label={t(
-                            kcContext.realm?.loginWithEmailAllowed
-                                ? 'usernameOrEmail'
-                                : 'username'
-                        )}
-                        invalidDescription={usernameError}
+                        label={t('passwordNew')}
+                        invalidDescription={passwordError}
                         required
                     >
                         {({ id, ariaAttributes }) => (
                             <Input
                                 id={id}
-                                name="username"
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                name="password-new"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 autoFocus
-                                autoComplete="username"
+                                autoComplete="new-password"
                                 required
                                 {...ariaAttributes}
                             />
                         )}
                     </FormFieldLayout>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <Button type="submit" color="primary">
-                            {t('doSubmit')}
-                        </Button>
+                    <FormFieldLayout
+                        label={t('passwordConfirm')}
+                        invalidDescription={passwordConfirmError}
+                        required
+                    >
+                        {({ id, ariaAttributes }) => (
+                            <Input
+                                id={id}
+                                name="password-confirm"
+                                type="password"
+                                value={passwordConfirm}
+                                onChange={(e) => setPasswordConfirm(e.target.value)}
+                                autoComplete="new-password"
+                                required
+                                {...ariaAttributes}
+                            />
+                        )}
+                    </FormFieldLayout>
 
-                        <Button
-                            type="button"
-                            color="secondary"
-                            onClick={() => {
-                                window.location.href = kcContext.url.loginUrl
-                            }}
-                        >
-                            <ArrowLeft size={16} style={{ marginRight: '0.5rem', display: 'inline-block' }} />
-                            {t('backToLogin')}
-                        </Button>
-                    </div>
+                    <Button type="submit" color="primary">
+                        {t('doSubmit')}
+                    </Button>
                 </form>
             </PageLayout>
         </Template>

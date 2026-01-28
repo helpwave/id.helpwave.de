@@ -4,21 +4,20 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
-import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
 
-type ForgotPasswordProps = {
-    kcContext: Extract<KcContext, { pageId: 'login-reset-password.ftl' }>,
+type LoginRecoveryAuthnCodeInputProps = {
+    kcContext: Extract<KcContext, { pageId: 'login-recovery-authn-code-input.ftl' }>,
 };
 
-export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
+export default function LoginRecoveryAuthnCodeInput({ kcContext }: LoginRecoveryAuthnCodeInputProps) {
     const { i18n } = useI18n({ kcContext })
     const locale = kcContext.locale?.currentLanguageTag ?? 'en'
     const t = useTranslation(locale)
-    const [username, setUsername] = useState(kcContext.auth?.attemptedUsername ?? '')
+    const [recoveryCode, setRecoveryCode] = useState('')
 
-    const usernameError = kcContext.messagesPerField?.existsError('username')
-        ? kcContext.messagesPerField.get('username')
+    const recoveryCodeError = kcContext.messagesPerField?.existsError('recoveryCode')
+        ? kcContext.messagesPerField.get('recoveryCode')
         : undefined
 
     const message = kcContext.message
@@ -41,15 +40,11 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
                             backgroundColor:
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-50)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-50)'
-                                      : 'var(--hw-color-positive-50)',
+                                    : 'var(--hw-color-positive-50)',
                             color:
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-900)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-900)'
-                                      : 'var(--hw-color-positive-900)',
+                                    : 'var(--hw-color-positive-900)',
                             marginBottom: '1rem'
                         }}
                     >
@@ -58,51 +53,32 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
                 )}
 
                 <form
-                    id="kc-reset-password-form"
                     action={kcContext.url.loginAction}
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
                     <FormFieldLayout
-                        label={t(
-                            kcContext.realm?.loginWithEmailAllowed
-                                ? 'usernameOrEmail'
-                                : 'username'
-                        )}
-                        invalidDescription={usernameError}
+                        label={t('recoveryCode')}
+                        invalidDescription={recoveryCodeError}
                         required
                     >
                         {({ id, ariaAttributes }) => (
                             <Input
                                 id={id}
-                                name="username"
+                                name="recoveryCode"
                                 type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={recoveryCode}
+                                onChange={(e) => setRecoveryCode(e.target.value)}
                                 autoFocus
-                                autoComplete="username"
                                 required
                                 {...ariaAttributes}
                             />
                         )}
                     </FormFieldLayout>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <Button type="submit" color="primary">
-                            {t('doSubmit')}
-                        </Button>
-
-                        <Button
-                            type="button"
-                            color="secondary"
-                            onClick={() => {
-                                window.location.href = kcContext.url.loginUrl
-                            }}
-                        >
-                            <ArrowLeft size={16} style={{ marginRight: '0.5rem', display: 'inline-block' }} />
-                            {t('backToLogin')}
-                        </Button>
-                    </div>
+                    <Button type="submit" color="primary">
+                        {t('doSubmit')}
+                    </Button>
                 </form>
             </PageLayout>
         </Template>
