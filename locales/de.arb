@@ -3,5 +3,13 @@
   "helpwaveId": "helpwave id",
   "@helpwaveId": {
     "description": "Titel für helpwave id Badge"
+  },
+  "nOrganization": "{count, plural, =1{# Organisation} other{# Organisationen}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
   }
 }

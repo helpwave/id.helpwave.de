@@ -26,13 +26,30 @@ export default function Login({ kcContext }: LoginProps) {
     const message = kcContext.message
 
     return (
-        <Template
-            kcContext={kcContext}
-            i18n={i18n}
-            displayMessage={!!message}
-            headerNode={i18n.msgStr('doLogIn')}
-            doUseDefaultCss={false}
-        >
+        <>
+            <style>{`
+                #kc-header,
+                #kc-header-wrapper,
+                .kc-header,
+                .kc-logo-text,
+                [id*="kc-logo"],
+                [class*="kc-logo"],
+                [id*="header"],
+                [class*="header"]:not([class*="Helpwave"]):not([class*="helpwave"]),
+                [id*="brand"],
+                [class*="brand"],
+                [id*="kc-brand"],
+                [class*="kc-brand"] {
+                    display: none !important;
+                }
+            `}</style>
+            <Template
+                kcContext={kcContext}
+                i18n={i18n}
+                displayMessage={!!message}
+                headerNode={null}
+                doUseDefaultCss={false}
+            >
             <div
                 style={{
                     display: 'flex',
@@ -190,5 +207,6 @@ export default function Login({ kcContext }: LoginProps) {
                 )}
             </div>
         </Template>
+        </>
     )
 }

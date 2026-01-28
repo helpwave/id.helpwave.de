@@ -31,7 +31,6 @@ services:
       - "8080:8080"
     volumes:
       - ./dist_keycloak/keycloak-theme-for-kc-all-other-versions.jar:/opt/keycloak/providers/helpwave-id-theme.jar:ro
-      - ./keycloak/import:/opt/keycloak/data/import:ro
     depends_on:
       postgres:
         condition: service_healthy
