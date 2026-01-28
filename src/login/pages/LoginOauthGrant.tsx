@@ -33,8 +33,8 @@ export default function LoginOauthGrant({ kcContext }: LoginOauthGrantProps) {
                         <div style={{ marginBottom: '1rem' }}>
                             <h3>{t('oauthGrantScopes')}</h3>
                             <ul>
-                                {kcContext.oauth.clientScopesRequested.map((scope) => (
-                                    <li key={scope.name}>{scope.displayName ?? scope.name}</li>
+                                {kcContext.oauth.clientScopesRequested.map((scope, index) => (
+                                    <li key={scope.dynamicScopeParameter ?? index}>{scope.consentScreenText}</li>
                                 ))}
                             </ul>
                         </div>

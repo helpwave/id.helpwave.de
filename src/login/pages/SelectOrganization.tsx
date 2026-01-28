@@ -26,17 +26,17 @@ export default function SelectOrganization({ kcContext }: SelectOrganizationProp
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <h2>{t('selectOrganizationTitle')}</h2>
 
-                    {kcContext.orgs?.orgs && kcContext.orgs.orgs.length > 0 && (
+                    {kcContext.user?.organizations && kcContext.user.organizations.length > 0 && (
                         <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            {kcContext.orgs.orgs.map((org) => (
+                            {kcContext.user.organizations.map((org) => (
                                 <Button
-                                    key={org.id}
+                                    key={org.alias}
                                     type="submit"
                                     name="orgId"
-                                    value={org.id}
+                                    value={org.alias}
                                     color="primary"
                                 >
-                                    {org.name}
+                                    {org.name ?? org.alias}
                                 </Button>
                             ))}
                         </form>

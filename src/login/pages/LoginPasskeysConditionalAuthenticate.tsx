@@ -4,6 +4,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useEffect } from 'react'
+import { useTranslation } from '../../i18n/useTranslation'
 
 type LoginPasskeysConditionalAuthenticateProps = {
     kcContext: Extract<KcContext, { pageId: 'login-passkeys-conditional-authenticate.ftl' }>,
@@ -14,16 +15,17 @@ export default function LoginPasskeysConditionalAuthenticate({ kcContext }: Logi
     const locale = kcContext.locale?.currentLanguageTag ?? 'en'
     const t = useTranslation(locale)
 
+    const webauthnScriptUrl = (kcContext.url as { webauthnScriptUrl?: string }).webauthnScriptUrl
     useEffect(() => {
+        if (!webauthnScriptUrl) return
         const script = document.createElement('script')
-        script.src = kcContext.url.webauthnScriptUrl
+        script.src = webauthnScriptUrl
         script.async = true
         document.body.appendChild(script)
-
         return () => {
             document.body.removeChild(script)
         }
-    }, [kcContext.url.webauthnScriptUrl])
+    }, [webauthnScriptUrl])
 
     return (
         <Template

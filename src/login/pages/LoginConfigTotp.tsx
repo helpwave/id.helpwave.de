@@ -52,9 +52,9 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
                     </div>
                 )}
 
-                {kcContext.totp?.qrCode && (
+                {kcContext.totp?.qrUrl && (
                     <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
-                        <img src={`data:image/png;base64,${kcContext.totp.qrCode}`} alt="TOTP QR Code" style={{ maxWidth: '200px' }} />
+                        <img src={kcContext.totp.qrUrl} alt="TOTP QR Code" style={{ maxWidth: '200px' }} />
                         <p style={{ marginTop: '0.5rem', fontSize: '0.875rem' }}>
                             {t('loginTotpScanBarcode')}
                         </p>

@@ -4,6 +4,7 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { useTranslation } from '../../i18n/useTranslation'
 
 type LoginUsernameProps = {
     kcContext: Extract<KcContext, { pageId: 'login-username.ftl' }>,

@@ -14,7 +14,7 @@ export default function UpdateEmail({ kcContext }: UpdateEmailProps) {
     const { i18n } = useI18n({ kcContext })
     const locale = kcContext.locale?.currentLanguageTag ?? 'en'
     const t = useTranslation(locale)
-    const [email, setEmail] = useState(kcContext.user?.email ?? '')
+    const [email, setEmail] = useState(kcContext.profile?.attributesByName?.email?.value ?? '')
 
     const emailError = kcContext.messagesPerField?.existsError('email')
         ? kcContext.messagesPerField.get('email')

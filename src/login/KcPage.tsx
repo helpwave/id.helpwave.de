@@ -129,12 +129,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return <WebauthnError kcContext={kcContext} />
                     case 'webauthn-register.ftl':
                         return <WebauthnRegister kcContext={kcContext} />
-                    default:
+                    default: {
+                        const fallback = kcContext as KcContext
                         return (
                             <div>
-                                <p>Page not implemented: {kcContext.pageId}</p>
+                                <p>Page not implemented: {fallback.pageId}</p>
                             </div>
                         )
+                    }
                 }
             })()}
         </Suspense>

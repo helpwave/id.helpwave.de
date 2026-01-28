@@ -11,6 +11,8 @@ type LoginResetOtpProps = {
 
 export default function LoginResetOtp({ kcContext }: LoginResetOtpProps) {
     const { i18n } = useI18n({ kcContext })
+    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
+    const t = useTranslation(locale)
 
     return (
         <Template

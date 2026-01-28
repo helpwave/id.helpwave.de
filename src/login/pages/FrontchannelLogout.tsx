@@ -34,9 +34,18 @@ export default function FrontchannelLogout({ kcContext }: FrontchannelLogoutProp
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <p>{t('frontchannelLogoutMessage')}</p>
 
-                    <form id="kc-frontchannel-logout-form" action={kcContext.url.logoutAction} method="POST" style={{ display: 'none' }}>
-                        {kcContext.frontchannelLogout?.map((url) => (
-                            <iframe key={url} src={url} style={{ display: 'none' }} />
+                    <form
+                        id="kc-frontchannel-logout-form"
+                        action={(kcContext.url as { logoutAction?: string }).logoutAction ?? '#'}
+                        method="POST"
+                        style={{ display: 'none' }}
+                    >
+                        {kcContext.logout.clients.map((client) => (
+                            <iframe
+                                key={client.frontChannelLogoutUrl}
+                                src={client.frontChannelLogoutUrl}
+                                style={{ display: 'none' }}
+                            />
                         ))}
                         <Button type="submit" color="primary">
                             {t('doContinue')}

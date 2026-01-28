@@ -12,6 +12,8 @@ type LoginUpdateProfileProps = {
 
 export default function LoginUpdateProfile({ kcContext }: LoginUpdateProfileProps) {
     const { i18n } = useI18n({ kcContext })
+    const locale = kcContext.locale?.currentLanguageTag ?? 'en'
+    const t = useTranslation(locale)
 
     const profile = kcContext.profile
     const attributes = profile?.attributesByName ?? {}

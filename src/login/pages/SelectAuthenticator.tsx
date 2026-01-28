@@ -26,17 +26,17 @@ export default function SelectAuthenticator({ kcContext }: SelectAuthenticatorPr
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <h2>{t('selectAuthenticatorTitle')}</h2>
 
-                    {kcContext.auth?.authenticators && kcContext.auth.authenticators.length > 0 && (
+                    {kcContext.auth?.authenticationSelections && kcContext.auth.authenticationSelections.length > 0 && (
                         <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            {kcContext.auth.authenticators.map((authenticator) => (
+                            {kcContext.auth.authenticationSelections.map((selection) => (
                                 <Button
-                                    key={authenticator.alias}
+                                    key={selection.authExecId}
                                     type="submit"
-                                    name="selectedCredentialId"
-                                    value={authenticator.credentialId}
+                                    name="authExecId"
+                                    value={selection.authExecId}
                                     color="primary"
                                 >
-                                    {authenticator.displayName ?? authenticator.alias}
+                                    {selection.displayName}
                                 </Button>
                             ))}
                         </form>

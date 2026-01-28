@@ -34,10 +34,24 @@ export default function SamlPostForm({ kcContext }: SamlPostFormProps) {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <p>{t('samlPostFormMessage')}</p>
 
-                    <form id="kc-saml-post-form" action={kcContext.url.loginAction} method="POST" style={{ display: 'none' }}>
-                        {kcContext.samlPost?.map((field) => (
-                            <input key={field.name} type="hidden" name={field.name} value={field.value} />
-                        ))}
+                    <form
+                        id="kc-saml-post-form"
+                        action={kcContext.samlPost?.url ?? kcContext.url.loginAction}
+                        method="POST"
+                        style={{ display: 'none' }}
+                    >
+                        {kcContext.samlPost &&
+                            (['SAMLRequest', 'SAMLResponse', 'relayState'] as const).map(
+                                (name) =>
+                                    kcContext.samlPost![name] != null && (
+                                        <input
+                                            key={name}
+                                            type="hidden"
+                                            name={name}
+                                            value={kcContext.samlPost![name]}
+                                        />
+                                    )
+                            )}
                         <Button type="submit" color="primary">
                             {t('doContinue')}
                         </Button>

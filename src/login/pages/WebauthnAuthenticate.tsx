@@ -15,16 +15,17 @@ export default function WebauthnAuthenticate({ kcContext }: WebauthnAuthenticate
     const locale = kcContext.locale?.currentLanguageTag ?? 'en'
     const t = useTranslation(locale)
 
+    const webauthnScriptUrl = (kcContext.url as { webauthnScriptUrl?: string }).webauthnScriptUrl
     useEffect(() => {
+        if (!webauthnScriptUrl) return
         const script = document.createElement('script')
-        script.src = kcContext.url.webauthnScriptUrl
+        script.src = webauthnScriptUrl
         script.async = true
         document.body.appendChild(script)
-
         return () => {
             document.body.removeChild(script)
         }
-    }, [kcContext.url.webauthnScriptUrl])
+    }, [webauthnScriptUrl])
 
     return (
         <Template
