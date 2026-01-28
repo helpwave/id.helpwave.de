@@ -1,9 +1,11 @@
 import type { Preview } from '@storybook/react-vite'
+import React from 'react'
 import '@helpwave/hightide/style/globals.css'
+import '../src/index.css'
+import { ThemeProvider, LocaleProvider } from '@helpwave/hightide'
 
-if (typeof window !== 'undefined' && typeof process === 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).process = { env: {} }
+if (typeof window !== 'undefined' && typeof (globalThis as { process?: { env: Record<string, string> } }).process === 'undefined') {
+    (globalThis as { process: { env: Record<string, string> } }).process = { env: {} }
 }
 
 const hideLanguageSwitcherCss = `
@@ -42,7 +44,15 @@ const preview: Preview = {
                     document.head.appendChild(style)
                 }
             }
-            return Story()
+            return React.createElement(
+                ThemeProvider,
+                {},
+                React.createElement(
+                    LocaleProvider,
+                    { locale: 'en-US' },
+                    React.createElement(Story)
+                )
+            )
         }
     ]
 }

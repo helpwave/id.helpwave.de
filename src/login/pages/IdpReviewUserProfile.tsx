@@ -1,17 +1,16 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout, CheckboxUncontrolled } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
-import { ArrowLeft } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
 
-type RegisterProps = {
-    kcContext: Extract<KcContext, { pageId: 'register.ftl' }>,
+type IdpReviewUserProfileProps = {
+    kcContext: Extract<KcContext, { pageId: 'idp-review-user-profile.ftl' }>,
 };
 
-export default function Register({ kcContext }: RegisterProps) {
+export default function IdpReviewUserProfile({ kcContext }: IdpReviewUserProfileProps) {
     const { i18n } = useI18n({ kcContext })
     const locale = kcContext.locale?.currentLanguageTag ?? 'en'
     const t = useTranslation(locale)
@@ -40,8 +39,7 @@ export default function Register({ kcContext }: RegisterProps) {
         if (!attr) return null
 
         const fieldType = attr.annotations.inputType ?? 'text'
-        const isPassword = attrName === 'password' || attrName === 'password-confirm'
-        const inputType = isPassword ? 'password' : fieldType === 'email' ? 'email' : 'text'
+        const inputType = fieldType === 'email' ? 'email' : 'text'
 
         return (
             <FormFieldLayout
@@ -86,15 +84,11 @@ export default function Register({ kcContext }: RegisterProps) {
                             backgroundColor:
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-50)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-50)'
-                                      : 'var(--hw-color-positive-50)',
+                                    : 'var(--hw-color-positive-50)',
                             color:
                                 message.type === 'error'
                                     ? 'var(--hw-color-negative-900)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-900)'
-                                      : 'var(--hw-color-positive-900)',
+                                    : 'var(--hw-color-positive-900)',
                             marginBottom: '1rem'
                         }}
                     >
@@ -103,54 +97,15 @@ export default function Register({ kcContext }: RegisterProps) {
                 )}
 
                 <form
-                    id="kc-register-form"
-                    action={kcContext.url.registrationAction}
+                    action={kcContext.url.loginAction}
                     method="post"
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
-                    {Object.keys(attributes).map((attrName) => {
-                        if (attrName === 'password-confirm') return null
-                        return renderField(attrName)
-                    })}
+                    {Object.keys(attributes).map((attrName) => renderField(attrName))}
 
-                    {attributes['password-confirm'] && renderField('password-confirm')}
-
-                    {kcContext.termsAcceptanceRequired && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <CheckboxUncontrolled
-                                value={false}
-                                onValueChange={() => {}}
-                                onEditComplete={() => {}}
-                                size="md"
-                            />
-                            <label>
-                                <a href={(() => {
-                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                    const url = kcContext.url as any
-                                    return url.termsUrl ?? kcContext.url.loginUrl.replace('/login', '/terms')
-                                })()} target="_blank" rel="noopener noreferrer">
-                                    {t('acceptTerms')}
-                                </a>
-                            </label>
-                        </div>
-                    )}
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <Button type="submit" color="primary">
-                            {t('doRegister')}
-                        </Button>
-
-                        <Button
-                            type="button"
-                            color="secondary"
-                            onClick={() => {
-                                window.location.href = kcContext.url.loginUrl
-                            }}
-                        >
-                            <ArrowLeft size={16} style={{ marginRight: '0.5rem', display: 'inline-block' }} />
-                            {t('backToLogin')}
-                        </Button>
-                    </div>
+                    <Button type="submit" color="primary">
+                        {t('doSubmit')}
+                    </Button>
                 </form>
             </PageLayout>
         </Template>

@@ -11,5 +11,257 @@
         "type": "number"
       }
     }
+  },
+  "imprint": "Imprint",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Privacy",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "No account?",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Back to Login",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Username or Email",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Username",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Remember me",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Log In",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Forgot Password?",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Register",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Or sign in with",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "I accept the terms and conditions",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "passwordNew": "New Password",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Password Confirmation",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Submit",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "One-time password",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Verification Code",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Terms and conditions text",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Accept",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Decline",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Are you sure you want to logout?",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Logout",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doCancel": "Cancel",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Back to Application",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "doContinue": "Continue",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Please check your email for a verification link.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Please check your email for a verification link.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Click here",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Restart",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "deleteAccountConfirm": "Are you sure you want to delete your account?",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Delete Account",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Are you sure you want to delete this credential?",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Delete",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Logging out...",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Linking identity provider...",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Do you want to link this identity provider to your account?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Link",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "This identity provider is already linked to another account. Do you want to override it?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Override",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "oauthGrantTitle": "Grant Access",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "The application requests access to your account",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "Requested Scopes",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "This page has expired. Please restart the login process.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Authenticating with passkey...",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Configure your recovery authentication code",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Recovery Code",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Your OTP has been reset. Please configure a new one.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Scan this QR code with your authenticator app",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "One-time code",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Redirecting to identity provider...",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Select Authenticator",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Select Organization",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "X.509 Certificate Information",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Please provide your X.509 certificate information",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Authenticate with your security key",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "An error occurred during WebAuthn authentication",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Register your security key",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Enter the user code displayed on your device",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "User Code",
+  "@userCode": {
+    "description": "Label for user code input field"
   }
 }

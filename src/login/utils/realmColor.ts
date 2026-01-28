@@ -20,6 +20,18 @@ function hashString(str: string): number {
 }
 
 export function getRealmColor(realmName: string): ChipColor {
+    const normalizedName = realmName.toLowerCase()
+
+    if (normalizedName === 'customer') {
+        return 'secondary'
+    }
+    if (normalizedName === 'team') {
+        return 'primary'
+    }
+    if (normalizedName === 'master') {
+        return 'negative'
+    }
+
     const hash = hashString(realmName)
     const index = hash % chipColors.length
     return chipColors[index]

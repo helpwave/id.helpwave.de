@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+    --hw-color-secondary-50: #f9fafb;
+    --hw-color-secondary-100: #f3f4f6;
+    --hw-color-secondary-200: #e5e7eb;
+    --hw-color-secondary-300: #d1d5db;
+    --hw-color-secondary-400: #9ca3af;
+    --hw-color-secondary-500: #6b7280;
+    --hw-color-secondary-600: #4b5563;
+    --hw-color-secondary-700: #374151;
+    --hw-color-secondary-800: #1f2937;
+    --hw-color-secondary-900: #111827;
+}

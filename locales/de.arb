@@ -11,5 +11,257 @@
         "type": "number"
       }
     }
+  },
+  "imprint": "Impressum",
+  "@imprint": {
+    "description": "Link-Text für Impressum"
+  },
+  "privacy": "Datenschutz",
+  "@privacy": {
+    "description": "Link-Text für Datenschutzerklärung"
+  },
+  "forgotPassword": "Passwort vergessen?",
+  "@forgotPassword": {
+    "description": "Link-Text für Passwort vergessen"
+  },
+  "noAccount": "Kein Konto?",
+  "@noAccount": {
+    "description": "Text vor Registrierungs-Link"
+  },
+  "register": "Registrieren",
+  "@register": {
+    "description": "Registrierungs-Button Text"
+  },
+  "backToLogin": "Zurück zur Anmeldung",
+  "@backToLogin": {
+    "description": "Zurück zur Anmeldung Link-Text"
+  },
+  "usernameOrEmail": "Benutzername oder E-Mail",
+  "@usernameOrEmail": {
+    "description": "Label für Benutzername oder E-Mail Eingabefeld"
+  },
+  "username": "Benutzername",
+  "@username": {
+    "description": "Label für Benutzername Eingabefeld"
+  },
+  "password": "Passwort",
+  "@password": {
+    "description": "Label für Passwort Eingabefeld"
+  },
+  "rememberMe": "Angemeldet bleiben",
+  "@rememberMe": {
+    "description": "Label für Angemeldet bleiben Checkbox"
+  },
+  "doLogIn": "Anmelden",
+  "@doLogIn": {
+    "description": "Anmelden Button Text"
+  },
+  "doForgotPassword": "Passwort vergessen?",
+  "@doForgotPassword": {
+    "description": "Passwort vergessen Button Text"
+  },
+  "doRegister": "Registrieren",
+  "@doRegister": {
+    "description": "Registrieren Button Text"
+  },
+  "identity-provider-redirector": "Oder anmelden mit",
+  "@identity-provider-redirector": {
+    "description": "Text vor Social-Login Anbietern"
+  },
+  "acceptTerms": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen",
+  "@acceptTerms": {
+    "description": "Text für AGB-Akzeptanz Checkbox"
+  },
+  "passwordNew": "Neues Passwort",
+  "@passwordNew": {
+    "description": "Label für neues Passwort Eingabefeld"
+  },
+  "passwordConfirm": "Passwort bestätigen",
+  "@passwordConfirm": {
+    "description": "Label für Passwort-Bestätigung Eingabefeld"
+  },
+  "doSubmit": "Absenden",
+  "@doSubmit": {
+    "description": "Absenden Button Text"
+  },
+  "otp": "Einmalpasswort",
+  "@otp": {
+    "description": "Label für OTP Eingabefeld"
+  },
+  "loginOtp": "Bestätigungscode",
+  "@loginOtp": {
+    "description": "Label für Login OTP/Bestätigungscode Eingabefeld"
+  },
+  "termsText": "Allgemeine Geschäftsbedingungen Text",
+  "@termsText": {
+    "description": "Standard AGB Text"
+  },
+  "doAccept": "Akzeptieren",
+  "@doAccept": {
+    "description": "Akzeptieren Button Text"
+  },
+  "doDecline": "Ablehnen",
+  "@doDecline": {
+    "description": "Ablehnen Button Text"
+  },
+  "logoutConfirmHeader": "Möchten Sie sich wirklich abmelden?",
+  "@logoutConfirmHeader": {
+    "description": "Abmelde-Bestätigungsnachricht"
+  },
+  "doLogout": "Abmelden",
+  "@doLogout": {
+    "description": "Abmelden Button Text"
+  },
+  "doCancel": "Abbrechen",
+  "@doCancel": {
+    "description": "Abbrechen Button Text"
+  },
+  "backToApplication": "Zurück zur Anwendung",
+  "@backToApplication": {
+    "description": "Zurück zur Anwendung Button Text"
+  },
+  "doContinue": "Weiter",
+  "@doContinue": {
+    "description": "Weiter Button Text"
+  },
+  "emailVerificationBody1": "Bitte überprüfen Sie Ihre E-Mail für einen Bestätigungslink.",
+  "@emailVerificationBody1": {
+    "description": "E-Mail-Bestätigungsanweisungstext"
+  },
+  "emailVerificationBody": "Bitte überprüfen Sie Ihre E-Mail für einen Bestätigungslink.",
+  "@emailVerificationBody": {
+    "description": "E-Mail-Bestätigungsanweisungstext (alternativer Schlüssel)"
+  },
+  "doClickHere": "Hier klicken",
+  "@doClickHere": {
+    "description": "Hier klicken Button/Link Text"
+  },
+  "doRestart": "Neu starten",
+  "@doRestart": {
+    "description": "Neu starten Button Text"
+  },
+  "deleteAccountConfirm": "Möchten Sie Ihr Konto wirklich löschen?",
+  "@deleteAccountConfirm": {
+    "description": "Konto-Löschungsbestätigungsnachricht"
+  },
+  "doDeleteAccount": "Konto löschen",
+  "@doDeleteAccount": {
+    "description": "Konto löschen Button Text"
+  },
+  "deleteCredentialConfirm": "Möchten Sie diese Anmeldedaten wirklich löschen?",
+  "@deleteCredentialConfirm": {
+    "description": "Anmeldedaten-Löschungsbestätigungsnachricht"
+  },
+  "doDelete": "Löschen",
+  "@doDelete": {
+    "description": "Löschen Button Text"
+  },
+  "frontchannelLogoutMessage": "Abmelden...",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel Abmeldungsnachricht"
+  },
+  "linkIdpMessage": "Identitätsanbieter verknüpfen...",
+  "@linkIdpMessage": {
+    "description": "Identitätsanbieter verknüpfen Nachricht"
+  },
+  "idpLinkConfirmMessage": "Möchten Sie diesen Identitätsanbieter mit Ihrem Konto verknüpfen?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP-Verknüpfungsbestätigungsnachricht"
+  },
+  "doLink": "Verknüpfen",
+  "@doLink": {
+    "description": "Verknüpfen Button Text"
+  },
+  "idpLinkConfirmOverrideMessage": "Dieser Identitätsanbieter ist bereits mit einem anderen Konto verknüpft. Möchten Sie dies überschreiben?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP-Verknüpfungsüberschreibungsbestätigungsnachricht"
+  },
+  "doOverride": "Überschreiben",
+  "@doOverride": {
+    "description": "Überschreiben Button Text"
+  },
+  "email": "E-Mail",
+  "@email": {
+    "description": "Label für E-Mail Eingabefeld"
+  },
+  "oauthGrantTitle": "Zugriff gewähren",
+  "@oauthGrantTitle": {
+    "description": "OAuth-Gewährung Titel"
+  },
+  "oauthGrantMessage": "Die Anwendung fordert Zugriff auf Ihr Konto an",
+  "@oauthGrantMessage": {
+    "description": "OAuth-Gewährungsnachricht"
+  },
+  "oauthGrantScopes": "Angeforderte Berechtigungen",
+  "@oauthGrantScopes": {
+    "description": "OAuth-Gewährungsberechtigungen Label"
+  },
+  "pageExpiredMessage": "Diese Seite ist abgelaufen. Bitte starten Sie den Anmeldevorgang neu.",
+  "@pageExpiredMessage": {
+    "description": "Seite abgelaufen Nachricht"
+  },
+  "passkeysConditionalAuthenticateMessage": "Authentifizierung mit Passkey...",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys bedingte Authentifizierungsnachricht"
+  },
+  "recoveryAuthnCodeConfigMessage": "Konfigurieren Sie Ihren Wiederherstellungsauthentifizierungscode",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Wiederherstellungsauthentifizierungscode-Konfigurationsnachricht"
+  },
+  "recoveryCode": "Wiederherstellungscode",
+  "@recoveryCode": {
+    "description": "Label für Wiederherstellungscode Eingabefeld"
+  },
+  "resetOtpMessage": "Ihr OTP wurde zurückgesetzt. Bitte konfigurieren Sie ein neues.",
+  "@resetOtpMessage": {
+    "description": "OTP zurücksetzen Nachricht"
+  },
+  "loginTotpScanBarcode": "Scannen Sie diesen QR-Code mit Ihrer Authenticator-App",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP QR-Code scannen Anweisung"
+  },
+  "loginTotpOneTime": "Einmalcode",
+  "@loginTotpOneTime": {
+    "description": "Label für TOTP Einmalcode Eingabefeld"
+  },
+  "samlPostFormMessage": "Weiterleitung zum Identitätsanbieter...",
+  "@samlPostFormMessage": {
+    "description": "SAML Post-Formular Nachricht"
+  },
+  "selectAuthenticatorTitle": "Authentifikator auswählen",
+  "@selectAuthenticatorTitle": {
+    "description": "Authentifikator auswählen Titel"
+  },
+  "selectOrganizationTitle": "Organisation auswählen",
+  "@selectOrganizationTitle": {
+    "description": "Organisation auswählen Titel"
+  },
+  "x509InfoTitle": "X.509 Zertifikatsinformationen",
+  "@x509InfoTitle": {
+    "description": "X.509 Info Titel"
+  },
+  "x509InfoMessage": "Bitte geben Sie Ihre X.509 Zertifikatsinformationen an",
+  "@x509InfoMessage": {
+    "description": "X.509 Info Nachricht"
+  },
+  "webauthnAuthenticateMessage": "Authentifizieren Sie sich mit Ihrem Sicherheitsschlüssel",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn Authentifizierungsnachricht"
+  },
+  "webauthnErrorMessage": "Ein Fehler ist bei der WebAuthn-Authentifizierung aufgetreten",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn Fehlernachricht"
+  },
+  "webauthnRegisterMessage": "Registrieren Sie Ihren Sicherheitsschlüssel",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn Registrierungsnachricht"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Geben Sie den auf Ihrem Gerät angezeigten Benutzercode ein",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 Gerät Benutzercode-Verifizierungsnachricht"
+  },
+  "userCode": "Benutzercode",
+  "@userCode": {
+    "description": "Label für Benutzercode Eingabefeld"
   }
 }
