@@ -1,0 +1,7 @@
+{
+  "@@locale": "de",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Titel für helpwave id Badge"
+  }
+}

@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { createKcPageStory } from "../KcPageStory";
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { createKcPageStory } from '../KcPageStory'
 
-const { KcPageStory } = createKcPageStory({ pageId: "register.ftl" });
+const { KcPageStory } = createKcPageStory({ pageId: 'register.ftl' })
 
 const meta = {
-    title: "login/register.ftl",
+    title: 'login/register.ftl',
     component: KcPageStory
-} satisfies Meta<typeof KcPageStory>;
+} satisfies Meta<typeof KcPageStory>
 
-export default meta;
+export default meta
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     render: () => <KcPageStory />
-};
+}

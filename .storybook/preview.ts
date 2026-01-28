@@ -1,8 +1,9 @@
-import type { Preview } from "@storybook/react-vite";
-import "@helpwave/hightide/style/globals.css";
+import type { Preview } from '@storybook/react-vite'
+import '@helpwave/hightide/style/globals.css'
 
-if (typeof window !== "undefined" && typeof process === "undefined") {
-    (window as any).process = { env: {} };
+if (typeof window !== 'undefined' && typeof process === 'undefined') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).process = { env: {} }
 }
 
 const hideLanguageSwitcherCss = `
@@ -19,7 +20,7 @@ const hideLanguageSwitcherCss = `
     [class*="kc-dropdown"] {
         display: none !important;
     }
-`;
+`
 
 const preview: Preview = {
     parameters: {
@@ -32,18 +33,18 @@ const preview: Preview = {
     },
     decorators: [
         (Story) => {
-            if (typeof document !== "undefined") {
-                const styleId = "hide-language-switcher";
+            if (typeof document !== 'undefined') {
+                const styleId = 'hide-language-switcher'
                 if (!document.getElementById(styleId)) {
-                    const style = document.createElement("style");
-                    style.id = styleId;
-                    style.textContent = hideLanguageSwitcherCss;
-                    document.head.appendChild(style);
+                    const style = document.createElement('style')
+                    style.id = styleId
+                    style.textContent = hideLanguageSwitcherCss
+                    document.head.appendChild(style)
                 }
             }
-            return Story();
+            return Story()
         }
     ]
-};
+}
 
-export default preview;
+export default preview

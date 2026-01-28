@@ -1,20 +1,12 @@
-import { Chip } from "@helpwave/hightide";
-import type { KcContext } from "../KcContext";
-import { getRealmColor } from "../utils/realmColor";
+import { HelpwaveBadge } from '@helpwave/hightide'
+import type { KcContext } from '../KcContext'
 
 type RealmChipProps = {
-    kcContext: KcContext;
+    kcContext: KcContext,
 };
 
-export function RealmChip({ kcContext }: RealmChipProps) {
-    const realmName = (kcContext.realm as { name?: string; realm?: string })?.realm ?? 
-                      (kcContext.realm as { name?: string })?.name ?? 
-                      "unknown";
-    const color = getRealmColor(realmName);
-
+export function RealmChip(_props: RealmChipProps) {
     return (
-        <Chip color={color} size="md" aria-label={`realm: ${realmName}`}>
-            realm: {realmName}
-        </Chip>
-    );
+        <HelpwaveBadge size="lg" title="helpwave id" />
+    )
 }
