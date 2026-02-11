@@ -6,6 +6,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type ErrorProps = {
     kcContext: Extract<KcContext, { pageId: 'error.ftl' }>,
@@ -22,6 +23,7 @@ export default function Error({ kcContext }: ErrorProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {kcContext.message && <AlertBox message={kcContext.message} />}

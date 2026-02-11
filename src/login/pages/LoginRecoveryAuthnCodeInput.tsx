@@ -8,6 +8,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginRecoveryAuthnCodeInputProps = {
     kcContext: Extract<KcContext, { pageId: 'login-recovery-authn-code-input.ftl' }>,
@@ -32,6 +33,7 @@ export default function LoginRecoveryAuthnCodeInput({ kcContext }: LoginRecovery
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {message && <AlertBox message={message} />}

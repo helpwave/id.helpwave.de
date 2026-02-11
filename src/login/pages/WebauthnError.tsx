@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type WebauthnErrorProps = {
     kcContext: Extract<KcContext, { pageId: 'webauthn-error.ftl' }>,
@@ -22,6 +23,7 @@ export default function WebauthnError({ kcContext }: WebauthnErrorProps) {
             displayMessage={!!kcContext.message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {kcContext.message && <AlertBox message={kcContext.message} />}

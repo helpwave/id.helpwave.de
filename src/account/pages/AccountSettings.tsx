@@ -38,7 +38,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
             {message && <AlertBox message={message} className="mb-2" />}
 
             <section className="flex flex-col gap-3">
-                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('accountSectionProfile')}
                 </h2>
                 <div className="flex items-center gap-3 flex-wrap">
@@ -56,10 +56,10 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                 </div>
             </section>
 
-            <hr className="border-[var(--hw-color-neutral-200)]" />
+            <hr className="border-[var(--color-border)]" />
 
             <section className="flex flex-col gap-4">
-                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('personalInfoTitle')}
                 </h2>
                 <form
@@ -165,10 +165,10 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                 </form>
             </section>
 
-            <hr className="border-[var(--hw-color-neutral-200)]" />
+            <hr className="border-[var(--color-border)]" />
 
             <section className="flex flex-col gap-3">
-                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('passwordSectionTitle')}
                 </h2>
                 <Button
@@ -184,13 +184,13 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                 </Button>
             </section>
 
-            <hr className="border-[var(--hw-color-neutral-200)]" />
+            <hr className="border-[var(--color-border)]" />
 
             <section className="flex flex-col gap-2">
-                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('profilePicture')}
                 </h2>
-                <p className="text-sm text-[var(--hw-color-neutral-600)]">
+                <p className="text-sm text-[var(--color-text-secondary)]">
                     {t('profilePictureComingSoon')}
                 </p>
             </section>

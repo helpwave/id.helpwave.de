@@ -8,6 +8,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginUpdatePasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-update-password.ftl' }>,
@@ -37,6 +38,7 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {message && <AlertBox message={message} />}

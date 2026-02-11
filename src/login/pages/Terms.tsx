@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useState } from 'react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type TermsProps = {
     kcContext: Extract<KcContext, { pageId: 'terms.ftl' }>,
@@ -23,6 +24,7 @@ export default function Terms({ kcContext }: TermsProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -30,7 +32,7 @@ export default function Terms({ kcContext }: TermsProps) {
                         style={{
                             padding: '1rem',
                             borderRadius: '0.5rem',
-                            backgroundColor: 'var(--hw-color-neutral-50)',
+                            backgroundColor: 'var(--color-surface)',
                             maxHeight: '400px',
                             overflowY: 'auto'
                         }}

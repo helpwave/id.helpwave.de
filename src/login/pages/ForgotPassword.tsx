@@ -8,6 +8,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type ForgotPasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-reset-password.ftl' }>,
@@ -32,6 +33,7 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {message && <AlertBox message={message} />}

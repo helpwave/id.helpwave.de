@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LogoutConfirmProps = {
     kcContext: Extract<KcContext, { pageId: 'logout-confirm.ftl' }>,
@@ -21,6 +22,7 @@ export default function LogoutConfirm({ kcContext }: LogoutConfirmProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -29,7 +31,7 @@ export default function LogoutConfirm({ kcContext }: LogoutConfirmProps) {
                     <form action={kcContext.url.logoutConfirmAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <input type="hidden" name="session_code" value={kcContext.logoutConfirm.code} />
                         <Button type="submit" name="confirmLogout" color="negative">
-                            <LogOut className="w-4 h-4" style={{ color: 'var(--hw-color-negative-600)' }} />
+                            <LogOut className="w-4 h-4" style={{ color: 'var(--color-on-negative)' }} />
                             {t('doLogout')}
                         </Button>
                         <Button type="submit" name="cancelLogout" color="neutral" coloringStyle="outline">

@@ -9,6 +9,7 @@ import { ArrowLeft, UserPlus } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
 import type { HelpwaveIdTranslationEntries } from '../../i18n/translations'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type RegisterProps = {
     kcContext: Extract<KcContext, { pageId: 'register.ftl' }>,
@@ -96,6 +97,7 @@ export default function Register({ kcContext }: RegisterProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {message && <AlertBox message={message} />}

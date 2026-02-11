@@ -8,6 +8,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type CodeProps = {
     kcContext: Extract<KcContext, { pageId: 'code.ftl' }>,
@@ -30,6 +31,7 @@ export default function Code({ kcContext }: CodeProps) {
             displayMessage={!!kcContext.message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {kcContext.message && <AlertBox message={kcContext.message} />}

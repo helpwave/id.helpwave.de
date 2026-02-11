@@ -8,6 +8,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type IdpReviewUserProfileProps = {
     kcContext: Extract<KcContext, { pageId: 'idp-review-user-profile.ftl' }>,
@@ -78,6 +79,7 @@ export default function IdpReviewUserProfile({ kcContext }: IdpReviewUserProfile
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {message && <AlertBox message={message} />}

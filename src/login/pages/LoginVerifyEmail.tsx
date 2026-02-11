@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginVerifyEmailProps = {
     kcContext: Extract<KcContext, { pageId: 'login-verify-email.ftl' }>,
@@ -22,6 +23,7 @@ export default function LoginVerifyEmail({ kcContext }: LoginVerifyEmailProps) {
             displayMessage={!!kcContext.message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 {kcContext.message && <AlertBox message={kcContext.message} />}

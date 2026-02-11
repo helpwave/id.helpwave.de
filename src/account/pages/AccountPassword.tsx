@@ -34,9 +34,6 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
             {message && <AlertBox message={message} className="mb-2" />}
 
             <section className="flex flex-col gap-4">
-                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
-                    {t('passwordSectionTitle')}
-                </h2>
                 <form
                     action={url.passwordUrl}
                     method="post"
@@ -64,7 +61,7 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
                                         type="password"
                                         value={currentPassword}
                                         onValueChange={(v) => setCurrentPassword(v)}
-                                        onEditComplete={() => {}}
+                                        onEditComplete={() => { }}
                                         autoComplete="current-password"
                                         {...ariaAttributes}
                                     />
@@ -86,7 +83,7 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
                                     type="password"
                                     value={newPassword}
                                     onValueChange={(v) => setNewPassword(v)}
-                                    onEditComplete={() => {}}
+                                    onEditComplete={() => { }}
                                     autoComplete="new-password"
                                     required
                                     {...ariaAttributes}
@@ -108,7 +105,7 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
                                     type="password"
                                     value={newPasswordConfirm}
                                     onValueChange={(v) => setNewPasswordConfirm(v)}
-                                    onEditComplete={() => {}}
+                                    onEditComplete={() => { }}
                                     autoComplete="new-password"
                                     required
                                     {...ariaAttributes}

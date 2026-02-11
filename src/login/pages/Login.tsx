@@ -8,6 +8,7 @@ import { PageLayout } from '../components/PageLayout'
 import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getDocumentTitle } from '../utils/pageTitles'
 
 type LoginProps = {
     kcContext: Extract<KcContext, { pageId: 'login.ftl' }>,
@@ -38,6 +39,7 @@ export default function Login({ kcContext }: LoginProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={getDocumentTitle(kcContext.pageId, t)}
         >
             <PageLayout kcContext={kcContext}>
                 {message && <AlertBox message={message} />}

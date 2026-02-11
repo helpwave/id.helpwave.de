@@ -6,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useEffect } from 'react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type WebauthnAuthenticateProps = {
     kcContext: Extract<KcContext, { pageId: 'webauthn-authenticate.ftl' }>,
@@ -34,6 +35,7 @@ export default function WebauthnAuthenticate({ kcContext }: WebauthnAuthenticate
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import type { KcContext } from '../KcContext'
 import { Branding } from '../../login/components/Branding'
@@ -8,6 +9,7 @@ import { hideKeycloakStyles } from '../../login/utils/hideKeycloakStyles'
 import { LogOut } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getDocumentTitle } from '../utils/pageTitles'
 
 type AccountPageLayoutProps = {
     kcContext: KcContext,
@@ -16,6 +18,10 @@ type AccountPageLayoutProps = {
 
 export function AccountPageLayout({ kcContext, children }: AccountPageLayoutProps) {
     const t = useTranslation()
+
+    useEffect(() => {
+        document.title = getDocumentTitle(kcContext.pageId, t)
+    }, [kcContext.pageId, t])
 
     return (
         <>
@@ -32,7 +38,7 @@ export function AccountPageLayout({ kcContext, children }: AccountPageLayoutProp
                             window.location.href = kcContext.url.getLogoutUrl()
                         }}
                     >
-                        <LogOut className="w-4 h-4" style={{ color: 'var(--hw-color-negative-600)' }} />
+                        <LogOut className="w-4 h-4" style={{ color: 'var(--color-negative)' }} />
                         {t('doLogout')}
                     </Button>
                 </div>

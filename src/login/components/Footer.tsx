@@ -13,7 +13,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mx-2 sm:mx-1"
-                    style={{ color: 'var(--hw-color-neutral-600)' }}
+                    style={{ color: 'var(--color-text-secondary)' }}
                 >
                     {t('imprint')}
                 </a>
@@ -23,7 +23,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mx-2 sm:mx-1"
-                    style={{ color: 'var(--hw-color-neutral-600)' }}
+                    style={{ color: 'var(--color-text-secondary)' }}
                 >
                     {t('privacy')}
                 </a>

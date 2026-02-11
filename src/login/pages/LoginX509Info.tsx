@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginX509InfoProps = {
     kcContext: Extract<KcContext, { pageId: 'login-x509-info.ftl' }>,
@@ -21,6 +22,7 @@ export default function LoginX509Info({ kcContext }: LoginX509InfoProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

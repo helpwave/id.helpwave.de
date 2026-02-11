@@ -33,7 +33,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             <a
                                 href={kcContext.url.accountUrl}
-                                className="text-[var(--hw-color-primary-600)] underline"
+                                className="text-[var(--color-primary-hover)] underline"
                             >
                                 Back to Account
                             </a>
