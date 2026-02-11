@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout, CheckboxUncontrolled } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -74,7 +74,8 @@ export default function Register({ kcContext }: RegisterProps) {
                         name={attrName}
                         type={inputType}
                         value={formData[attrName] ?? ''}
-                        onChange={(e) => setFormData({ ...formData, [attrName]: e.target.value })}
+                        onValueChange={(v) => setFormData({ ...formData, [attrName]: v })}
+                        onEditComplete={() => {}}
                         autoComplete={attr.autocomplete ?? 'off'}
                         required={attr.required}
                         readOnly={attr.readOnly}
@@ -145,7 +146,8 @@ export default function Register({ kcContext }: RegisterProps) {
                                         name="password"
                                         type="password"
                                         value={formData['password'] ?? ''}
-                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                        onValueChange={(v) => setFormData({ ...formData, password: v })}
+                                        onEditComplete={() => {}}
                                         autoComplete="new-password"
                                         required
                                         {...ariaAttributes}
@@ -168,7 +170,8 @@ export default function Register({ kcContext }: RegisterProps) {
                                         name="password-confirm"
                                         type="password"
                                         value={formData['password-confirm'] ?? ''}
-                                        onChange={(e) => setFormData({ ...formData, 'password-confirm': e.target.value })}
+                                        onValueChange={(v) => setFormData({ ...formData, 'password-confirm': v })}
+                                        onEditComplete={() => {}}
                                         autoComplete="new-password"
                                         required
                                         {...ariaAttributes}
@@ -180,9 +183,9 @@ export default function Register({ kcContext }: RegisterProps) {
 
                     {kcContext.termsAcceptanceRequired && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <CheckboxUncontrolled
+                            <Checkbox
                                 value={termsAccepted}
-                                onValueChange={(value) => setTermsAccepted(value)}
+                                onValueChange={(value: boolean) => setTermsAccepted(value)}
                                 onEditComplete={() => {}}
                                 size="md"
                             />

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout, SelectUncontrolled, SelectOption } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, Select, SelectOption } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -73,11 +73,11 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                             <div className="mb-4">
                                 <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
                                     {({ id, ariaAttributes }) => (
-                                        <SelectUncontrolled
+                                        <Select
                                             id={id}
                                             value={selectedCredentialId}
-                                            onValueChange={(value) => setSelectedCredentialId(value)}
-                                            onEditComplete={() => { }}
+                                            onValueChange={(value: string) => setSelectedCredentialId(value)}
+                                            onEditComplete={() => {}}
                                             {...ariaAttributes}
                                         >
                                             {credentials.map((c) => (
@@ -85,7 +85,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                                     {c.userLabel}
                                                 </SelectOption>
                                             ))}
-                                        </SelectUncontrolled>
+                                        </Select>
                                     )}
                                 </FormFieldLayout>
                             </div>
@@ -102,7 +102,8 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                     name="otp"
                                     type="text"
                                     value={otp}
-                                    onChange={(e) => setOtp(e.target.value)}
+                                    onValueChange={(v) => setOtp(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="one-time-code"
                                     required

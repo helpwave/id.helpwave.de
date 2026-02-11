@@ -74,7 +74,8 @@ export default function LoginRecoveryAuthnCodeConfig({ kcContext }: LoginRecover
                                     name="recoveryCode"
                                     type="text"
                                     value={recoveryCode}
-                                    onChange={(e) => setRecoveryCode(e.target.value)}
+                                    onValueChange={(v) => setRecoveryCode(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     required
                                     {...ariaAttributes}

@@ -103,7 +103,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                         name="username"
                                         type="text"
                                         value={username}
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        onValueChange={(v) => setUsername(v)}
+                                        onEditComplete={() => {}}
                                         autoComplete="username"
                                         required={realm.editUsernameAllowed}
                                         disabled={!realm.editUsernameAllowed}
@@ -126,7 +127,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                     name="email"
                                     type="email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onValueChange={(v) => setEmail(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="email"
                                     required
                                     {...ariaAttributes}
@@ -147,7 +149,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                     name="firstName"
                                     type="text"
                                     value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
+                                    onValueChange={(v) => setFirstName(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="given-name"
                                     required
                                     {...ariaAttributes}
@@ -167,7 +170,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                     name="lastName"
                                     type="text"
                                     value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
+                                    onValueChange={(v) => setLastName(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="family-name"
                                     {...ariaAttributes}
                                 />

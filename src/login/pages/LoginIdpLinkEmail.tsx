@@ -70,7 +70,8 @@ export default function LoginIdpLinkEmail({ kcContext }: LoginIdpLinkEmailProps)
                                     name="email"
                                     type="email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onValueChange={(v) => setEmail(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="email"
                                     required

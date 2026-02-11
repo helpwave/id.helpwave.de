@@ -1,4 +1,4 @@
-import { Button, CheckboxUncontrolled } from '@helpwave/hightide'
+import { Button, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -43,9 +43,9 @@ export default function Terms({ kcContext }: TermsProps) {
 
                     <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <CheckboxUncontrolled
+                            <Checkbox
                                 value={accepted}
-                                onValueChange={(value) => setAccepted(value)}
+                                onValueChange={(value: boolean) => setAccepted(value)}
                                 onEditComplete={() => {}}
                                 size="md"
                             />

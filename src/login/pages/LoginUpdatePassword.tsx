@@ -76,7 +76,8 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                                     name="password-new"
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onValueChange={(v) => setPassword(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="new-password"
                                     required
@@ -98,7 +99,8 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                                     name="password-confirm"
                                     type="password"
                                     value={passwordConfirm}
-                                    onChange={(e) => setPasswordConfirm(e.target.value)}
+                                    onValueChange={(v) => setPasswordConfirm(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="new-password"
                                     required
                                     {...ariaAttributes}

@@ -74,7 +74,8 @@ export default function LoginUsername({ kcContext }: LoginUsernameProps) {
                                     name="username"
                                     type="text"
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onValueChange={(v) => setUsername(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="username"
                                     required

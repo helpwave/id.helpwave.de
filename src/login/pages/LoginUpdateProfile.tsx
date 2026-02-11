@@ -55,7 +55,8 @@ export default function LoginUpdateProfile({ kcContext }: LoginUpdateProfileProp
                             name={attrName}
                             type={inputType}
                             value={formData[attrName] ?? ''}
-                            onChange={(e) => setFormData({ ...formData, [attrName]: e.target.value })}
+                            onValueChange={(v) => setFormData({ ...formData, [attrName]: v })}
+                            onEditComplete={() => {}}
                             autoComplete={attr.autocomplete ?? 'off'}
                             required={attr.required}
                             readOnly={attr.readOnly}

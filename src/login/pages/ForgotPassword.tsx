@@ -80,7 +80,8 @@ export default function ForgotPassword({ kcContext }: ForgotPasswordProps) {
                                     name="username"
                                     type="text"
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onValueChange={(v) => setUsername(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="username"
                                     required

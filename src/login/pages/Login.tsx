@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout, CheckboxUncontrolled } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -93,7 +93,8 @@ export default function Login({ kcContext }: LoginProps) {
                                     name="username"
                                     type="text"
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onValueChange={(v) => setUsername(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="username"
                                     required
@@ -116,7 +117,8 @@ export default function Login({ kcContext }: LoginProps) {
                                     name="password"
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onValueChange={(v) => setPassword(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="current-password"
                                     required
                                     {...ariaAttributes}
@@ -127,9 +129,9 @@ export default function Login({ kcContext }: LoginProps) {
 
                     {kcContext.realm?.rememberMe && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <CheckboxUncontrolled
+                            <Checkbox
                                 value={rememberMe}
-                                onValueChange={(value) => setRememberMe(value)}
+                                onValueChange={(value: boolean) => setRememberMe(value)}
                                 onEditComplete={() => {}}
                                 size="md"
                             />

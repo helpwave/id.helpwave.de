@@ -68,7 +68,8 @@ export default function Code({ kcContext }: CodeProps) {
                                     name="code"
                                     type="text"
                                     value={code}
-                                    onChange={(e) => setCode(e.target.value)}
+                                    onValueChange={(v) => setCode(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="one-time-code"
                                     required

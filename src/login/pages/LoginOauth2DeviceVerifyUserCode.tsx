@@ -74,7 +74,8 @@ export default function LoginOauth2DeviceVerifyUserCode({ kcContext }: LoginOaut
                                     name="userCode"
                                     type="text"
                                     value={userCode}
-                                    onChange={(e) => setUserCode(e.target.value)}
+                                    onValueChange={(v) => setUserCode(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     required
                                     {...ariaAttributes}

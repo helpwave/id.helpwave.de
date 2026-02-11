@@ -80,7 +80,8 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
                                         name="password"
                                         type="password"
                                         value={currentPassword}
-                                        onChange={(e) => setCurrentPassword(e.target.value)}
+                                        onValueChange={(v) => setCurrentPassword(v)}
+                                        onEditComplete={() => {}}
                                         autoComplete="current-password"
                                         {...ariaAttributes}
                                     />
@@ -101,7 +102,8 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
                                     name="password-new"
                                     type="password"
                                     value={newPassword}
-                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    onValueChange={(v) => setNewPassword(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="new-password"
                                     required
                                     {...ariaAttributes}
@@ -122,7 +124,8 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
                                     name="password-confirm"
                                     type="password"
                                     value={newPasswordConfirm}
-                                    onChange={(e) => setNewPasswordConfirm(e.target.value)}
+                                    onValueChange={(v) => setNewPasswordConfirm(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="new-password"
                                     required
                                     {...ariaAttributes}

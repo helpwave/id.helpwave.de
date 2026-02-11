@@ -79,7 +79,8 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
                                     name="totp"
                                     type="text"
                                     value={totp}
-                                    onChange={(e) => setTotp(e.target.value)}
+                                    onValueChange={(v) => setTotp(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="one-time-code"
                                     required

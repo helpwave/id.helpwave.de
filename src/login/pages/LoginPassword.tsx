@@ -70,7 +70,8 @@ export default function LoginPassword({ kcContext }: LoginPasswordProps) {
                                     name="password"
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onValueChange={(v) => setPassword(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="current-password"
                                     required
