@@ -4,6 +4,7 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 
 type WebauthnErrorProps = {
@@ -23,20 +24,7 @@ export default function WebauthnError({ kcContext }: WebauthnErrorProps) {
             doUseDefaultCss={false}
         >
             <PageLayout kcContext={kcContext}>
-                {kcContext.message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor: 'var(--hw-color-negative-50)',
-                            color: 'var(--hw-color-negative-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {kcContext.message.summary}
-                    </div>
-                )}
+                {kcContext.message && <AlertBox message={kcContext.message} />}
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <p>{t('webauthnErrorMessage')}</p>

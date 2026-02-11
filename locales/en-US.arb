@@ -116,6 +116,10 @@
   "@doSave": {
     "description": "Save button text"
   },
+  "doUpdate": "Update",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
   "updatePassword": "Update Password",
   "@updatePassword": {
     "description": "Update password button text"
@@ -343,5 +347,29 @@
   "errorAccountTemporarilyDisabled": "Account is temporarily disabled. Contact your administrator or try again later.",
   "@errorAccountTemporarilyDisabled": {
     "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Incorrect current password",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Invalid existing password",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Please specify password",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Password successfully changed",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Mobile authenticator configured",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Your account has been updated",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
   }
 }

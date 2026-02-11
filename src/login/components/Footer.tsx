@@ -5,7 +5,7 @@ export function Footer() {
 
     return (
         <div
-            className="text-center text-sm mt-8 pt-4"
+            className="text-center text-sm pt-4"
         >
             <div className="mb-2">
                 <a

@@ -6,9 +6,9 @@ type BrandingProps = {
 
 export function Branding({ animate = 'loading' }: BrandingProps) {
     return (
-        <div className="flex flex-col items-center mb-8 sm:mb-8">
+        <div className="flex flex-col items-center mb-4">
             <HelpwaveLogo animate={animate} height={96} width={96} animationDuration={5} />
-            <div className="font-space text-4xl -translate-y-6 font-bold">
+            <div className="font-space text-4xl -translate-y-6 font-extrabold">
                 helpwave id
             </div>
         </div>

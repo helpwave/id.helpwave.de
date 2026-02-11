@@ -5,6 +5,7 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
 
@@ -33,26 +34,7 @@ export default function LoginRecoveryAuthnCodeConfig({ kcContext }: LoginRecover
             doUseDefaultCss={false}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <div style={{ marginBottom: '1rem' }}>
                     <p>{t('recoveryAuthnCodeConfigMessage')}</p>

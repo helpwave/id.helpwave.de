@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { ArrowLeft, Save } from 'lucide-react'
+import { ArrowLeft, Shield } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../../login/utils/translateFieldError'
+import { AlertBox } from '../../login/components/AlertBox'
 
 type AccountPasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'password.ftl' }>,
@@ -30,26 +31,7 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
 
     return (
         <div className="flex flex-col gap-8">
-            {message && (
-                <div
-                    role="alert"
-                    style={{
-                        padding: '1rem',
-                        borderRadius: '0.5rem',
-                        backgroundColor:
-                            message.type === 'error'
-                                ? 'var(--hw-color-negative-50)'
-                                : 'var(--hw-color-positive-50)',
-                        color:
-                            message.type === 'error'
-                                ? 'var(--hw-color-negative-900)'
-                                : 'var(--hw-color-positive-900)',
-                        marginBottom: '0.5rem'
-                    }}
-                >
-                    {message.summary}
-                </div>
-            )}
+            {message && <AlertBox message={message} className="mb-2" />}
 
             <section className="flex flex-col gap-4">
                 <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
@@ -137,8 +119,8 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
 
                     <div className="flex flex-col gap-2">
                         <Button type="submit" name="submitAction" value="Save" color="primary">
-                            <Save className="w-4 h-4" />
-                            {t('doSave')}
+                            <Shield className="w-4 h-4" />
+                            {t('doUpdate')}
                         </Button>
                         <Button
                             type="button"

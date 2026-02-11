@@ -116,6 +116,10 @@
   "@doSave": {
     "description": "Speichern Button Text"
   },
+  "doUpdate": "Aktualisieren",
+  "@doUpdate": {
+    "description": "Aktualisieren Button Text für Passwortformular"
+  },
   "updatePassword": "Passwort ändern",
   "@updatePassword": {
     "description": "Passwort ändern Button Text"
@@ -343,5 +347,29 @@
   "errorAccountTemporarilyDisabled": "Konto ist vorübergehend deaktiviert. Wenden Sie sich an Ihren Administrator oder versuchen Sie es später erneut.",
   "@errorAccountTemporarilyDisabled": {
     "description": "Konto deaktiviert Fehler"
+  },
+  "errorIncorrectCurrentPassword": "Falsches aktuelles Passwort",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Aktuelles Passwort-Feldfehler im Konto"
+  },
+  "errorInvalidExistingPassword": "Ungültiges bestehendes Passwort",
+  "@errorInvalidExistingPassword": {
+    "description": "Bestehendes Passwort ungültig im Konto"
+  },
+  "errorPleaseSpecifyPassword": "Bitte geben Sie ein Passwort an",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Passwort-Pflichtfeld Validierungsmeldung"
+  },
+  "successPasswordChanged": "Passwort erfolgreich geändert",
+  "@successPasswordChanged": {
+    "description": "Passwort-Änderung Erfolgsmeldung"
+  },
+  "successMobileAuthenticatorConfigured": "Mobiler Authentifikator konfiguriert",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/Authentifikator Erfolgsmeldung"
+  },
+  "successAccountUpdated": "Ihr Konto wurde aktualisiert",
+  "@successAccountUpdated": {
+    "description": "Konto-Aktualisierung Erfolgsmeldung"
   }
 }

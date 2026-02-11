@@ -14,7 +14,7 @@ services:
       retries: 5
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0
+    image: quay.io/keycloak/keycloak:26.5
     command: start-dev --import-realm
     environment:
       KEYCLOAK_ADMIN: admin
@@ -30,7 +30,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./dist_keycloak/keycloak-theme-for-kc-all-other-versions.jar:/opt/keycloak/providers/helpwave-id-theme.jar:ro
+      - ./dist_keycloak/keycloak-theme-for-kc-26.2-and-above.jar:/opt/keycloak/providers/helpwave-id-theme.jar:ro
     depends_on:
       postgres:
         condition: service_healthy

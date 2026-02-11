@@ -4,6 +4,7 @@ import { Avatar, Button, Chip, Input, FormFieldLayout } from '@helpwave/hightide
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../../login/utils/translateFieldError'
+import { AlertBox } from '../../login/components/AlertBox'
 
 type AccountSettingsProps = {
     kcContext: Extract<KcContext, { pageId: 'account.ftl' }>,
@@ -34,30 +35,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
 
     return (
         <div className="flex flex-col gap-8">
-            {message && (
-                <div
-                    role="alert"
-                    style={{
-                        padding: '1rem',
-                        borderRadius: '0.5rem',
-                        backgroundColor:
-                            message.type === 'error'
-                                ? 'var(--hw-color-negative-50)'
-                                : message.type === 'warning'
-                                    ? 'var(--hw-color-warning-50)'
-                                    : 'var(--hw-color-positive-50)',
-                        color:
-                            message.type === 'error'
-                                ? 'var(--hw-color-negative-900)'
-                                : message.type === 'warning'
-                                    ? 'var(--hw-color-warning-900)'
-                                    : 'var(--hw-color-positive-900)',
-                        marginBottom: '0.5rem'
-                    }}
-                >
-                    {message.summary}
-                </div>
-            )}
+            {message && <AlertBox message={message} className="mb-2" />}
 
             <section className="flex flex-col gap-3">
                 <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">

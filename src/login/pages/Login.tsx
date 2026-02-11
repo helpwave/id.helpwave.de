@@ -5,6 +5,7 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
 
@@ -39,30 +40,7 @@ export default function Login({ kcContext }: LoginProps) {
             doUseDefaultCss={false}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-50)'
-                                      : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-900)'
-                                      : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <form
                     id="kc-form-login"

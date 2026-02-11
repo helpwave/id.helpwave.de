@@ -28,7 +28,7 @@ export function PageLayout({ kcContext, children }: PageLayoutProps) {
                     <Branding />
                     <RealmChip kcContext={kcContext} />
 
-                    <div className="w-full max-w-full mt-8 box-border [&_form]:w-full [&_form]:max-w-full [&_form]:box-border [&_>*]:w-full [&_>*]:max-w-full [&_>*]:box-border [&_input]:w-full [&_input]:max-w-full [&_input]:box-border [&_button]:w-full [&_button]:max-w-full [&_button]:box-border">
+                    <div className="w-full max-w-full box-border [&_form]:w-full [&_form]:max-w-full [&_form]:box-border [&_>*]:w-full [&_>*]:max-w-full [&_>*]:box-border [&_input]:w-full [&_input]:max-w-full [&_input]:box-border [&_button]:w-full [&_button]:max-w-full [&_button]:box-border">
                         {children}
                     </div>
                 </div>
