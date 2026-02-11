@@ -3,7 +3,7 @@ import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, RotateCcw } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
 
 type ErrorProps = {
@@ -46,6 +46,7 @@ export default function Error({ kcContext }: ErrorProps) {
                             window.location.href = kcContext.url.loginRestartFlowUrl
                         }}
                     >
+                        <RotateCcw className="w-4 h-4" />
                         {t('doRestart') || t('doContinue')}
                     </Button>
 
@@ -53,11 +54,12 @@ export default function Error({ kcContext }: ErrorProps) {
                         <Button
                             type="button"
                             color="neutral"
+                            coloringStyle="outline"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}
                         >
-                            <ArrowLeft size={16} style={{ marginRight: '0.5rem', display: 'inline-block' }} />
+                            <ArrowLeft className="w-4 h-4" />
                             {t('backToLogin')}
                         </Button>
                     )}

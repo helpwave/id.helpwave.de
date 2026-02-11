@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, LanguageDialog } from '@helpwave/hightide'
+import { IconButton, LanguageDialog } from '@helpwave/hightide'
 import { Languages } from 'lucide-react'
 
 export function LanguageSwitcher() {
@@ -7,15 +7,15 @@ export function LanguageSwitcher() {
 
     return (
         <>
-            <Button
+            <IconButton
                 type="button"
-                color="neutral"
+                coloringStyle="tonal"
                 onClick={() => setIsOpen(true)}
-                style={{ padding: '0.5rem', minWidth: 'auto' }}
-                aria-label="Change language"
+                tooltip="Change language"
+                useTooltipAsLabel
             >
                 <Languages size={20} />
-            </Button>
+            </IconButton>
             <LanguageDialog
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}

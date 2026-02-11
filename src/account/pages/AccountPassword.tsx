@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ArrowLeft, Save } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
@@ -136,15 +137,18 @@ export default function AccountPassword({ kcContext }: AccountPasswordProps) {
 
                     <div className="flex flex-col gap-2">
                         <Button type="submit" name="submitAction" value="Save" color="primary">
+                            <Save className="w-4 h-4" />
                             {t('doSave')}
                         </Button>
                         <Button
                             type="button"
                             color="neutral"
+                            coloringStyle="outline"
                             onClick={() => {
                                 window.location.href = url.accountUrl
                             }}
                         >
+                            <ArrowLeft className="w-4 h-4" />
                             {t('backToAccount')}
                         </Button>
                     </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Send } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -110,6 +111,7 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                     </div>
 
                     <Button type="submit" color="primary">
+                        <Send className="w-4 h-4" />
                         {t('doSubmit')}
                     </Button>
                 </form>

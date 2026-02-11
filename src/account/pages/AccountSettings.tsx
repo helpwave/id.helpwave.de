@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Key, Save } from 'lucide-react'
 import { Avatar, Button, Chip, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
@@ -180,6 +181,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                     </div>
 
                     <Button type="submit" name="submitAction" value="Save" color="primary">
+                        <Save className="w-4 h-4" />
                         {t('doSave')}
                     </Button>
                 </form>
@@ -193,11 +195,13 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                 </h2>
                 <Button
                     type="button"
-                    color="neutral"
+                    color="warning"
+                    coloringStyle="outline"
                     onClick={() => {
                         window.location.href = url.passwordUrl
                     }}
                 >
+                    <Key className="w-4 h-4" />
                     {t('updatePassword')}
                 </Button>
             </section>

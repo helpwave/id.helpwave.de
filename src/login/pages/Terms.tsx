@@ -1,3 +1,4 @@
+import { ArrowLeft, Check } from 'lucide-react'
 import { Button, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -61,15 +62,18 @@ export default function Terms({ kcContext }: TermsProps) {
                         </div>
 
                         <Button type="submit" color="primary" disabled={!accepted}>
+                            <Check className="w-4 h-4" />
                             {t('doAccept')}
                         </Button>
                         <Button
                             type="button"
                             color="neutral"
+                            coloringStyle="outline"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}
                         >
+                            <ArrowLeft className="w-4 h-4" />
                             {t('doDecline')}
                         </Button>
                     </form>

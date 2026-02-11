@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LogIn } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -82,6 +83,7 @@ export default function LoginPassword({ kcContext }: LoginPasswordProps) {
                     </div>
 
                     <Button type="submit" color="primary">
+                        <LogIn className="w-4 h-4" />
                         {t('doLogIn')}
                     </Button>
                 </form>

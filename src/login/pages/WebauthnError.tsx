@@ -1,3 +1,4 @@
+import { RotateCcw } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -47,6 +48,7 @@ export default function WebauthnError({ kcContext }: WebauthnErrorProps) {
                             window.location.href = kcContext.url.loginRestartFlowUrl
                         }}
                     >
+                        <RotateCcw className="w-4 h-4" />
                         {t('doRestart')}
                     </Button>
                 </div>

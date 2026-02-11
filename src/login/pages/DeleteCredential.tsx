@@ -1,3 +1,4 @@
+import { Trash2, X } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -27,9 +28,11 @@ export default function DeleteCredential({ kcContext }: DeleteCredentialProps) {
 
                     <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" name="submitAction" value="Delete" color="primary">
+                            <Trash2 className="w-4 h-4" />
                             {t('doDelete')}
                         </Button>
-                        <Button type="submit" name="submitAction" value="Cancel" color="neutral">
+                        <Button type="submit" name="submitAction" value="Cancel" color="neutral" coloringStyle="outline">
+                            <X className="w-4 h-4" />
                             {t('doCancel')}
                         </Button>
                     </form>

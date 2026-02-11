@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -46,9 +47,10 @@ export default function FrontchannelLogout({ kcContext }: FrontchannelLogoutProp
                                 style={{ display: 'none' }}
                             />
                         ))}
-                        <Button type="submit" color="primary">
-                            {t('doContinue')}
-                        </Button>
+<Button type="submit" color="primary">
+                        <ArrowRight className="w-4 h-4" />
+                        {t('doContinue')}
+                    </Button>
                     </form>
                 </div>
             </PageLayout>

@@ -1,3 +1,4 @@
+import { Building2 } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -35,6 +36,7 @@ export default function SelectOrganization({ kcContext }: SelectOrganizationProp
                                     value={org.alias}
                                     color="primary"
                                 >
+                                    <Building2 className="w-4 h-4" />
                                     {org.name ?? org.alias}
                                 </Button>
                             ))}

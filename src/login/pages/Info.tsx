@@ -55,12 +55,13 @@ export default function Info({ kcContext }: InfoProps) {
 
                     <Button
                         type="button"
-                        color="primary"
+                        color="neutral"
+                        coloringStyle="outline"
                         onClick={() => {
                             window.location.href = kcContext.url.loginUrl
                         }}
                     >
-                        <ArrowLeft size={16} style={{ marginRight: '0.5rem', display: 'inline-block' }} />
+                        <ArrowLeft className="w-4 h-4" />
                         {t('backToApplication') || t('doContinue')}
                     </Button>
                 </div>

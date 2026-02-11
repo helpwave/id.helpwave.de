@@ -1,3 +1,4 @@
+import { RefreshCw, X } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -27,9 +28,11 @@ export default function LoginIdpLinkConfirmOverride({ kcContext }: LoginIdpLinkC
 
                     <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" name="submitAction" value="Override" color="primary">
+                            <RefreshCw className="w-4 h-4" />
                             {t('doOverride')}
                         </Button>
-                        <Button type="submit" name="submitAction" value="Cancel" color="neutral">
+                        <Button type="submit" name="submitAction" value="Cancel" color="neutral" coloringStyle="outline">
+                            <X className="w-4 h-4" />
                             {t('doCancel')}
                         </Button>
                     </form>

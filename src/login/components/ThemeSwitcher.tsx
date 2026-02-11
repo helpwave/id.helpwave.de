@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, ThemeDialog } from '@helpwave/hightide'
+import { IconButton, ThemeDialog } from '@helpwave/hightide'
 import { Palette } from 'lucide-react'
 
 export function ThemeSwitcher() {
@@ -7,15 +7,15 @@ export function ThemeSwitcher() {
 
     return (
         <>
-            <Button
+            <IconButton
                 type="button"
-                color="neutral"
+                coloringStyle="tonal"
                 onClick={() => setIsOpen(true)}
-                style={{ padding: '0.5rem', minWidth: 'auto' }}
-                aria-label="Change theme"
+                tooltip="Change theme"
+                useTooltipAsLabel
             >
                 <Palette size={20} />
-            </Button>
+            </IconButton>
             <ThemeDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </>
     )

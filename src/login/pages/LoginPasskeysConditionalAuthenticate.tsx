@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -40,6 +41,7 @@ export default function LoginPasskeysConditionalAuthenticate({ kcContext }: Logi
 
                     <form id="kc-passkeys-conditional-authenticate-form" action={kcContext.url.loginAction} method="POST" style={{ display: 'none' }}>
                         <Button type="submit" color="primary">
+                            <ArrowRight className="w-4 h-4" />
                             {t('doContinue')}
                         </Button>
                     </form>

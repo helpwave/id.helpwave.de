@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LogIn, KeyRound, UserPlus } from 'lucide-react'
 import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -141,6 +142,7 @@ export default function Login({ kcContext }: LoginProps) {
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" color="primary">
+                            <LogIn className="w-4 h-4" />
                             {t('doLogIn')}
                         </Button>
 
@@ -148,10 +150,12 @@ export default function Login({ kcContext }: LoginProps) {
                             <Button
                                 type="button"
                                 color="neutral"
+                                coloringStyle="outline"
                                 onClick={() => {
                                     window.location.href = kcContext.url.loginResetCredentialsUrl
                                 }}
                             >
+                                <KeyRound className="w-4 h-4" />
                                 {t('doForgotPassword')}
                             </Button>
                         )}
@@ -160,10 +164,12 @@ export default function Login({ kcContext }: LoginProps) {
                             <Button
                                 type="button"
                                 color="neutral"
+                                coloringStyle="outline"
                                 onClick={() => {
                                     window.location.href = kcContext.url.registrationUrl
                                 }}
                             >
+                                <UserPlus className="w-4 h-4" />
                                 {t('noAccount')} {t('doRegister')}
                             </Button>
                         )}
@@ -178,10 +184,12 @@ export default function Login({ kcContext }: LoginProps) {
                                 key={provider.alias}
                                 type="button"
                                 color="neutral"
+                                coloringStyle="outline"
                                 onClick={() => {
                                     window.location.href = provider.loginUrl
                                 }}
                             >
+                                <LogIn className="w-4 h-4" />
                                 {provider.displayName}
                             </Button>
                         ))}

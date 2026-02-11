@@ -1,3 +1,4 @@
+import { Shield } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -35,6 +36,7 @@ export default function SelectAuthenticator({ kcContext }: SelectAuthenticatorPr
                                     value={selection.authExecId}
                                     color="primary"
                                 >
+                                    <Shield className="w-4 h-4" />
                                     {selection.displayName}
                                 </Button>
                             ))}

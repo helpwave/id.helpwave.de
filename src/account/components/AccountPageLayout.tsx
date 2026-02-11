@@ -5,6 +5,7 @@ import { ThemeSwitcher } from '../../login/components/ThemeSwitcher'
 import { LanguageSwitcher } from '../../login/components/LanguageSwitcher'
 import { Footer } from '../../login/components/Footer'
 import { hideKeycloakStyles } from '../../login/utils/hideKeycloakStyles'
+import { LogOut } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import { useTranslation } from '../../i18n/useTranslation'
 
@@ -26,10 +27,12 @@ export function AccountPageLayout({ kcContext, children }: AccountPageLayoutProp
                     <Button
                         type="button"
                         color="negative"
+                        coloringStyle="outline"
                         onClick={() => {
                             window.location.href = kcContext.url.getLogoutUrl()
                         }}
                     >
+                        <LogOut className="w-4 h-4" style={{ color: 'var(--hw-color-negative-600)' }} />
                         {t('doLogout')}
                     </Button>
                 </div>
