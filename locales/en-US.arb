@@ -112,6 +112,38 @@
   "@doLogout": {
     "description": "Logout button text"
   },
+  "doSave": "Save",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "updatePassword": "Update Password",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Active",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Profile picture",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Upload profile picture – coming soon.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "accountSectionProfile": "Profile",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Personal information",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Password",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
   "doCancel": "Cancel",
   "@doCancel": {
     "description": "Cancel button text"

@@ -112,6 +112,38 @@
   "@doLogout": {
     "description": "Abmelden Button Text"
   },
+  "doSave": "Speichern",
+  "@doSave": {
+    "description": "Speichern Button Text"
+  },
+  "updatePassword": "Passwort ändern",
+  "@updatePassword": {
+    "description": "Passwort ändern Button Text"
+  },
+  "accountStatusActive": "Aktiv",
+  "@accountStatusActive": {
+    "description": "Kontostatus wenn angemeldet"
+  },
+  "profilePicture": "Profilbild",
+  "@profilePicture": {
+    "description": "Profilbild Abschnittsüberschrift"
+  },
+  "profilePictureComingSoon": "Profilbild hochladen – in Kürze.",
+  "@profilePictureComingSoon": {
+    "description": "Platzhalter für Profilbild-Upload"
+  },
+  "accountSectionProfile": "Profil",
+  "@accountSectionProfile": {
+    "description": "Profil-Abschnittsüberschrift"
+  },
+  "personalInfoTitle": "Persönliche Angaben",
+  "@personalInfoTitle": {
+    "description": "Persönliche Angaben Abschnittsüberschrift"
+  },
+  "passwordSectionTitle": "Passwort",
+  "@passwordSectionTitle": {
+    "description": "Passwort-Abschnittsüberschrift"
+  },
   "doCancel": "Abbrechen",
   "@doCancel": {
     "description": "Abbrechen Button Text"

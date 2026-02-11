@@ -9,7 +9,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            accountThemeImplementation: 'none',
+            accountThemeImplementation: 'Multi-Page',
             themeName: 'helpwave-id'
         })
     ]
