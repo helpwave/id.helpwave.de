@@ -152,6 +152,10 @@
   "@backToApplication": {
     "description": "Back to application button text"
   },
+  "backToAccount": "Back to Account",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
   "doContinue": "Continue",
   "@doContinue": {
     "description": "Continue button text"

@@ -152,6 +152,10 @@
   "@backToApplication": {
     "description": "Zurück zur Anwendung Button Text"
   },
+  "backToAccount": "Zurück zum Konto",
+  "@backToAccount": {
+    "description": "Zurück zum Konto Button-Text in der Kontokonsole"
+  },
   "doContinue": "Weiter",
   "@doContinue": {
     "description": "Weiter Button Text"

@@ -43,14 +43,14 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                             message.type === 'error'
                                 ? 'var(--hw-color-negative-50)'
                                 : message.type === 'warning'
-                                  ? 'var(--hw-color-warning-50)'
-                                  : 'var(--hw-color-positive-50)',
+                                    ? 'var(--hw-color-warning-50)'
+                                    : 'var(--hw-color-positive-50)',
                         color:
                             message.type === 'error'
                                 ? 'var(--hw-color-negative-900)'
                                 : message.type === 'warning'
-                                  ? 'var(--hw-color-warning-900)'
-                                  : 'var(--hw-color-positive-900)',
+                                    ? 'var(--hw-color-warning-900)'
+                                    : 'var(--hw-color-positive-900)',
                         marginBottom: '0.5rem'
                     }}
                 >
@@ -59,7 +59,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
             )}
 
             <section className="flex flex-col gap-3">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
                     {t('accountSectionProfile')}
                 </h2>
                 <div className="flex items-center gap-3 flex-wrap">
@@ -80,7 +80,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
             <hr className="border-[var(--hw-color-neutral-200)]" />
 
             <section className="flex flex-col gap-4">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
                     {t('personalInfoTitle')}
                 </h2>
                 <form
@@ -184,7 +184,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
             <hr className="border-[var(--hw-color-neutral-200)]" />
 
             <section className="flex flex-col gap-3">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
                     {t('passwordSectionTitle')}
                 </h2>
                 <Button
@@ -201,7 +201,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
             <hr className="border-[var(--hw-color-neutral-200)]" />
 
             <section className="flex flex-col gap-2">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--hw-color-neutral-700)]">
                     {t('profilePicture')}
                 </h2>
                 <p className="text-sm text-[var(--hw-color-neutral-600)]">
