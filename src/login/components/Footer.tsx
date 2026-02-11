@@ -4,16 +4,13 @@ export function Footer() {
     const t = useTranslation()
 
     return (
-        <div
-            className="text-center text-sm pt-4"
-        >
+        <div className="text-center text-sm pt-4">
             <div className="mb-2">
                 <a
                     href="https://cdn.helpwave.de/imprint.html"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mx-2 sm:mx-1"
-                    style={{ color: 'var(--color-text-secondary)' }}
                 >
                     {t('imprint')}
                 </a>
@@ -23,7 +20,6 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mx-2 sm:mx-1"
-                    style={{ color: 'var(--color-text-secondary)' }}
                 >
                     {t('privacy')}
                 </a>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Key, Save } from 'lucide-react'
-import { Avatar, Button, Chip, Input, FormFieldLayout } from '@helpwave/hightide'
+import { Key, Save, Trash2 } from 'lucide-react'
+import { Avatar, Button, Chip, ConfirmDialog, DialogRoot, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../../login/utils/translateFieldError'
@@ -26,6 +26,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
     const [email, setEmail] = useState(account.email ?? '')
     const [firstName, setFirstName] = useState(account.firstName ?? '')
     const [lastName, setLastName] = useState(account.lastName ?? '')
+    const [deleteAccountDialogOpen, setDeleteAccountDialogOpen] = useState(false)
 
     const displayName = getDisplayName(kcContext)
     const avatarImage = undefined
@@ -167,9 +168,9 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
 
             <hr className="border-[var(--color-border)]" />
 
-            <section className="flex flex-col gap-3">
+            <section className="flex flex-col gap-4">
                 <h2 className="text-lg font-bold text-[var(--color-label)]">
-                    {t('passwordSectionTitle')}
+                    {t('securitySectionTitle')}
                 </h2>
                 <Button
                     type="button"
@@ -182,6 +183,38 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                     <Key className="w-4 h-4" />
                     {t('updatePassword')}
                 </Button>
+                <div>
+                    <DialogRoot
+                        isOpen={deleteAccountDialogOpen}
+                        onIsOpenChange={setDeleteAccountDialogOpen}
+                        isModal
+                    >
+                        <ConfirmDialog
+                            titleElement={t('doDeleteAccount')}
+                            description={t('deleteAccountConfirm')}
+                            confirmType="negative"
+                            onCancel={() => setDeleteAccountDialogOpen(false)}
+                            onConfirm={() => {
+                                setDeleteAccountDialogOpen(false)
+                                window.location.href = url.accountUrl.replace(/\/$/, '') + '/delete-account'
+                            }}
+                            buttonOverwrites={[
+                                    { text: t('doCancel') },
+                                    undefined,
+                                    { text: t('doDeleteAccount') }
+                                ]}
+                        />
+                    </DialogRoot>
+                    <Button
+                        type="button"
+                        color="negative"
+                        coloringStyle="outline"
+                        onClick={() => setDeleteAccountDialogOpen(true)}
+                    >
+                        <Trash2 className="w-4 h-4" />
+                        {t('doDeleteAccount')}
+                    </Button>
+                </div>
             </section>
 
             <hr className="border-[var(--color-border)]" />

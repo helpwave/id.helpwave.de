@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import type { KcContext } from '../KcContext'
 import { Branding } from '../../login/components/Branding'
+import { RealmChip } from '../../login/components/RealmChip'
 import { ThemeSwitcher } from '../../login/components/ThemeSwitcher'
 import { LanguageSwitcher } from '../../login/components/LanguageSwitcher'
 import { Footer } from '../../login/components/Footer'
@@ -45,6 +46,9 @@ export function AccountPageLayout({ kcContext, children }: AccountPageLayoutProp
 
                 <div className="flex flex-col items-center justify-center flex-1 w-[360px] max-w-[360px] mx-auto py-8 px-4 md:w-full md:max-w-[360px] md:py-6 md:px-4 sm:w-full sm:max-w-full sm:py-4 sm:px-2">
                     <Branding animate="none" />
+                    <div className="mb-6">
+                        <RealmChip kcContext={kcContext} />
+                    </div>
 
                     <div className="w-full max-w-full box-border [&_form]:w-full [&_form]:max-w-full [&_form]:box-border [&_>*]:w-full [&_>*]:max-w-full [&_>*]:box-border [&_input]:w-full [&_input]:max-w-full [&_input]:box-border [&_button]:w-full [&_button]:max-w-full [&_button]:box-border">
                         {children}

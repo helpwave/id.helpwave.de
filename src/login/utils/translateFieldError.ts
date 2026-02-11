@@ -8,6 +8,7 @@ type MessageEntry = { key: string, sentiment: MessageSentiment }
 
 function buildMessageMap (): Record<string, MessageEntry> {
   const negative = (key: string): MessageEntry => ({ key, sentiment: 'negative' })
+  const neutral = (key: string): MessageEntry => ({ key, sentiment: 'neutral' })
   const positive = (key: string): MessageEntry => ({ key, sentiment: 'positive' })
   const entries: Array<[string, MessageEntry]> = [
     ['Invalid username or password.', negative('errorInvalidUsernameOrPassword')],
@@ -115,7 +116,9 @@ function buildMessageMap (): Record<string, MessageEntry> {
     ['You should receive an email shortly with further instructions.', positive('successEmailSent')],
     ['You should receive an email shortly with further instructions', positive('successEmailSent')],
     ['Sie sollten in Kürze eine E-Mail mit weiteren Anweisungen erhalten.', positive('successEmailSent')],
-    ['Sie sollten in Kürze eine E-Mail mit weiteren Anweisungen erhalten', positive('successEmailSent')]
+    ['Sie sollten in Kürze eine E-Mail mit weiteren Anweisungen erhalten', positive('successEmailSent')],
+    ['The time allotted for the connection has elapsed.<br/>The login process will restart from the beginning.', neutral('sessionExpired')],
+    ['The time allotted for the connection has elapsed.<br>The login process will restart from the beginning.', neutral('sessionExpired')]
   ]
   return Object.fromEntries(entries)
 }

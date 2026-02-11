@@ -14,19 +14,19 @@ type AlertBoxProps = {
 
 const borderColorBySentiment: Record<MessageSentiment, string> = {
   negative: 'var(--color-negative-hover)',
-  neutral: 'var(--color-warning)',
+  neutral: 'var(--color-border)',
   positive: 'var(--color-positive-hover)'
 }
 
 const bgColorBySentiment: Record<MessageSentiment, string> = {
   negative: 'var(--color-negative)',
-  neutral: 'var(--color-surface-warning)',
+  neutral: 'var(--color-surface)',
   positive: 'var(--color-green-100)'
 }
 
 const textColorBySentiment: Record<MessageSentiment, string> = {
   negative: 'var(--color-on-negative)',
-  neutral: 'var(--color-orange-900)',
+  neutral: 'var(--color-label)',
   positive: 'var(--color-green-900)'
 }
 
@@ -53,7 +53,7 @@ export function AlertBox({ message, className = '', sentiment: sentimentProp }: 
         color: textColor
       }}
     >
-      <p className="m-0 block w-full break-words">{translatedSummary}</p>
+      <p className="m-0 block w-full break-words whitespace-pre-line">{translatedSummary}</p>
     </div>
   )
 }

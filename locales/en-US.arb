@@ -148,6 +148,14 @@
   "@passwordSectionTitle": {
     "description": "Password section title"
   },
+  "securitySectionTitle": "Security",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Danger zone",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
   "doCancel": "Cancel",
   "@doCancel": {
     "description": "Cancel button text"
@@ -179,6 +187,10 @@
   "doRestart": "Restart",
   "@doRestart": {
     "description": "Restart button text"
+  },
+  "sessionExpired": "The time allotted for the connection has elapsed.\nThe login process will restart from the beginning.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
   },
   "deleteAccountConfirm": "Are you sure you want to delete your account?",
   "@deleteAccountConfirm": {

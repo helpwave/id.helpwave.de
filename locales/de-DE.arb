@@ -148,6 +148,14 @@
   "@passwordSectionTitle": {
     "description": "Passwort-Abschnittsüberschrift"
   },
+  "securitySectionTitle": "Sicherheit",
+  "@securitySectionTitle": {
+    "description": "Sicherheits-Abschnittsüberschrift"
+  },
+  "dangerZoneTitle": "Gefahrenzone",
+  "@dangerZoneTitle": {
+    "description": "Gefahrenzone-Abschnittsüberschrift"
+  },
   "doCancel": "Abbrechen",
   "@doCancel": {
     "description": "Abbrechen Button Text"
@@ -179,6 +187,10 @@
   "doRestart": "Neu starten",
   "@doRestart": {
     "description": "Neu starten Button Text"
+  },
+  "sessionExpired": "Die für die Verbindung vorgesehene Zeit ist abgelaufen.\nDer Anmeldevorgang wird von vorne begonnen.",
+  "@sessionExpired": {
+    "description": "Sitzung/Timeout abgelaufen Nachricht"
   },
   "deleteAccountConfirm": "Möchten Sie Ihr Konto wirklich löschen?",
   "@deleteAccountConfirm": {
