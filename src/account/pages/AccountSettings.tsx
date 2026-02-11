@@ -17,6 +17,20 @@ function getDisplayName(kcContext: Extract<KcContext, { pageId: 'account.ftl' }>
     return account.username ?? ''
 }
 
+function getDeleteAccountUrl(accountUrl: string): string {
+    const base = accountUrl.replace(/\/$/, '')
+    const realmPath = base.replace(/\/account$/, '')
+    const authUrl = `${realmPath}/protocol/openid-connect/auth`
+    const params = new URLSearchParams({
+        client_id: 'account-console',
+        redirect_uri: accountUrl,
+        response_type: 'code',
+        scope: 'openid',
+        kc_action: 'delete_account'
+    })
+    return `${authUrl}?${params.toString()}`
+}
+
 export default function AccountSettings({ kcContext }: AccountSettingsProps) {
     const t = useTranslation()
     const translateError = useTranslatedFieldError()
@@ -196,11 +210,11 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                             onCancel={() => setDeleteAccountDialogOpen(false)}
                             onConfirm={() => {
                                 setDeleteAccountDialogOpen(false)
-                                window.location.href = url.accountUrl.replace(/\/$/, '') + '/delete-account'
+                                window.location.href = getDeleteAccountUrl(url.accountUrl)
                             }}
                             buttonOverwrites={[
                                     { text: t('doCancel') },
-                                    undefined,
+                                    {},
                                     { text: t('doDeleteAccount') }
                                 ]}
                         />

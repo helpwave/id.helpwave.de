@@ -400,6 +400,10 @@
   "pageTitleForgotPassword": "Forgot Password",
   "pageTitleInfo": "Information",
   "pageTitleError": "Error",
+  "pageTitlePageDisabled": "Page disabled",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
   "pageTitleCode": "Verification Code",
   "pageTitleLogoutConfirm": "Log Out",
   "pageTitleTerms": "Terms and Conditions",
