@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout, SelectUncontrolled, SelectOption } from '@helpwave/hightide'
+import { LogIn } from 'lucide-react'
+import { Button, Input, FormFieldLayout, Select, SelectOption } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginOtpProps = {
     kcContext: Extract<KcContext, { pageId: 'login-otp.ftl' }>,
@@ -37,28 +40,10 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem',
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <form
                     id="kc-otp-login-form"
@@ -73,11 +58,11 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                             <div className="mb-4">
                                 <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
                                     {({ id, ariaAttributes }) => (
-                                        <SelectUncontrolled
+                                        <Select
                                             id={id}
                                             value={selectedCredentialId}
-                                            onValueChange={(value) => setSelectedCredentialId(value)}
-                                            onEditComplete={() => { }}
+                                            onValueChange={(value: string) => setSelectedCredentialId(value)}
+                                            onEditComplete={() => {}}
                                             {...ariaAttributes}
                                         >
                                             {credentials.map((c) => (
@@ -85,7 +70,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                                     {c.userLabel}
                                                 </SelectOption>
                                             ))}
-                                        </SelectUncontrolled>
+                                        </Select>
                                     )}
                                 </FormFieldLayout>
                             </div>
@@ -102,7 +87,8 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                     name="otp"
                                     type="text"
                                     value={otp}
-                                    onChange={(e) => setOtp(e.target.value)}
+                                    onValueChange={(v) => setOtp(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="one-time-code"
                                     required
@@ -113,6 +99,7 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                     </div>
 
                     <Button type="submit" color="primary">
+                        <LogIn className="w-4 h-4" />
                         {t('doLogIn')}
                     </Button>
                 </form>

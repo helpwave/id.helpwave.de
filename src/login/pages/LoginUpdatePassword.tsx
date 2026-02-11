@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { Send } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginUpdatePasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-update-password.ftl' }>,
@@ -35,28 +38,10 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <form
                     id="kc-passwd-update-form"
@@ -76,7 +61,8 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                                     name="password-new"
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onValueChange={(v) => setPassword(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="new-password"
                                     required
@@ -98,7 +84,8 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                                     name="password-confirm"
                                     type="password"
                                     value={passwordConfirm}
-                                    onChange={(e) => setPasswordConfirm(e.target.value)}
+                                    onValueChange={(v) => setPasswordConfirm(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="new-password"
                                     required
                                     {...ariaAttributes}
@@ -108,6 +95,7 @@ export default function LoginUpdatePassword({ kcContext }: LoginUpdatePasswordPr
                     </div>
 
                     <Button type="submit" color="primary">
+                        <Send className="w-4 h-4" />
                         {t('doSubmit')}
                     </Button>
                 </form>

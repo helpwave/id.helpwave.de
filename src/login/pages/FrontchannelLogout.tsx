@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -5,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useEffect } from 'react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type FrontchannelLogoutProps = {
     kcContext: Extract<KcContext, { pageId: 'frontchannel-logout.ftl' }>,
@@ -28,6 +30,7 @@ export default function FrontchannelLogout({ kcContext }: FrontchannelLogoutProp
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -46,9 +49,10 @@ export default function FrontchannelLogout({ kcContext }: FrontchannelLogoutProp
                                 style={{ display: 'none' }}
                             />
                         ))}
-                        <Button type="submit" color="primary">
-                            {t('doContinue')}
-                        </Button>
+<Button type="submit" color="primary">
+                        <ArrowRight className="w-4 h-4" />
+                        {t('doContinue')}
+                    </Button>
                     </form>
                 </div>
             </PageLayout>

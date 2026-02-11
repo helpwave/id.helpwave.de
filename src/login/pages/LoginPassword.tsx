@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { LogIn } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginPasswordProps = {
     kcContext: Extract<KcContext, { pageId: 'login-password.ftl' }>,
@@ -30,28 +33,10 @@ export default function LoginPassword({ kcContext }: LoginPasswordProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <form
                     action={kcContext.url.loginAction}
@@ -70,7 +55,8 @@ export default function LoginPassword({ kcContext }: LoginPasswordProps) {
                                     name="password"
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onValueChange={(v) => setPassword(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="current-password"
                                     required
@@ -81,6 +67,7 @@ export default function LoginPassword({ kcContext }: LoginPasswordProps) {
                     </div>
 
                     <Button type="submit" color="primary">
+                        <LogIn className="w-4 h-4" />
                         {t('doLogIn')}
                     </Button>
                 </form>

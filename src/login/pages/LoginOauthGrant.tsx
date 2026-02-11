@@ -1,9 +1,11 @@
+import { Check, X } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginOauthGrantProps = {
     kcContext: Extract<KcContext, { pageId: 'login-oauth-grant.ftl' }>,
@@ -20,6 +22,7 @@ export default function LoginOauthGrant({ kcContext }: LoginOauthGrantProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -41,9 +44,11 @@ export default function LoginOauthGrant({ kcContext }: LoginOauthGrantProps) {
 
                     <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" name="accept" color="primary">
+                            <Check className="w-4 h-4" />
                             {t('doAccept')}
                         </Button>
-                        <Button type="submit" name="cancel" color="neutral">
+                        <Button type="submit" name="cancel" color="neutral" coloringStyle="outline">
+                            <X className="w-4 h-4" />
                             {t('doCancel')}
                         </Button>
                     </form>

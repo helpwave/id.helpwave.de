@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { Send } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginConfigTotpProps = {
     kcContext: Extract<KcContext, { pageId: 'login-config-totp.ftl' }>,
@@ -30,28 +33,10 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 {kcContext.totp?.qrUrl && (
                     <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
@@ -79,7 +64,8 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
                                     name="totp"
                                     type="text"
                                     value={totp}
-                                    onChange={(e) => setTotp(e.target.value)}
+                                    onValueChange={(v) => setTotp(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     autoComplete="one-time-code"
                                     required
@@ -90,6 +76,7 @@ export default function LoginConfigTotp({ kcContext }: LoginConfigTotpProps) {
                     </div>
 
                     <Button type="submit" color="primary">
+                        <Send className="w-4 h-4" />
                         {t('doSubmit')}
                     </Button>
                 </form>

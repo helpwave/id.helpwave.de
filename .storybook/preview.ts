@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react-vite'
 import React from 'react'
 import '@helpwave/hightide/style/globals.css'
 import '../src/index.css'
-import { ThemeProvider, LocaleProvider } from '@helpwave/hightide'
+import { HightideProvider } from '@helpwave/hightide'
 
 if (typeof window !== 'undefined' && typeof (globalThis as { process?: { env: Record<string, string> } }).process === 'undefined') {
     (globalThis as { process: { env: Record<string, string> } }).process = { env: {} }
@@ -45,13 +45,9 @@ const preview: Preview = {
                 }
             }
             return React.createElement(
-                ThemeProvider,
+                HightideProvider,
                 {},
-                React.createElement(
-                    LocaleProvider,
-                    {},
-                    React.createElement(Story)
-                )
+                React.createElement(Story)
             )
         }
     ]

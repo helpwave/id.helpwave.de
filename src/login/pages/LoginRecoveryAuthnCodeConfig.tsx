@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { Send } from 'lucide-react'
 import { Button, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginRecoveryAuthnCodeConfigProps = {
     kcContext: Extract<KcContext, { pageId: 'login-recovery-authn-code-config.ftl' }>,
@@ -30,28 +33,10 @@ export default function LoginRecoveryAuthnCodeConfig({ kcContext }: LoginRecover
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <div style={{ marginBottom: '1rem' }}>
                     <p>{t('recoveryAuthnCodeConfigMessage')}</p>
@@ -74,7 +59,8 @@ export default function LoginRecoveryAuthnCodeConfig({ kcContext }: LoginRecover
                                     name="recoveryCode"
                                     type="text"
                                     value={recoveryCode}
-                                    onChange={(e) => setRecoveryCode(e.target.value)}
+                                    onValueChange={(v) => setRecoveryCode(v)}
+                                    onEditComplete={() => {}}
                                     autoFocus
                                     required
                                     {...ariaAttributes}
@@ -84,6 +70,7 @@ export default function LoginRecoveryAuthnCodeConfig({ kcContext }: LoginRecover
                     </div>
 
                     <Button type="submit" color="primary">
+                        <Send className="w-4 h-4" />
                         {t('doSubmit')}
                     </Button>
                 </form>

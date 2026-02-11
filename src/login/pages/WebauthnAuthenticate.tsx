@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -5,6 +6,7 @@ import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useEffect } from 'react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type WebauthnAuthenticateProps = {
     kcContext: Extract<KcContext, { pageId: 'webauthn-authenticate.ftl' }>,
@@ -33,6 +35,7 @@ export default function WebauthnAuthenticate({ kcContext }: WebauthnAuthenticate
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -40,6 +43,7 @@ export default function WebauthnAuthenticate({ kcContext }: WebauthnAuthenticate
 
                     <form id="kc-webauthn-authenticate-form" action={kcContext.url.loginAction} method="POST" style={{ display: 'none' }}>
                         <Button type="submit" color="primary">
+                            <ArrowRight className="w-4 h-4" />
                             {t('doContinue')}
                         </Button>
                     </form>

@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import { Avatar, Button, Chip, Input, FormFieldLayout } from '@helpwave/hightide'
+import { Key, Save, Trash2 } from 'lucide-react'
+import { Avatar, Button, Chip, ConfirmDialog, DialogRoot, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../../login/utils/translateFieldError'
+import { AlertBox } from '../../login/components/AlertBox'
 
 type AccountSettingsProps = {
     kcContext: Extract<KcContext, { pageId: 'account.ftl' }>,
@@ -15,6 +17,20 @@ function getDisplayName(kcContext: Extract<KcContext, { pageId: 'account.ftl' }>
     return account.username ?? ''
 }
 
+function getDeleteAccountUrl(accountUrl: string): string {
+    const base = accountUrl.replace(/\/$/, '')
+    const realmPath = base.replace(/\/account$/, '')
+    const authUrl = `${realmPath}/protocol/openid-connect/auth`
+    const params = new URLSearchParams({
+        client_id: 'account-console',
+        redirect_uri: accountUrl,
+        response_type: 'code',
+        scope: 'openid',
+        kc_action: 'delete_account'
+    })
+    return `${authUrl}?${params.toString()}`
+}
+
 export default function AccountSettings({ kcContext }: AccountSettingsProps) {
     const t = useTranslation()
     const translateError = useTranslatedFieldError()
@@ -24,6 +40,7 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
     const [email, setEmail] = useState(account.email ?? '')
     const [firstName, setFirstName] = useState(account.firstName ?? '')
     const [lastName, setLastName] = useState(account.lastName ?? '')
+    const [deleteAccountDialogOpen, setDeleteAccountDialogOpen] = useState(false)
 
     const displayName = getDisplayName(kcContext)
     const avatarImage = undefined
@@ -33,33 +50,10 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
 
     return (
         <div className="flex flex-col gap-8">
-            {message && (
-                <div
-                    role="alert"
-                    style={{
-                        padding: '1rem',
-                        borderRadius: '0.5rem',
-                        backgroundColor:
-                            message.type === 'error'
-                                ? 'var(--hw-color-negative-50)'
-                                : message.type === 'warning'
-                                  ? 'var(--hw-color-warning-50)'
-                                  : 'var(--hw-color-positive-50)',
-                        color:
-                            message.type === 'error'
-                                ? 'var(--hw-color-negative-900)'
-                                : message.type === 'warning'
-                                  ? 'var(--hw-color-warning-900)'
-                                  : 'var(--hw-color-positive-900)',
-                        marginBottom: '0.5rem'
-                    }}
-                >
-                    {message.summary}
-                </div>
-            )}
+            {message && <AlertBox message={message} className="mb-2" />}
 
             <section className="flex flex-col gap-3">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('accountSectionProfile')}
                 </h2>
                 <div className="flex items-center gap-3 flex-wrap">
@@ -77,10 +71,10 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                 </div>
             </section>
 
-            <hr className="border-[var(--hw-color-neutral-200)]" />
+            <hr className="border-[var(--color-border)]" />
 
             <section className="flex flex-col gap-4">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('personalInfoTitle')}
                 </h2>
                 <form
@@ -103,7 +97,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                         name="username"
                                         type="text"
                                         value={username}
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        onValueChange={(v) => setUsername(v)}
+                                        onEditComplete={() => {}}
                                         autoComplete="username"
                                         required={realm.editUsernameAllowed}
                                         disabled={!realm.editUsernameAllowed}
@@ -126,7 +121,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                     name="email"
                                     type="email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onValueChange={(v) => setEmail(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="email"
                                     required
                                     {...ariaAttributes}
@@ -147,7 +143,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                     name="firstName"
                                     type="text"
                                     value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
+                                    onValueChange={(v) => setFirstName(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="given-name"
                                     required
                                     {...ariaAttributes}
@@ -167,7 +164,8 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                                     name="lastName"
                                     type="text"
                                     value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
+                                    onValueChange={(v) => setLastName(v)}
+                                    onEditComplete={() => {}}
                                     autoComplete="family-name"
                                     {...ariaAttributes}
                                 />
@@ -176,35 +174,70 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
                     </div>
 
                     <Button type="submit" name="submitAction" value="Save" color="primary">
+                        <Save className="w-4 h-4" />
                         {t('doSave')}
                     </Button>
                 </form>
             </section>
 
-            <hr className="border-[var(--hw-color-neutral-200)]" />
+            <hr className="border-[var(--color-border)]" />
 
-            <section className="flex flex-col gap-3">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
-                    {t('passwordSectionTitle')}
+            <section className="flex flex-col gap-4">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
+                    {t('securitySectionTitle')}
                 </h2>
                 <Button
                     type="button"
-                    color="neutral"
+                    color="warning"
+                    coloringStyle="outline"
                     onClick={() => {
                         window.location.href = url.passwordUrl
                     }}
                 >
+                    <Key className="w-4 h-4" />
                     {t('updatePassword')}
                 </Button>
+                <div>
+                    <DialogRoot
+                        isOpen={deleteAccountDialogOpen}
+                        onIsOpenChange={setDeleteAccountDialogOpen}
+                        isModal
+                    >
+                        <ConfirmDialog
+                            titleElement={t('doDeleteAccount')}
+                            description={t('deleteAccountConfirm')}
+                            confirmType="negative"
+                            onCancel={() => setDeleteAccountDialogOpen(false)}
+                            onConfirm={() => {
+                                setDeleteAccountDialogOpen(false)
+                                window.location.href = getDeleteAccountUrl(url.accountUrl)
+                            }}
+                            buttonOverwrites={[
+                                    { text: t('doCancel') },
+                                    {},
+                                    { text: t('doDeleteAccount') }
+                                ]}
+                        />
+                    </DialogRoot>
+                    <Button
+                        type="button"
+                        color="negative"
+                        coloringStyle="outline"
+                        onClick={() => setDeleteAccountDialogOpen(true)}
+                    >
+                        <Trash2 className="w-4 h-4" />
+                        {t('doDeleteAccount')}
+                    </Button>
+                </div>
             </section>
 
-            <hr className="border-[var(--hw-color-neutral-200)]" />
+            <hr className="border-[var(--color-border)]" />
 
             <section className="flex flex-col gap-2">
-                <h2 className="text-sm font-medium text-[var(--hw-color-neutral-700)]">
+                <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('profilePicture')}
                 </h2>
-                <p className="text-sm text-[var(--hw-color-neutral-600)]">
+                <p className="text-sm text-[var(--color-text-secondary)]">
                     {t('profilePictureComingSoon')}
                 </p>
             </section>

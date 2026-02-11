@@ -1,9 +1,11 @@
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginResetOtpProps = {
     kcContext: Extract<KcContext, { pageId: 'login-reset-otp.ftl' }>,
@@ -20,6 +22,7 @@ export default function LoginResetOtp({ kcContext }: LoginResetOtpProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -32,6 +35,7 @@ export default function LoginResetOtp({ kcContext }: LoginResetOtpProps) {
                             window.location.href = kcContext.url.loginRestartFlowUrl
                         }}
                     >
+                        <ArrowRight className="w-4 h-4" />
                         {t('doContinue')}
                     </Button>
                 </div>

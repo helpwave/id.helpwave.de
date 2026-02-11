@@ -116,6 +116,10 @@
   "@doSave": {
     "description": "Speichern Button Text"
   },
+  "doUpdate": "Aktualisieren",
+  "@doUpdate": {
+    "description": "Aktualisieren Button Text für Passwortformular"
+  },
   "updatePassword": "Passwort ändern",
   "@updatePassword": {
     "description": "Passwort ändern Button Text"
@@ -140,9 +144,17 @@
   "@personalInfoTitle": {
     "description": "Persönliche Angaben Abschnittsüberschrift"
   },
-  "passwordSectionTitle": "Passwort",
+  "passwordSectionTitle": "Passwort aktualisieren",
   "@passwordSectionTitle": {
     "description": "Passwort-Abschnittsüberschrift"
+  },
+  "securitySectionTitle": "Sicherheit",
+  "@securitySectionTitle": {
+    "description": "Sicherheits-Abschnittsüberschrift"
+  },
+  "dangerZoneTitle": "Gefahrenzone",
+  "@dangerZoneTitle": {
+    "description": "Gefahrenzone-Abschnittsüberschrift"
   },
   "doCancel": "Abbrechen",
   "@doCancel": {
@@ -151,6 +163,10 @@
   "backToApplication": "Zurück zur Anwendung",
   "@backToApplication": {
     "description": "Zurück zur Anwendung Button Text"
+  },
+  "backToAccount": "Zurück zum Konto",
+  "@backToAccount": {
+    "description": "Zurück zum Konto Button-Text in der Kontokonsole"
   },
   "doContinue": "Weiter",
   "@doContinue": {
@@ -171,6 +187,10 @@
   "doRestart": "Neu starten",
   "@doRestart": {
     "description": "Neu starten Button Text"
+  },
+  "sessionExpired": "Die für die Verbindung vorgesehene Zeit ist abgelaufen.\nDer Anmeldevorgang wird von vorne begonnen.",
+  "@sessionExpired": {
+    "description": "Sitzung/Timeout abgelaufen Nachricht"
   },
   "deleteAccountConfirm": "Möchten Sie Ihr Konto wirklich löschen?",
   "@deleteAccountConfirm": {
@@ -339,5 +359,92 @@
   "errorAccountTemporarilyDisabled": "Konto ist vorübergehend deaktiviert. Wenden Sie sich an Ihren Administrator oder versuchen Sie es später erneut.",
   "@errorAccountTemporarilyDisabled": {
     "description": "Konto deaktiviert Fehler"
-  }
+  },
+  "errorIncorrectCurrentPassword": "Falsches aktuelles Passwort",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Aktuelles Passwort-Feldfehler im Konto"
+  },
+  "errorInvalidExistingPassword": "Ungültiges bestehendes Passwort",
+  "@errorInvalidExistingPassword": {
+    "description": "Bestehendes Passwort ungültig im Konto"
+  },
+  "errorPleaseSpecifyPassword": "Bitte geben Sie ein Passwort an",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Passwort-Pflichtfeld Validierungsmeldung"
+  },
+  "successPasswordChanged": "Passwort erfolgreich geändert",
+  "@successPasswordChanged": {
+    "description": "Passwort-Änderung Erfolgsmeldung"
+  },
+  "successMobileAuthenticatorConfigured": "Mobiler Authentifikator konfiguriert",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/Authentifikator Erfolgsmeldung"
+  },
+  "successAccountUpdated": "Ihr Konto wurde aktualisiert",
+  "@successAccountUpdated": {
+    "description": "Konto-Aktualisierung Erfolgsmeldung"
+  },
+  "errorAccountDisabled": "Konto ist deaktiviert. Wenden Sie sich an Ihren Administrator.",
+  "errorUsernameExists": "Benutzername existiert bereits.",
+  "errorEmailExists": "E-Mail existiert bereits.",
+  "errorExpiredCode": "Anmeldung abgelaufen. Bitte melden Sie sich erneut an.",
+  "errorExpiredAction": "Aktion abgelaufen. Bitte fahren Sie jetzt mit der Anmeldung fort.",
+  "errorInvalidTotp": "Ungültiger Authentifikatorcode.",
+  "errorMissingTotp": "Bitte geben Sie den Authentifikatorcode an.",
+  "errorConfigureTotp": "Sie müssen den mobilen Authentifikator einrichten, um Ihr Konto zu aktivieren.",
+  "errorEmailSendError": "E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.",
+  "successPasswordUpdated": "Ihr Passwort wurde aktualisiert.",
+  "successEmailSent": "Sie sollten in Kürze eine E-Mail mit weiteren Anweisungen erhalten.",
+  "pageTitleLogin": "Anmelden",
+  "pageTitleRegister": "Registrieren",
+  "pageTitleForgotPassword": "Passwort vergessen",
+  "pageTitleInfo": "Information",
+  "pageTitleError": "Fehler",
+  "pageTitlePageDisabled": "Seite deaktiviert",
+  "@pageTitlePageDisabled": {
+    "description": "Titel für deaktivierte/Fehlerseite"
+  },
+  "pageTitleCode": "Bestätigungscode",
+  "pageTitleLogoutConfirm": "Abmelden",
+  "pageTitleTerms": "Allgemeine Geschäftsbedingungen",
+  "pageTitleLoginOtp": "Bestätigungscode",
+  "pageTitleUpdatePassword": "Passwort ändern",
+  "pageTitleEmailVerification": "E-Mail-Verifizierung",
+  "pageTitleDeleteAccountConfirm": "Konto löschen",
+  "pageTitleDeleteCredential": "Anmeldedaten löschen",
+  "pageTitleFrontchannelLogout": "Abmelden",
+  "pageTitleIdpReviewProfile": "Kontoinformationen aktualisieren",
+  "pageTitleLinkIdp": "Identitätsanbieter verknüpfen",
+  "pageTitleConfigTotp": "Mobiler Authentifikator einrichten",
+  "pageTitleIdpLinkConfirm": "Konto verknüpfen",
+  "pageTitleIdpLinkConfirmOverride": "Verknüpfung überschreiben",
+  "pageTitleIdpLinkEmail": "Konto verknüpfen",
+  "pageTitleOauth2DeviceVerifyUserCode": "Geräte-Anmeldung",
+  "pageTitleOauthGrant": "Zugriff gewähren",
+  "pageTitlePageExpired": "Seite abgelaufen",
+  "pageTitlePasskeysConditionalAuthenticate": "Passkey-Anmeldung",
+  "pageTitleLoginPassword": "Anmelden",
+  "pageTitleRecoveryCodeConfig": "Wiederherstellungscodes",
+  "pageTitleRecoveryCodeInput": "Wiederherstellungscode",
+  "pageTitleResetOtp": "Authentifikator zurücksetzen",
+  "pageTitleUpdateProfile": "Kontoinformationen aktualisieren",
+  "pageTitleLoginUsername": "Anmelden",
+  "pageTitleX509Info": "X.509-Zertifikat",
+  "pageTitleSamlPostForm": "Weiterleitung",
+  "pageTitleSelectAuthenticator": "Authentifikator auswählen",
+  "pageTitleSelectOrganization": "Organisation auswählen",
+  "pageTitleUpdateEmail": "E-Mail aktualisieren",
+  "pageTitleWebauthnAuthenticate": "Passkey-Anmeldung",
+  "pageTitleWebauthnError": "Passkey-Fehler",
+  "pageTitleWebauthnRegister": "Passkey-Registrierung",
+  "pageTitleAccount": "Konto",
+  "pageTitleAccountPassword": "Passwort",
+  "messageHeaderEmailVerification": "E-Mail-Verifizierung",
+  "messageHeaderForgotPassword": "Passwort vergessen?",
+  "messageHeaderEmailUpdateConfirmation": "Bestätigungs-E-Mail gesendet",
+  "messageHeaderEmailUpdated": "E-Mail aktualisiert",
+  "messageHeaderUpdatePassword": "Passwort ändern",
+  "messageHeaderSuccessCode": "Erfolgscode",
+  "messageHeaderErrorCode": "Fehlercode",
+  "messageHeaderExecuteActions": "Erforderliche Aktionen"
 }

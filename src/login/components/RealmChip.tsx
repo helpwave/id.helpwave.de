@@ -1,9 +1,8 @@
 import { Chip } from '@helpwave/hightide'
-import type { KcContext } from '../KcContext'
 import { getRealmColor } from '../utils/realmColor'
 
 type RealmChipProps = {
-    kcContext: KcContext,
+    kcContext: { realm: Record<string, unknown> },
 };
 
 export function RealmChip({ kcContext }: RealmChipProps) {

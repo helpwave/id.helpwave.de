@@ -1,13 +1,15 @@
 import { useState } from 'react'
-import { Button, Input, FormFieldLayout, CheckboxUncontrolled } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
-import { ArrowLeft } from 'lucide-react'
+import { AlertBox } from '../components/AlertBox'
+import { ArrowLeft, UserPlus } from 'lucide-react'
 import { useTranslation } from '../../i18n/useTranslation'
 import type { HelpwaveIdTranslationEntries } from '../../i18n/translations'
 import { useTranslatedFieldError } from '../utils/translateFieldError'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type RegisterProps = {
     kcContext: Extract<KcContext, { pageId: 'register.ftl' }>,
@@ -74,7 +76,8 @@ export default function Register({ kcContext }: RegisterProps) {
                         name={attrName}
                         type={inputType}
                         value={formData[attrName] ?? ''}
-                        onChange={(e) => setFormData({ ...formData, [attrName]: e.target.value })}
+                        onValueChange={(v) => setFormData({ ...formData, [attrName]: v })}
+                        onEditComplete={() => {}}
                         autoComplete={attr.autocomplete ?? 'off'}
                         required={attr.required}
                         readOnly={attr.readOnly}
@@ -94,32 +97,10 @@ export default function Register({ kcContext }: RegisterProps) {
             displayMessage={!!message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-50)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-50)'
-                                      : 'var(--hw-color-positive-50)',
-                            color:
-                                message.type === 'error'
-                                    ? 'var(--hw-color-negative-900)'
-                                    : message.type === 'warning'
-                                      ? 'var(--hw-color-warning-900)'
-                                      : 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {message.summary}
-                    </div>
-                )}
+                {message && <AlertBox message={message} />}
 
                 <form
                     id="kc-register-form"
@@ -145,7 +126,8 @@ export default function Register({ kcContext }: RegisterProps) {
                                         name="password"
                                         type="password"
                                         value={formData['password'] ?? ''}
-                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                        onValueChange={(v) => setFormData({ ...formData, password: v })}
+                                        onEditComplete={() => {}}
                                         autoComplete="new-password"
                                         required
                                         {...ariaAttributes}
@@ -168,7 +150,8 @@ export default function Register({ kcContext }: RegisterProps) {
                                         name="password-confirm"
                                         type="password"
                                         value={formData['password-confirm'] ?? ''}
-                                        onChange={(e) => setFormData({ ...formData, 'password-confirm': e.target.value })}
+                                        onValueChange={(v) => setFormData({ ...formData, 'password-confirm': v })}
+                                        onEditComplete={() => {}}
                                         autoComplete="new-password"
                                         required
                                         {...ariaAttributes}
@@ -180,9 +163,9 @@ export default function Register({ kcContext }: RegisterProps) {
 
                     {kcContext.termsAcceptanceRequired && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <CheckboxUncontrolled
+                            <Checkbox
                                 value={termsAccepted}
-                                onValueChange={(value) => setTermsAccepted(value)}
+                                onValueChange={(value: boolean) => setTermsAccepted(value)}
                                 onEditComplete={() => {}}
                                 size="md"
                             />
@@ -206,17 +189,19 @@ export default function Register({ kcContext }: RegisterProps) {
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button type="submit" color="primary">
+                            <UserPlus className="w-4 h-4" />
                             {t('doRegister')}
                         </Button>
 
                         <Button
                             type="button"
                             color="neutral"
+                            coloringStyle="outline"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}
                         >
-                            <ArrowLeft size={16} style={{ marginRight: '0.5rem', display: 'inline-block' }} />
+                            <ArrowLeft className="w-4 h-4" />
                             {t('backToLogin')}
                         </Button>
                     </div>

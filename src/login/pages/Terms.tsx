@@ -1,10 +1,12 @@
-import { Button, CheckboxUncontrolled } from '@helpwave/hightide'
+import { ArrowLeft, Check } from 'lucide-react'
+import { Button, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useState } from 'react'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type TermsProps = {
     kcContext: Extract<KcContext, { pageId: 'terms.ftl' }>,
@@ -22,6 +24,7 @@ export default function Terms({ kcContext }: TermsProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -29,7 +32,7 @@ export default function Terms({ kcContext }: TermsProps) {
                         style={{
                             padding: '1rem',
                             borderRadius: '0.5rem',
-                            backgroundColor: 'var(--hw-color-neutral-50)',
+                            backgroundColor: 'var(--color-surface)',
                             maxHeight: '400px',
                             overflowY: 'auto'
                         }}
@@ -43,9 +46,9 @@ export default function Terms({ kcContext }: TermsProps) {
 
                     <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <CheckboxUncontrolled
+                            <Checkbox
                                 value={accepted}
-                                onValueChange={(value) => setAccepted(value)}
+                                onValueChange={(value: boolean) => setAccepted(value)}
                                 onEditComplete={() => {}}
                                 size="md"
                             />
@@ -61,15 +64,18 @@ export default function Terms({ kcContext }: TermsProps) {
                         </div>
 
                         <Button type="submit" color="primary" disabled={!accepted}>
+                            <Check className="w-4 h-4" />
                             {t('doAccept')}
                         </Button>
                         <Button
                             type="button"
                             color="neutral"
+                            coloringStyle="outline"
                             onClick={() => {
                                 window.location.href = kcContext.url.loginUrl
                             }}
                         >
+                            <ArrowLeft className="w-4 h-4" />
                             {t('doDecline')}
                         </Button>
                     </form>

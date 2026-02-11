@@ -1,9 +1,11 @@
+import { RotateCcw } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginPageExpiredProps = {
     kcContext: Extract<KcContext, { pageId: 'login-page-expired.ftl' }>,
@@ -20,6 +22,7 @@ export default function LoginPageExpired({ kcContext }: LoginPageExpiredProps) {
             displayMessage={false}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -32,6 +35,7 @@ export default function LoginPageExpired({ kcContext }: LoginPageExpiredProps) {
                             window.location.href = kcContext.url.loginRestartFlowUrl
                         }}
                     >
+                        <RotateCcw className="w-4 h-4" />
                         {t('doRestart')}
                     </Button>
                 </div>

@@ -1,9 +1,12 @@
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
+import { AlertBox } from '../components/AlertBox'
 import { useTranslation } from '../../i18n/useTranslation'
+import { getPageTitleKey } from '../utils/pageTitles'
 
 type LoginVerifyEmailProps = {
     kcContext: Extract<KcContext, { pageId: 'login-verify-email.ftl' }>,
@@ -20,22 +23,10 @@ export default function LoginVerifyEmail({ kcContext }: LoginVerifyEmailProps) {
             displayMessage={!!kcContext.message}
             headerNode={null}
             doUseDefaultCss={false}
+            documentTitle={t(getPageTitleKey(kcContext.pageId))}
         >
             <PageLayout kcContext={kcContext}>
-                {kcContext.message && (
-                    <div
-                        role="alert"
-                        style={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                            backgroundColor: 'var(--hw-color-positive-50)',
-                            color: 'var(--hw-color-positive-900)',
-                            marginBottom: '1rem'
-                        }}
-                    >
-                        {kcContext.message.summary}
-                    </div>
-                )}
+                {kcContext.message && <AlertBox message={kcContext.message} />}
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <p>{t('emailVerificationBody1') || t('emailVerificationBody')}</p>
@@ -46,6 +37,7 @@ export default function LoginVerifyEmail({ kcContext }: LoginVerifyEmailProps) {
                             window.location.href = kcContext.url.loginRestartFlowUrl
                         }}
                     >
+                        <ArrowRight className="w-4 h-4" />
                         {t('doClickHere') || t('doContinue')}
                     </Button>
                 </div>
