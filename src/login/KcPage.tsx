@@ -31,7 +31,6 @@ import LoginResetOtp from './pages/LoginResetOtp'
 import LoginUpdateProfile from './pages/LoginUpdateProfile'
 import LoginUsername from './pages/LoginUsername'
 import LoginX509Info from './pages/LoginX509Info'
-import SamlPostForm from './pages/SamlPostForm'
 import SelectAuthenticator from './pages/SelectAuthenticator'
 import SelectOrganization from './pages/SelectOrganization'
 import UpdateEmail from './pages/UpdateEmail'
@@ -115,8 +114,6 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return <LoginUsername kcContext={kcContext} />
                     case 'login-x509-info.ftl':
                         return <LoginX509Info kcContext={kcContext} />
-                    case 'saml-post-form.ftl':
-                        return <SamlPostForm kcContext={kcContext} />
                     case 'select-authenticator.ftl':
                         return <SelectAuthenticator kcContext={kcContext} />
                     case 'select-organization.ftl':
