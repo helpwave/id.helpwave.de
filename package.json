@@ -21,7 +21,7 @@
   "license": "MPL-2",
   "keywords": [],
   "dependencies": {
-    "@helpwave/hightide": "^0.8.1",
+    "@helpwave/hightide": "^0.8.8",
     "@keycloakify/email-native": "~260007.0.0",
     "keycloakify": "^11.14.2",
     "lucide-react": "^0.563.0",
