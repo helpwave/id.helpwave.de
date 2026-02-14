@@ -49,7 +49,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
                     <HelpwaveLogo animate="loading" color="currentColor" height={128} width={128} />
                 </div>
-              )}
+            )}
         >
             {(() => {
                 switch (kcContext.pageId) {
