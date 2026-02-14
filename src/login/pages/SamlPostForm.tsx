@@ -1,27 +1,52 @@
 import { ArrowRight } from 'lucide-react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { Button } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
 import { PageLayout } from '../components/PageLayout'
-import { useEffect } from 'react'
 import { useTranslation } from '../../i18n/useTranslation'
 import { getPageTitleKey } from '../utils/pageTitles'
+
+const FORM_ID = 'kc-saml-post-form'
 
 type SamlPostFormProps = {
     kcContext: Extract<KcContext, { pageId: 'saml-post-form.ftl' }>,
 };
 
+function submitForm(): boolean {
+    const form = document.getElementById(FORM_ID) as HTMLFormElement | null
+    if (form) {
+        form.submit()
+        return true
+    }
+    return false
+}
+
 export default function SamlPostForm({ kcContext }: SamlPostFormProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
+    const submittedRef = useRef(false)
+
+    const actionUrl = kcContext.samlPost?.url ?? kcContext.url.loginAction
+
+    useLayoutEffect(() => {
+        if (submittedRef.current || !actionUrl) return
+        if (submitForm()) {
+            submittedRef.current = true
+        }
+    }, [actionUrl])
 
     useEffect(() => {
-        const form = document.getElementById('kc-saml-post-form') as HTMLFormElement
-        if (form && kcContext.url.loginAction) {
-            form.submit()
-        }
-    }, [kcContext.url.loginAction])
+        if (submittedRef.current || !actionUrl) return
+        const id = setTimeout(() => {
+            if (submittedRef.current) return
+            if (submitForm()) {
+                submittedRef.current = true
+            }
+        }, 100)
+        return () => clearTimeout(id)
+    }, [actionUrl])
 
     return (
         <Template
@@ -37,8 +62,8 @@ export default function SamlPostForm({ kcContext }: SamlPostFormProps) {
                     <p>{t('samlPostFormMessage')}</p>
 
                     <form
-                        id="kc-saml-post-form"
-                        action={kcContext.samlPost?.url ?? kcContext.url.loginAction}
+                        id={FORM_ID}
+                        action={actionUrl}
                         method="POST"
                         style={{ display: 'none' }}
                     >
@@ -54,11 +79,16 @@ export default function SamlPostForm({ kcContext }: SamlPostFormProps) {
                                         />
                                     )
                             )}
-                        <Button type="submit" color="primary">
-                            <ArrowRight className="w-4 h-4" />
-                            {t('doContinue')}
-                        </Button>
                     </form>
+
+                    <Button
+                        type="button"
+                        color="primary"
+                        onClick={() => submitForm()}
+                    >
+                        <ArrowRight className="w-4 h-4" />
+                        {t('doContinue')}
+                    </Button>
                 </div>
             </PageLayout>
         </Template>
