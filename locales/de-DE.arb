@@ -430,7 +430,6 @@
   "pageTitleUpdateProfile": "Kontoinformationen aktualisieren",
   "pageTitleLoginUsername": "Anmelden",
   "pageTitleX509Info": "X.509-Zertifikat",
-  "pageTitleSamlPostForm": "Weiterleitung",
   "pageTitleSelectAuthenticator": "Authentifikator auswählen",
   "pageTitleSelectOrganization": "Organisation auswählen",
   "pageTitleUpdateEmail": "E-Mail aktualisieren",

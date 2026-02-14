@@ -33,7 +33,6 @@ const PAGE_TITLE_BY_PAGE_ID: Partial<Record<KcContext['pageId'], keyof HelpwaveI
   'login-update-profile.ftl': 'pageTitleUpdateProfile',
   'login-username.ftl': 'pageTitleLoginUsername',
   'login-x509-info.ftl': 'pageTitleX509Info',
-  'saml-post-form.ftl': 'pageTitleSamlPostForm',
   'select-authenticator.ftl': 'pageTitleSelectAuthenticator',
   'select-organization.ftl': 'pageTitleSelectOrganization',
   'update-email.ftl': 'pageTitleUpdateEmail',
