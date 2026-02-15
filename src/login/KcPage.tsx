@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, lazy } from 'react'
 import type { KcContext } from './KcContext'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -31,17 +31,20 @@ import LoginResetOtp from './pages/LoginResetOtp'
 import LoginUpdateProfile from './pages/LoginUpdateProfile'
 import LoginUsername from './pages/LoginUsername'
 import LoginX509Info from './pages/LoginX509Info'
-import SamlPostForm from './pages/SamlPostForm'
 import SelectAuthenticator from './pages/SelectAuthenticator'
 import SelectOrganization from './pages/SelectOrganization'
 import UpdateEmail from './pages/UpdateEmail'
 import WebauthnAuthenticate from './pages/WebauthnAuthenticate'
 import WebauthnError from './pages/WebauthnError'
 import WebauthnRegister from './pages/WebauthnRegister'
+import DefaultPage from 'keycloakify/login/DefaultPage'
+import Template from 'keycloakify/login/Template'
 import { HelpwaveLogo } from '@helpwave/hightide'
+import { useI18n } from './i18n'
 
 export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props
+    const { i18n } = useI18n({ kcContext })
 
     return (
         <Suspense
@@ -115,8 +118,6 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return <LoginUsername kcContext={kcContext} />
                     case 'login-x509-info.ftl':
                         return <LoginX509Info kcContext={kcContext} />
-                    case 'saml-post-form.ftl':
-                        return <SamlPostForm kcContext={kcContext} />
                     case 'select-authenticator.ftl':
                         return <SelectAuthenticator kcContext={kcContext} />
                     case 'select-organization.ftl':
@@ -130,11 +131,19 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case 'webauthn-register.ftl':
                         return <WebauthnRegister kcContext={kcContext} />
                     default: {
-                        const fallback = kcContext as KcContext
+                        const UserProfileFormFields = lazy(
+                            () => import('keycloakify/login/UserProfileFormFields')
+                        )
+
                         return (
-                            <div>
-                                <p>Page not implemented: {fallback.pageId}</p>
-                            </div>
+                            <DefaultPage
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                                UserProfileFormFields={UserProfileFormFields}
+                                doMakeUserConfirmPassword={true}
+                            />
                         )
                     }
                 }
