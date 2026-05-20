@@ -141,37 +141,39 @@ from a `<input type="file">`) with a Bearer access token. The endpoint scales th
 user as the standard OpenID Connect `picture` attribute; thumbnail URLs as
 `picture_thumb_64|128|256`. `DELETE` removes both the bucket objects and the attributes.
 
-Configuration is read from Keycloak SPI settings (preferred) or environment variables:
+Configuration is read from Keycloak SPI settings (preferred — see
+[docs/deployment-nixos.md](docs/deployment-nixos.md) for `_secret` integration) or
+environment variables as a fallback:
 
-| SPI key (under `spi-helpwave-picture-default-*`) | Env var                                | Required |
-|--------------------------------------------------|----------------------------------------|----------|
-| `endpoint`                                       | `HELPWAVE_PICTURE_ENDPOINT`            | R2 only  |
-| `region`                                         | `HELPWAVE_PICTURE_REGION` (def `auto`) | no       |
-| `bucket`                                         | `HELPWAVE_PICTURE_BUCKET`              | yes      |
-| `accessKey`                                      | `HELPWAVE_PICTURE_ACCESS_KEY`          | yes      |
-| `secretKey`                                      | `HELPWAVE_PICTURE_SECRET_KEY`          | yes      |
-| `publicBaseUrl`                                  | `HELPWAVE_PICTURE_PUBLIC_BASE_URL`     | yes      |
-| `maxBytes`                                       | `HELPWAVE_PICTURE_MAX_BYTES` (5 MiB)   | no       |
+| SPI key (`keycloak.conf` / NixOS `services.keycloak.settings`)            | Env var fallback                       | Required |
+|---------------------------------------------------------------------------|----------------------------------------|----------|
+| `spi-realm-restapi-extension-helpwave-picture-endpoint`                   | `HELPWAVE_PICTURE_ENDPOINT`            | R2 only  |
+| `spi-realm-restapi-extension-helpwave-picture-region` (def `auto`)        | `HELPWAVE_PICTURE_REGION`              | no       |
+| `spi-realm-restapi-extension-helpwave-picture-bucket`                     | `HELPWAVE_PICTURE_BUCKET`              | yes      |
+| `spi-realm-restapi-extension-helpwave-picture-access-key`                 | `HELPWAVE_PICTURE_ACCESS_KEY`          | yes      |
+| `spi-realm-restapi-extension-helpwave-picture-secret-key`                 | `HELPWAVE_PICTURE_SECRET_KEY`          | yes      |
+| `spi-realm-restapi-extension-helpwave-picture-public-base-url`            | `HELPWAVE_PICTURE_PUBLIC_BASE_URL`     | yes      |
+| `spi-realm-restapi-extension-helpwave-picture-max-bytes` (def 5 MiB)      | `HELPWAVE_PICTURE_MAX_BYTES`           | no       |
 
-#### Example: Cloudflare R2
+#### Example: Cloudflare R2 (raw env vars)
 
 ```bash
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_REGION=auto
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_BUCKET=helpwave-id-avatars
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_ACCESS_KEY=...
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_SECRET_KEY=...
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_PUBLIC_BASE_URL=https://cdn.helpwave.de/avatars
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_REGION=auto
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_BUCKET=helpwave-id-avatars
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_ACCESS_KEY=...
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_SECRET_KEY=...
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_PUBLIC_BASE_URL=https://cdn.helpwave.de/avatars
 ```
 
-#### Example: AWS S3
+#### Example: AWS S3 (raw env vars)
 
 ```bash
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_REGION=eu-central-1
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_BUCKET=helpwave-id-avatars
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_ACCESS_KEY=...
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_SECRET_KEY=...
-KC_SPI_HELPWAVE_PICTURE_DEFAULT_PUBLIC_BASE_URL=https://avatars.helpwave.de
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_REGION=eu-central-1
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_BUCKET=helpwave-id-avatars
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_ACCESS_KEY=...
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_SECRET_KEY=...
+KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_PUBLIC_BASE_URL=https://avatars.helpwave.de
 ```
 
 ### 3. Wire the theme to the SPIs
@@ -186,13 +188,18 @@ Two Keycloakify env vars expose the SPI to the theme at render time:
 Set them in the Keycloak container, e.g.:
 
 ```bash
-KC_HELPWAVE_TURNSTILE_SITE_KEY=0x4AAAAAAA...
-KC_HELPWAVE_PROFILE_PICTURE_API_URL=https://id.helpwave.de/realms/customer/helpwave-picture
+KC_TURNSTILE_SITE_KEY=0x4AAAAAAA...
+KC_PROFILE_PICTURE_API_URL=https://id.helpwave.de/realms/customer/helpwave-picture
 ```
 
 (Keycloakify reads `KC_<NAME>` and exposes it as `kcContext.properties.<NAME>`.)
 
-### 4. Releases
+### 4. NixOS deployment
+
+A complete `services.keycloak` example with `_secret` file handling and the matching
+admin-console steps lives in [docs/deployment-nixos.md](docs/deployment-nixos.md).
+
+### 5. Releases
 
 Bump `version` in `package.json` on `main`. The CI workflow builds the theme + SPIs and
 publishes a GitHub release with all four jars attached.
