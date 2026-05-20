@@ -72,6 +72,50 @@
   "@acceptTerms": {
     "description": "Text for terms acceptance checkbox"
   },
+  "acceptPrivacy": "I have read and accept the",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "privacy policy",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "You must accept the privacy policy to continue.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "Captcha verification failed. Please try again.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "Loading captcha…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Team workspace",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Administrator portal",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Internal realm",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "You are signing in to a privileged team area.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Administrative access — every action is audited.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "This is not the regular customer login.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
   "passwordNew": "New Password",
   "@passwordNew": {
     "description": "Label for new password input field"
@@ -135,6 +179,34 @@
   "profilePictureComingSoon": "Upload profile picture – coming soon.",
   "@profilePictureComingSoon": {
     "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Upload picture",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Remove picture",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Uploading…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Upload failed. Please try again.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "The selected file is larger than 5 MB.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Only JPEG, PNG or WebP images are supported.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG or WebP, max. 5 MB. The image is scaled and stored securely.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
   },
   "accountSectionProfile": "Profile",
   "@accountSectionProfile": {

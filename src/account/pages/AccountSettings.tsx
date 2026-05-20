@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import { Key, Save, Trash2 } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Key, Save, Trash2, Upload } from 'lucide-react'
 import { Avatar, Button, Chip, ConfirmDialog, DialogRoot, Input, FormFieldLayout } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useTranslation } from '../../i18n/useTranslation'
 import { useTranslatedFieldError } from '../../login/utils/translateFieldError'
 import { AlertBox } from '../../login/components/AlertBox'
+
+const MAX_PICTURE_BYTES = 5 * 1024 * 1024
+const ACCEPTED_PICTURE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 
 type AccountSettingsProps = {
     kcContext: Extract<KcContext, { pageId: 'account.ftl' }>,
@@ -42,8 +45,67 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
     const [lastName, setLastName] = useState(account.lastName ?? '')
     const [deleteAccountDialogOpen, setDeleteAccountDialogOpen] = useState(false)
 
+    const profilePictureApiUrl = kcContext.profilePictureApiUrl ?? kcContext.properties?.PROFILE_PICTURE_API_URL ?? ''
+    const [pictureUrl, setPictureUrl] = useState<string | undefined>(kcContext.profilePictureUrl)
+    const [pictureUploading, setPictureUploading] = useState(false)
+    const [pictureError, setPictureError] = useState<string | undefined>()
+    const fileInputRef = useRef<HTMLInputElement>(null)
+
     const displayName = getDisplayName(kcContext)
-    const avatarImage = undefined
+    const avatarImage = pictureUrl ? { avatarUrl: pictureUrl, alt: displayName || 'Profile picture' } : undefined
+
+    const handlePictureSelect = async (file: File | undefined) => {
+        if (!file) return
+        setPictureError(undefined)
+        if (!ACCEPTED_PICTURE_TYPES.includes(file.type)) {
+            setPictureError(t('profilePictureWrongType'))
+            return
+        }
+        if (file.size > MAX_PICTURE_BYTES) {
+            setPictureError(t('profilePictureTooLarge'))
+            return
+        }
+        if (!profilePictureApiUrl) {
+            setPictureError(t('profilePictureUploadFailed'))
+            return
+        }
+        setPictureUploading(true)
+        try {
+            const body = new FormData()
+            body.append('file', file)
+            const res = await fetch(profilePictureApiUrl, {
+                method: 'POST',
+                body,
+                credentials: 'include',
+            })
+            if (!res.ok) throw new Error(`upload failed: ${res.status}`)
+            const data = await res.json() as { url?: string }
+            if (data.url) setPictureUrl(data.url)
+        } catch {
+            setPictureError(t('profilePictureUploadFailed'))
+        } finally {
+            setPictureUploading(false)
+            if (fileInputRef.current) fileInputRef.current.value = ''
+        }
+    }
+
+    const handlePictureRemove = async () => {
+        if (!profilePictureApiUrl) return
+        setPictureError(undefined)
+        setPictureUploading(true)
+        try {
+            const res = await fetch(profilePictureApiUrl, {
+                method: 'DELETE',
+                credentials: 'include',
+            })
+            if (!res.ok) throw new Error(`remove failed: ${res.status}`)
+            setPictureUrl(undefined)
+        } catch {
+            setPictureError(t('profilePictureUploadFailed'))
+        } finally {
+            setPictureUploading(false)
+        }
+    }
 
     const getFieldError = (fieldName: string) =>
         messagesPerField.existsError(fieldName) ? messagesPerField.get(fieldName) : undefined
@@ -233,13 +295,62 @@ export default function AccountSettings({ kcContext }: AccountSettingsProps) {
 
             <hr className="border-[var(--color-border)]" />
 
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col gap-3">
                 <h2 className="text-lg font-bold text-[var(--color-label)]">
                     {t('profilePicture')}
                 </h2>
-                <p className="text-sm text-[var(--color-text-secondary)]">
-                    {t('profilePictureComingSoon')}
-                </p>
+                {profilePictureApiUrl ? (
+                    <div className="flex flex-col gap-3">
+                        <div className="flex items-center gap-4 flex-wrap">
+                            <Avatar name={displayName} size="lg" image={avatarImage} />
+                            <div className="flex flex-col gap-2">
+                                <input
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept={ACCEPTED_PICTURE_TYPES.join(',')}
+                                    style={{ display: 'none' }}
+                                    onChange={(e) => handlePictureSelect(e.target.files?.[0])}
+                                />
+                                <div className="flex gap-2 flex-wrap">
+                                    <Button
+                                        type="button"
+                                        color="primary"
+                                        coloringStyle="outline"
+                                        disabled={pictureUploading}
+                                        onClick={() => fileInputRef.current?.click()}
+                                    >
+                                        <Upload className="w-4 h-4" />
+                                        {pictureUploading ? t('profilePictureUploading') : t('uploadProfilePicture')}
+                                    </Button>
+                                    {pictureUrl && (
+                                        <Button
+                                            type="button"
+                                            color="negative"
+                                            coloringStyle="outline"
+                                            disabled={pictureUploading}
+                                            onClick={handlePictureRemove}
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                            {t('removeProfilePicture')}
+                                        </Button>
+                                    )}
+                                </div>
+                                <p className="text-xs text-[var(--color-text-secondary)]">
+                                    {t('profilePictureHelp')}
+                                </p>
+                                {pictureError && (
+                                    <p className="text-sm" style={{ color: 'var(--color-negative)' }}>
+                                        {pictureError}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <p className="text-sm text-[var(--color-text-secondary)]">
+                        {t('profilePictureComingSoon')}
+                    </p>
+                )}
             </section>
         </div>
     )
