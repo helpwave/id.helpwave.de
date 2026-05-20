@@ -1,5 +1,6 @@
 package de.helpwave.keycloak.picture;
 
+import jakarta.enterprise.inject.Vetoed;
 import net.coobird.thumbnailator.Thumbnails;
 
 import javax.imageio.ImageIO;
@@ -14,6 +15,7 @@ import java.util.Map;
  * Decodes uploaded images, strips metadata (re-encoding to PNG/JPEG via Thumbnailator) and
  * produces a fixed set of square thumbnails for the avatar use case.
  */
+@Vetoed
 public final class ImageProcessor {
 
     /** Output sizes (pixels). Keys are used as filename suffixes. */

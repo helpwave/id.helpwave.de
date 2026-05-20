@@ -1,5 +1,7 @@
 package de.helpwave.keycloak.picture;
 
+import jakarta.enterprise.inject.Vetoed;
+
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -7,6 +9,7 @@ import java.nio.charset.StandardCharsets;
  * the request body. We do not depend on RESTEasy's MultipartFormDataInput because the type
  * is not on Keycloak's classpath in 26.x.
  */
+@Vetoed
 final class MultipartParser {
 
     private MultipartParser() {}

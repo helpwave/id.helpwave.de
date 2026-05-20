@@ -10,7 +10,7 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>helpwave-turnstile-authenticator</artifactId>
+    <artifactId>helpwave-captcha</artifactId>
     <packaging>jar</packaging>
     <name>helpwave Cloudflare Turnstile Authenticator</name>
 

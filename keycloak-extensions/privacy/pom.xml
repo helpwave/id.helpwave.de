@@ -10,7 +10,7 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>helpwave-privacy-acceptance</artifactId>
+    <artifactId>helpwave-privacy</artifactId>
     <packaging>jar</packaging>
     <name>helpwave Privacy Acceptance Form Action</name>
 

@@ -1,5 +1,6 @@
 package de.helpwave.keycloak.picture;
 
+import jakarta.enterprise.inject.Vetoed;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -13,6 +14,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import java.net.URI;
 
 /** Tiny wrapper around the AWS S3 client that works with Cloudflare R2 via a custom endpoint. */
+@Vetoed
 public final class S3Storage {
 
     private final S3Client client;
