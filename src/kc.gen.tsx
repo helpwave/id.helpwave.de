@@ -14,11 +14,14 @@ export type ThemeName = "helpwave-id";
 
 export const themeNames: ThemeName[] = ["helpwave-id"];
 
-export type KcEnvName = never;
+export type KcEnvName = "TURNSTILE_SITE_KEY" | "PROFILE_PICTURE_API_URL";
 
-export const kcEnvNames: KcEnvName[] = [];
+export const kcEnvNames: KcEnvName[] = ["TURNSTILE_SITE_KEY", "PROFILE_PICTURE_API_URL"];
 
-export const kcEnvDefaults: Record<KcEnvName, string> = {};
+export const kcEnvDefaults: Record<KcEnvName, string> = {
+    TURNSTILE_SITE_KEY: "",
+    PROFILE_PICTURE_API_URL: ""
+};
 
 /**
  * NOTE: Do not import this type except maybe in your entrypoint. 

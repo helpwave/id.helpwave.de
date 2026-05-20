@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
@@ -15,6 +15,49 @@ type RegisterProps = {
     kcContext: Extract<KcContext, { pageId: 'register.ftl' }>,
 };
 
+const TURNSTILE_SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+
+// Renders the Cloudflare Turnstile widget. The widget writes the token into a hidden
+// input named `cf-turnstile-response`, which the FormAction SPI validates server-side.
+function useTurnstile(siteKey: string | undefined, containerId: string) {
+    const [ready, setReady] = useState(false)
+    const [token, setToken] = useState<string | null>(null)
+    const renderedRef = useRef(false)
+
+    useEffect(() => {
+        if (!siteKey) return
+        if (document.querySelector(`script[src="${TURNSTILE_SCRIPT_SRC}"]`)) {
+            setReady(true)
+            return
+        }
+        const script = document.createElement('script')
+        script.src = TURNSTILE_SCRIPT_SRC
+        script.async = true
+        script.defer = true
+        script.onload = () => setReady(true)
+        document.head.appendChild(script)
+    }, [siteKey])
+
+    useEffect(() => {
+        if (!ready || !siteKey || renderedRef.current) return
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const turnstile = (window as any).turnstile
+        if (!turnstile) return
+        const el = document.getElementById(containerId)
+        if (!el) return
+        turnstile.render(`#${containerId}`, {
+            'sitekey': siteKey,
+            'callback': (t: string) => setToken(t),
+            'error-callback': () => setToken(null),
+            'expired-callback': () => setToken(null),
+            'timeout-callback': () => setToken(null),
+        })
+        renderedRef.current = true
+    }, [ready, siteKey, containerId])
+
+    return { ready, token }
+}
+
 export default function Register({ kcContext }: RegisterProps) {
     const { i18n } = useI18n({ kcContext })
     const t = useTranslation()
@@ -22,6 +65,9 @@ export default function Register({ kcContext }: RegisterProps) {
 
     const profile = kcContext.profile
     const attributes = profile?.attributesByName ?? {}
+
+    const turnstileSiteKey = kcContext.turnstileSiteKey ?? kcContext.properties?.TURNSTILE_SITE_KEY ?? ''
+    const captchaEnabled = !!turnstileSiteKey
 
     const [formData, setFormData] = useState<Record<string, string>>(() => {
         const initial: Record<string, string> = {}
@@ -33,6 +79,11 @@ export default function Register({ kcContext }: RegisterProps) {
         return initial
     })
     const [termsAccepted, setTermsAccepted] = useState(false)
+    const [privacyAccepted, setPrivacyAccepted] = useState(false)
+    const [privacyError, setPrivacyError] = useState(false)
+    const [captchaError, setCaptchaError] = useState(false)
+
+    const { token: captchaToken } = useTurnstile(turnstileSiteKey, 'cf-turnstile-container')
 
     const getFieldLabel = (attrName: string, displayName: string | undefined): string => {
         const keyMap: Record<string, keyof HelpwaveIdTranslationEntries> = {
@@ -53,6 +104,19 @@ export default function Register({ kcContext }: RegisterProps) {
         return kcContext.messagesPerField?.existsError(fieldName)
             ? kcContext.messagesPerField.get(fieldName)
             : undefined
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        let ok = true
+        if (!privacyAccepted) {
+            setPrivacyError(true)
+            ok = false
+        }
+        if (captchaEnabled && !captchaToken) {
+            setCaptchaError(true)
+            ok = false
+        }
+        if (!ok) e.preventDefault()
     }
 
     const renderField = (attrName: string) => {
@@ -106,6 +170,7 @@ export default function Register({ kcContext }: RegisterProps) {
                     id="kc-register-form"
                     action={kcContext.url.registrationAction}
                     method="post"
+                    onSubmit={handleSubmit}
                     style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
                 >
                     {Object.keys(attributes).map((attrName) => {
@@ -184,6 +249,66 @@ export default function Register({ kcContext }: RegisterProps) {
                                     {t('acceptTerms')}
                                 </a>
                             </label>
+                        </div>
+                    )}
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <Checkbox
+                                value={privacyAccepted}
+                                onValueChange={(v: boolean) => {
+                                    setPrivacyAccepted(v)
+                                    if (v) setPrivacyError(false)
+                                }}
+                                onEditComplete={() => {}}
+                                size="md"
+                            />
+                            <label
+                                onClick={() => {
+                                    setPrivacyAccepted((p) => {
+                                        if (!p) setPrivacyError(false)
+                                        return !p
+                                    })
+                                }}
+                                onKeyDown={(e) => e.key === 'Enter' && setPrivacyAccepted((p) => !p)}
+                                style={{ cursor: 'pointer', userSelect: 'none' }}
+                                role="button"
+                                tabIndex={0}
+                            >
+                                {t('acceptPrivacy')}{' '}
+                                <a
+                                    href="https://helpwave.de/privacy"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    {t('privacyPolicy')}
+                                </a>
+                            </label>
+                            <input
+                                type="hidden"
+                                name="privacy-accepted"
+                                value={privacyAccepted ? 'true' : 'false'}
+                            />
+                        </div>
+                        {privacyError && (
+                            <div style={{ color: 'var(--color-negative)', fontSize: '0.875rem' }}>
+                                {t('privacyRequired')}
+                            </div>
+                        )}
+                    </div>
+
+                    {captchaEnabled && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                            <div
+                                id="cf-turnstile-container"
+                                data-sitekey={turnstileSiteKey}
+                            />
+                            {captchaError && !captchaToken && (
+                                <div style={{ color: 'var(--color-negative)', fontSize: '0.875rem' }}>
+                                    {t('captchaFailed')}
+                                </div>
+                            )}
                         </div>
                     )}
 

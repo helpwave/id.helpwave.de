@@ -72,6 +72,26 @@
   "@acceptTerms": {
     "description": "Text für AGB-Akzeptanz Checkbox"
   },
+  "acceptPrivacy": "Ich habe die",
+  "@acceptPrivacy": {
+    "description": "Datenschutz-Akzeptanz Prefix"
+  },
+  "privacyPolicy": "Datenschutzerklärung gelesen und akzeptiere sie",
+  "@privacyPolicy": {
+    "description": "Link-Text Datenschutzerklärung"
+  },
+  "privacyRequired": "Bitte akzeptieren Sie die Datenschutzerklärung.",
+  "@privacyRequired": {
+    "description": "Fehler wenn Datenschutz nicht akzeptiert"
+  },
+  "captchaFailed": "Captcha-Prüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+  "@captchaFailed": {
+    "description": "Fehler bei Captcha-Prüfung"
+  },
+  "captchaLoading": "Captcha wird geladen…",
+  "@captchaLoading": {
+    "description": "Captcha Ladezustand"
+  },
   "passwordNew": "Neues Passwort",
   "@passwordNew": {
     "description": "Label für neues Passwort Eingabefeld"
@@ -135,6 +155,34 @@
   "profilePictureComingSoon": "Profilbild hochladen – in Kürze.",
   "@profilePictureComingSoon": {
     "description": "Platzhalter für Profilbild-Upload"
+  },
+  "uploadProfilePicture": "Bild hochladen",
+  "@uploadProfilePicture": {
+    "description": "Button zum Hochladen des Profilbilds"
+  },
+  "removeProfilePicture": "Bild entfernen",
+  "@removeProfilePicture": {
+    "description": "Button zum Entfernen des Profilbilds"
+  },
+  "profilePictureUploading": "Wird hochgeladen…",
+  "@profilePictureUploading": {
+    "description": "Status während des Uploads"
+  },
+  "profilePictureUploadFailed": "Upload fehlgeschlagen. Bitte erneut versuchen.",
+  "@profilePictureUploadFailed": {
+    "description": "Fehler beim Upload des Profilbilds"
+  },
+  "profilePictureTooLarge": "Die gewählte Datei ist größer als 5 MB.",
+  "@profilePictureTooLarge": {
+    "description": "Fehler wenn Bild zu groß ist"
+  },
+  "profilePictureWrongType": "Nur JPEG, PNG oder WebP werden unterstützt.",
+  "@profilePictureWrongType": {
+    "description": "Fehler bei nicht unterstütztem Bildformat"
+  },
+  "profilePictureHelp": "JPEG, PNG oder WebP, max. 5 MB. Das Bild wird skaliert und sicher gespeichert.",
+  "@profilePictureHelp": {
+    "description": "Hinweis unter Upload-Button"
   },
   "accountSectionProfile": "Profil",
   "@accountSectionProfile": {

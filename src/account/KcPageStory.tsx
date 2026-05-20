@@ -11,7 +11,12 @@ const kcContextExtension: KcContextExtension = {
         ...kcEnvDefaults
     }
 }
-const kcContextExtensionPerPage: KcContextExtensionPerPage = {}
+const kcContextExtensionPerPage: KcContextExtensionPerPage = {
+    'account.ftl': {
+        profilePictureApiUrl: '',
+        profilePictureUrl: undefined,
+    }
+}
 
 export const { getKcContextMock } = createGetKcContextMock({
     kcContextExtension,
