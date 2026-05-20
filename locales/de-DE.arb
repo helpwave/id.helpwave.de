@@ -92,6 +92,30 @@
   "@captchaLoading": {
     "description": "Captcha Ladezustand"
   },
+  "realmBannerTeam": "Team-Arbeitsbereich",
+  "@realmBannerTeam": {
+    "description": "Banner-Überschrift für das Team-Realm"
+  },
+  "realmBannerAdmin": "Administrator-Portal",
+  "@realmBannerAdmin": {
+    "description": "Banner-Überschrift für das Admin/Master-Realm"
+  },
+  "realmBannerOther": "Internes Realm",
+  "@realmBannerOther": {
+    "description": "Banner-Überschrift für ein Realm, das kein Kundenrealm ist"
+  },
+  "realmBannerSubtitleTeam": "Sie melden sich in einem privilegierten Team-Bereich an.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Untertitel unter dem Team-Banner"
+  },
+  "realmBannerSubtitleAdmin": "Administrativer Zugriff – jede Aktion wird protokolliert.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Untertitel unter dem Admin-Banner"
+  },
+  "realmBannerSubtitleOther": "Dies ist nicht der reguläre Kunden-Login.",
+  "@realmBannerSubtitleOther": {
+    "description": "Untertitel unter dem Fallback-Banner"
+  },
   "passwordNew": "Neues Passwort",
   "@passwordNew": {
     "description": "Label für neues Passwort Eingabefeld"
