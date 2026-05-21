@@ -17,7 +17,7 @@ Every release attaches the following artifacts to the GitHub release:
 | `helpwave-privacy-<VER>.jar`               | `privacy/`                             | `FormAction` SPI: privacy checkbox + acceptance attrs.    |
 | `helpwave-picture-<VER>.jar`               | `picture/`                             | `RealmResourceProvider` SPI: avatar upload to S3 / R2.    |
 
-`<VER>` is the SPI Maven version (`keycloak-extensions/pom.xml`, currently `0.1.0`),
+`<VER>` is the SPI Maven version (`keycloak-extensions/pom.xml`, currently `0.2.0`),
 which is independent from the theme/npm version in `package.json`. All four jars go into
 Keycloak's `providers/` directory — `services.keycloak.plugins` does that for you.
 
@@ -28,8 +28,8 @@ Keycloak's `providers/` directory — `services.keycloak.plugins` does that for 
 let
   domain = "id.helpwave.de";
 
-  themeVersion = "0.4.0";   # ⇄ package.json version → release tag v0.4.0
-  spiVersion   = "0.1.0";   # ⇄ keycloak-extensions/pom.xml
+  themeVersion = "0.5.0";   # ⇄ package.json version → release tag v0.5.0
+  spiVersion   = "0.2.0";   # ⇄ keycloak-extensions/pom.xml
 
   release = file: sha:
     pkgs.fetchurl {
@@ -119,7 +119,7 @@ in
 >
 > ```sh
 > nix-prefetch-url --type sha256 \
->   "https://github.com/helpwave/id.helpwave.de/releases/download/v0.4.0/helpwave-picture-0.1.0.jar"
+>   "https://github.com/helpwave/id.helpwave.de/releases/download/v0.5.0/helpwave-picture-0.2.0.jar"
 > ```
 >
 > Or just run `nixos-rebuild switch` once with all four `sha256-AAA…` placeholders, copy
