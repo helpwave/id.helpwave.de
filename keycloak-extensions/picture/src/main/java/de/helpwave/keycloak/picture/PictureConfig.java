@@ -1,20 +1,13 @@
 package de.helpwave.keycloak.picture;
 
+import jakarta.enterprise.inject.Vetoed;
+
 /**
- * Configuration for the profile-picture storage backend. All values are read from
- * Keycloak's SPI configuration ({@code spi-helpwave-picture-default-*}) or environment
- * variables, whichever is set first.
- *
- * <p>Example for Cloudflare R2:
- * <pre>
- * KC_SPI_HELPWAVE_PICTURE_DEFAULT_ENDPOINT=https://&lt;account&gt;.r2.cloudflarestorage.com
- * KC_SPI_HELPWAVE_PICTURE_DEFAULT_REGION=auto
- * KC_SPI_HELPWAVE_PICTURE_DEFAULT_BUCKET=helpwave-id-avatars
- * KC_SPI_HELPWAVE_PICTURE_DEFAULT_ACCESS_KEY=...
- * KC_SPI_HELPWAVE_PICTURE_DEFAULT_SECRET_KEY=...
- * KC_SPI_HELPWAVE_PICTURE_DEFAULT_PUBLIC_BASE_URL=https://cdn.helpwave.de/avatars
- * </pre>
+ * Configuration for the profile-picture storage backend. Read from Keycloak's SPI
+ * configuration ({@code spi-realm-restapi-extension-helpwave-picture-*}) or env vars.
+ * See README + docs/deployment-nixos.md for the full key list.
  */
+@Vetoed
 public record PictureConfig(
         String endpoint,
         String region,

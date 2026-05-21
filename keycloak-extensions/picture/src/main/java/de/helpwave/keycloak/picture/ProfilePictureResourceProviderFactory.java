@@ -12,22 +12,23 @@ public class ProfilePictureResourceProviderFactory implements RealmResourceProvi
     public static final String ID = "helpwave-picture";
     private static final Logger log = Logger.getLogger(ProfilePictureResourceProviderFactory.class);
 
-    private PictureConfig config;
     private S3Storage storage;
 
     @Override
     public RealmResourceProvider create(KeycloakSession session) {
-        return new ProfilePictureResourceProvider(session, config, storage);
+        return new ProfilePictureResourceProvider();
     }
 
     @Override
     public void init(Config.Scope scope) {
-        this.config = PictureConfig.fromEnv(scope);
+        PictureConfig config = PictureConfig.fromEnv(scope);
         if (!config.isValid()) {
             log.warn("helpwave-picture: storage config is incomplete; uploads will return 503");
+            PictureProviderHolder.set(config, null);
             return;
         }
         this.storage = new S3Storage(config);
+        PictureProviderHolder.set(config, storage);
         log.infof("helpwave-picture initialized (bucket=%s, region=%s)", config.bucket(), config.region());
     }
 

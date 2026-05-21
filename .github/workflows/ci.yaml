@@ -65,9 +65,9 @@ jobs:
               run: |
                   mkdir -p release-artifacts
                   cp dist_keycloak/keycloak-theme-*.jar release-artifacts/
-                  cp keycloak-extensions/turnstile-authenticator/target/helpwave-turnstile-authenticator-*.jar release-artifacts/
-                  cp keycloak-extensions/privacy-acceptance/target/helpwave-privacy-acceptance-*.jar release-artifacts/
-                  cp keycloak-extensions/profile-picture/target/helpwave-profile-picture-*.jar release-artifacts/
+                  cp keycloak-extensions/captcha/target/helpwave-captcha-*.jar release-artifacts/
+                  cp keycloak-extensions/privacy/target/helpwave-privacy-*.jar release-artifacts/
+                  cp keycloak-extensions/picture/target/helpwave-picture-*.jar release-artifacts/
                   rm -f release-artifacts/original-*.jar
             - uses: softprops/action-gh-release@v2
               with:

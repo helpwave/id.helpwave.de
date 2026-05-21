@@ -1,28 +1,25 @@
-# NixOS deployment
+# NixOS deployment (with sops-nix)
 
 This guide shows how to deploy `id.helpwave.de` on a NixOS host using
-`services.keycloak`, fetching the theme and SPI jars from a GitHub release and wiring
-credentials via the standard `_secret` pattern.
+`services.keycloak`, pulling the theme and SPI jars from a GitHub release and injecting
+secrets with [sops-nix].
 
-## 1. Jars published per release
+[sops-nix]: https://github.com/Mic92/sops-nix
 
-Every release of this repository attaches the following artifacts to its GitHub release
-(see CI workflow `.github/workflows/ci.yaml`):
+## 1. Jars per release
 
-| File                                              | Source module                 | Purpose                                                       |
-|---------------------------------------------------|-------------------------------|---------------------------------------------------------------|
-| `keycloak-theme-for-kc-26.2-and-above.jar`        | Keycloakify build             | Login + account theme (`helpwave-id`).                        |
-| `helpwave-turnstile-authenticator-<VER>.jar`      | `turnstile-authenticator`     | `FormAction` SPI: Cloudflare Turnstile CAPTCHA on signup.     |
-| `helpwave-privacy-acceptance-<VER>.jar`           | `privacy-acceptance`          | `FormAction` SPI: privacy checkbox + acceptance attributes.   |
-| `helpwave-profile-picture-<VER>.jar`              | `profile-picture`             | `RealmResourceProvider` SPI: avatar upload to S3 / R2.        |
+Every release attaches the following artifacts to the GitHub release:
 
-`<VER>` is the SPI Maven version (`keycloak-extensions/pom.xml`, currently `0.1.0`) — it
-is independent from the npm/theme version in `package.json`.
+| File                                       | Source folder (`keycloak-extensions/`) | What it is                                                |
+|--------------------------------------------|----------------------------------------|-----------------------------------------------------------|
+| `keycloak-theme-for-kc-26.2-and-above.jar` | (root, built by Keycloakify)           | Login + account theme `helpwave-id`.                      |
+| `helpwave-captcha-<VER>.jar`               | `captcha/`                             | `FormAction` SPI: Cloudflare Turnstile CAPTCHA on signup. |
+| `helpwave-privacy-<VER>.jar`               | `privacy/`                             | `FormAction` SPI: privacy checkbox + acceptance attrs.    |
+| `helpwave-picture-<VER>.jar`               | `picture/`                             | `RealmResourceProvider` SPI: avatar upload to S3 / R2.    |
 
-All four jars are dropped into Keycloak's `providers/` directory. The
-[`services.keycloak.plugins`][nixopts] option does exactly that for you.
-
-[nixopts]: https://search.nixos.org/options?channel=25.11&query=services.keycloak.plugins
+`<VER>` is the SPI Maven version (`keycloak-extensions/pom.xml`, currently `0.1.0`),
+which is independent from the theme/npm version in `package.json`. All four jars go into
+Keycloak's `providers/` directory — `services.keycloak.plugins` does that for you.
 
 ## 2. Full NixOS module example
 
@@ -31,50 +28,60 @@ All four jars are dropped into Keycloak's `providers/` directory. The
 let
   domain = "id.helpwave.de";
 
-  themeVersion = "0.2.0";       # package.json version → release tag v0.2.0
-  spiVersion = "0.1.0";         # keycloak-extensions/pom.xml version
+  themeVersion = "0.4.0";   # ⇄ package.json version → release tag v0.4.0
+  spiVersion   = "0.1.0";   # ⇄ keycloak-extensions/pom.xml
 
-  release = ver: file: sha:
+  release = file: sha:
     pkgs.fetchurl {
       name = file;
-      url = "https://github.com/helpwave/id.helpwave.de/releases/download/v${ver}/${file}";
+      url = "https://github.com/helpwave/id.helpwave.de/releases/download/v${themeVersion}/${file}";
       sha256 = sha;
     };
 
-  themePlugin   = release themeVersion "keycloak-theme-for-kc-26.2-and-above.jar"
-                  "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-
-  turnstileSPI  = release themeVersion "helpwave-turnstile-authenticator-${spiVersion}.jar"
-                  "sha256-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=";
-
-  privacySPI    = release themeVersion "helpwave-privacy-acceptance-${spiVersion}.jar"
-                  "sha256-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC=";
-
-  pictureSPI    = release themeVersion "helpwave-profile-picture-${spiVersion}.jar"
-                  "sha256-DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD=";
+  themePlugin   = release "keycloak-theme-for-kc-26.2-and-above.jar"
+                    "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+  captchaPlugin = release "helpwave-captcha-${spiVersion}.jar"
+                    "sha256-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=";
+  privacyPlugin = release "helpwave-privacy-${spiVersion}.jar"
+                    "sha256-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC=";
+  picturePlugin = release "helpwave-picture-${spiVersion}.jar"
+                    "sha256-DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD=";
 in
 {
+  # ── sops-nix secrets ──────────────────────────────────────────────────────
+  # See https://github.com/Mic92/sops-nix#1-add-a-secret on how to populate
+  # secrets/keycloak.yaml. Each secret is decrypted at activation time and
+  # written to /run/secrets/<name> with the configured owner & mode.
+
+  sops.secrets."keycloak/r2-access-key"     = { owner = "keycloak"; mode = "0400"; };
+  sops.secrets."keycloak/r2-secret-key"     = { owner = "keycloak"; mode = "0400"; };
+  sops.secrets."keycloak/turnstile-secret"  = { owner = "keycloak"; mode = "0400"; };
+
+  # An EnvironmentFile-friendly bundle used by the systemd unit below.
+  sops.templates."keycloak.env".owner = "keycloak";
+  sops.templates."keycloak.env".content = ''
+    TURNSTILE_SECRET=${config.sops.placeholder."keycloak/turnstile-secret"}
+  '';
+
+  # ── keycloak service ──────────────────────────────────────────────────────
   services.keycloak = {
     enable = true;
     database.type = "postgresql";
-    # ... database, hostname, tls etc. as you already have it
+    # database.passwordFile, hostname, sslCertificate etc. as you already have
 
     plugins = [
       themePlugin
-      turnstileSPI
-      privacySPI
-      pictureSPI
+      captchaPlugin
+      privacyPlugin
+      picturePlugin
     ];
 
     settings = {
       hostname = domain;
 
-      # ---- Profile picture SPI (Cloudflare R2 example) -----------------------
-      #
-      # The SPI name for RealmResourceProvider is "realm-restapi-extension".
-      # Provider id is "helpwave-picture" (matches RealmResourceProviderFactory.getId()).
-      # Hence the long key prefix below.
-
+      # ── Profile picture SPI ── (Cloudflare R2 example) ─────────────────────
+      # SPI name "realm-restapi-extension" + provider id "helpwave-picture" →
+      # this long key prefix is what Keycloak actually expects.
       "spi-realm-restapi-extension-helpwave-picture-endpoint" =
         "https://<account-id>.r2.cloudflarestorage.com";
       "spi-realm-restapi-extension-helpwave-picture-region" = "auto";
@@ -82,74 +89,52 @@ in
       "spi-realm-restapi-extension-helpwave-picture-public-base-url" =
         "https://cdn.helpwave.de/avatars";
 
-      # Secrets — file content is read at activation time, NOT committed to the Nix store
+      # `_secret = "<path>"` is the standard NixOS keycloak module idiom; it
+      # reads the file content at activation time and writes it into
+      # keycloak.conf without ever placing the value in the Nix store.
       "spi-realm-restapi-extension-helpwave-picture-access-key" = {
-        _secret = "/run/keys/helpwave-r2-access-key";
+        _secret = config.sops.secrets."keycloak/r2-access-key".path;
       };
       "spi-realm-restapi-extension-helpwave-picture-secret-key" = {
-        _secret = "/run/keys/helpwave-r2-secret-key";
+        _secret = config.sops.secrets."keycloak/r2-secret-key".path;
       };
     };
   };
 
-  # ---- Theme env vars (rendered into the React page via kcContext.properties) ----
-  # services.keycloak.settings can only produce keys for keycloak.conf, so the
-  # KC_<NAME>=<value> variables must be supplied via the systemd unit:
+  # ── Theme env vars ───────────────────────────────────────────────────────
+  # Keycloakify reads KC_<NAME> at boot and exposes the value as
+  # kcContext.properties.<NAME>. These can't go in services.keycloak.settings
+  # (that only writes keycloak.conf), so we layer them via systemd:
   systemd.services.keycloak.serviceConfig = {
+    EnvironmentFile = config.sops.templates."keycloak.env".path;
     Environment = [
-      "KC_TURNSTILE_SITE_KEY=0x4AAAAAAAxxxxxxxxxxxxxxxx"
+      "KC_TURNSTILE_SITE_KEY=0x4AAAAAAAxxxxxxxxxxxxxxxx"        # public, OK in /nix/store
       "KC_PROFILE_PICTURE_API_URL=https://${domain}/realms/customer/helpwave-picture"
     ];
-    # Cloudflare Turnstile secret + R2 credentials are loaded via the secret
-    # files referenced above; nothing further needed here.
   };
-
-  # ---- Secrets provisioning (example using NixOS systemd tmpfiles) ----------
-  # In production use agenix / sops-nix / deploy-rs vaults. The keycloak.service
-  # only reads these at start; rotate by writing new content + systemctl restart.
-  environment.etc."keycloak-secrets/.keep".text = "";
 }
 ```
 
 > **Computing the sha256 placeholders**
 >
 > ```sh
-> nix-prefetch-url \
->   --type sha256 \
->   "https://github.com/helpwave/id.helpwave.de/releases/download/v0.2.0/keycloak-theme-for-kc-26.2-and-above.jar"
+> nix-prefetch-url --type sha256 \
+>   "https://github.com/helpwave/id.helpwave.de/releases/download/v0.4.0/helpwave-picture-0.1.0.jar"
 > ```
 >
-> Or, easier, run `nix build` once with the placeholder and copy the `got:` line from the
-> error message into the expression.
+> Or just run `nixos-rebuild switch` once with all four `sha256-AAA…` placeholders, copy
+> each `got: sha256-…` line out of the error message, and paste it back.
 
-## 3. Bootstrapping the authentication flow
+## 3. Wiring the auth flow (Turnstile + privacy)
 
-Two of the SPIs (`Cloudflare Turnstile (helpwave)` and `Privacy Policy Acceptance
-(helpwave)`) plug into the **registration flow** as `FormAction`s. Their config (Turnstile
-site key + secret, privacy policy URL + version) is **not** read from `keycloak.conf` —
-it is set per execution in the admin console so different realms can have different
-keys. Two options:
+The captcha and privacy SPIs plug into the *registration form* flow as `FormAction`s.
+Their config is **not** read from `keycloak.conf` — it's per-flow so different realms
+can have different keys.
 
-### 3a. One-time admin console setup
+### Option A — Realm export (preferred, declarative)
 
-1. Open `https://<domain>/admin`.
-2. Pick your realm → **Authentication** → **Flows** → duplicate `registration`.
-3. In the *registration form* sub-flow add two new executions and set both to
-   **Required**:
-   - `Cloudflare Turnstile (helpwave)`
-   - `Privacy Policy Acceptance (helpwave)`
-4. Click the gear ⚙️ on each, enter:
-   - Turnstile: site key (public) + secret (private) from
-     <https://dash.cloudflare.com/?to=/:account/turnstile>.
-   - Privacy: URL (defaults to `https://helpwave.de/privacy`), version string
-     (e.g. `2024-01`), both stored on every new user as
-     `privacy_policy_accepted_at` + `privacy_policy_version` user attributes.
-5. **Action** menu on the flow → *Bind* → *Registration flow*.
-
-### 3b. Declarative realm export (preferred for NixOS)
-
-Add `services.keycloak.realmFiles = [ ./helpwave-id-realm.json ];` and ship the
-configured flow as part of the JSON export. Snippet of the relevant part of the export:
+Ship the flow as part of a realm JSON and load it via
+`services.keycloak.realmFiles = [ ./customer-realm.json ];`. The interesting bits:
 
 ```json
 {
@@ -163,7 +148,6 @@ configured flow as part of the JSON export. Snippet of the relevant part of the 
           "authenticator": "registration-page-form",
           "requirement": "REQUIRED",
           "flowAlias": "registration form helpwave",
-          "userSetupAllowed": false,
           "autheticatorFlow": true
         }
       ]
@@ -175,7 +159,7 @@ configured flow as part of the JSON export. Snippet of the relevant part of the 
       "authenticationExecutions": [
         { "authenticator": "registration-user-creation", "requirement": "REQUIRED" },
         { "authenticator": "registration-password-action", "requirement": "REQUIRED" },
-        { "authenticator": "helpwave-turnstile", "requirement": "REQUIRED",
+        { "authenticator": "helpwave-turnstile",       "requirement": "REQUIRED",
           "authenticatorConfig": "turnstile-config" },
         { "authenticator": "helpwave-privacy-acceptance", "requirement": "REQUIRED",
           "authenticatorConfig": "privacy-config" }
@@ -193,7 +177,7 @@ configured flow as part of the JSON export. Snippet of the relevant part of the 
     {
       "alias": "privacy-config",
       "config": {
-        "privacy.policy.url": "https://helpwave.de/privacy",
+        "privacy.policy.url":     "https://helpwave.de/privacy",
         "privacy.policy.version": "2024-01"
       }
     }
@@ -202,37 +186,42 @@ configured flow as part of the JSON export. Snippet of the relevant part of the 
 }
 ```
 
-Keycloak resolves `$${env.VAR}` placeholders at import time, so the Turnstile *secret*
-can be injected through the systemd unit:
+The `$${env.TURNSTILE_SECRET}` placeholder is resolved by Keycloak at import time from
+the `EnvironmentFile` we mounted via sops-nix above — the secret value never sits on
+disk in cleartext or in the Nix store.
 
-```nix
-systemd.services.keycloak.serviceConfig.EnvironmentFile =
-  "/run/keys/helpwave-turnstile-env";   # file containing TURNSTILE_SECRET=...
-```
+### Option B — Click through the admin console
 
-Use `agenix` / `sops-nix` to render that file with mode `0400` owned by `keycloak`.
+Same steps as the manual setup section in [README.md](../README.md#1-enable-the-cloudflare-turnstile-and-privacy-form-actions).
 
-## 4. CORS / cookie notes for the profile picture endpoint
+## 4. Example `.env` (for local dev with `docker compose`)
+
+A flat env file matching the same variables works for the docker-compose local stack
+(`docker-compose.yml` in the repo root). Copy `.env.example` to `.env`, fill it in, then
+`docker compose --env-file .env up`.
+
+See [`.env.example`](../.env.example) at the repo root.
+
+## 5. CORS / cookie note for the picture endpoint
 
 The Account Console talks to `/realms/<realm>/helpwave-picture` from
-`https://<domain>/realms/<realm>/account`. Same origin → no CORS or extra cookie config
-needed. If you host the account console under a different origin, add the SPI's path to
-your reverse proxy CORS allow-list (`POST`, `DELETE`, `Authorization` header,
-`credentials: include`).
+`https://<domain>/realms/<realm>/account` — same origin, no extra CORS config needed. If
+you host the account console under a different origin, add `POST`, `DELETE`,
+`Authorization`, `credentials: include` to your reverse proxy's allow-list.
 
-## 5. Updating
+## 6. Updating
 
-When a new release lands:
-
-1. Bump `themeVersion` (and `spiVersion` if it changed — check the release notes).
+1. Bump `themeVersion` (and `spiVersion` if it changed — check release notes).
 2. Replace the four `sha256-…` placeholders with the new digests.
-3. `nixos-rebuild switch` — Keycloak will be restarted automatically because
+3. `nixos-rebuild switch`. Keycloak restarts automatically because
    `services.keycloak.plugins` changed.
 4. If the SPI's config keys changed, update `services.keycloak.settings` accordingly.
 
-## 6. Smoke test after deployment
+## 7. Smoke test
 
 ```sh
+DOMAIN=id.helpwave.de
+
 # Theme served?
 curl -sf "https://${DOMAIN}/realms/customer/login-actions/registration" | grep -q "helpwave id"
 

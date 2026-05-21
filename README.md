@@ -42,11 +42,12 @@ cd keycloak-extensions
 mvn -DskipTests package
 ```
 
-This produces three jars:
+This produces three jars (each plugin lives in its own folder so it can be built / shipped
+independently):
 
-- `turnstile-authenticator/target/helpwave-turnstile-authenticator-<v>.jar`
-- `privacy-acceptance/target/helpwave-privacy-acceptance-<v>.jar`
-- `profile-picture/target/helpwave-profile-picture-<v>.jar` (shaded with AWS SDK + Thumbnailator)
+- `captcha/target/helpwave-captcha-<v>.jar`
+- `privacy/target/helpwave-privacy-<v>.jar`
+- `picture/target/helpwave-picture-<v>.jar` (shaded with AWS SDK + Thumbnailator)
 
 Drop all three (alongside the theme jar) into Keycloak's `providers/` directory and run
 `kc.sh build`.
@@ -91,7 +92,7 @@ For nixos users, see [docs/nixos.md](docs/nixos.md) for nix-shell setup instruct
 - Field-level validation matching hightide patterns
 - **Cloudflare Turnstile** CAPTCHA on signup (`helpwave-turnstile` FormAction SPI)
 - **Privacy policy** checkbox on signup with acceptance metadata stored on the user
-  (`helpwave-privacy-acceptance` FormAction SPI)
+  (`helpwave-privacy` FormAction SPI)
 - **Profile picture upload** with server-side scaling to multiple sizes and storage in any
   S3-compatible bucket (`helpwave-picture` Realm Resource SPI)
 
@@ -104,9 +105,9 @@ The release workflow publishes the following jars on every version bump in `pack
 | Jar                                              | Purpose                                          |
 |--------------------------------------------------|--------------------------------------------------|
 | `keycloak-theme-for-kc-26.2-and-above.jar`       | The login/account theme                          |
-| `helpwave-turnstile-authenticator-<v>.jar`       | Cloudflare Turnstile registration form action    |
-| `helpwave-privacy-acceptance-<v>.jar`            | Privacy acceptance form action + attribute store |
-| `helpwave-profile-picture-<v>.jar`               | Profile picture REST endpoint + R2/S3 upload     |
+| `helpwave-captcha-<v>.jar`                       | Cloudflare Turnstile registration form action    |
+| `helpwave-privacy-<v>.jar`                       | Privacy acceptance form action + attribute store |
+| `helpwave-picture-<v>.jar`                       | Profile picture REST endpoint + R2/S3 upload     |
 
 Copy all jars into Keycloak's `providers/` directory (or mount them into the container)
 and run `kc.sh build` to rebuild the runtime, then start Keycloak normally.
@@ -196,8 +197,12 @@ KC_PROFILE_PICTURE_API_URL=https://id.helpwave.de/realms/customer/helpwave-pictu
 
 ### 4. NixOS deployment
 
-A complete `services.keycloak` example with `_secret` file handling and the matching
-admin-console steps lives in [docs/deployment-nixos.md](docs/deployment-nixos.md).
+A complete `services.keycloak` example with [sops-nix] secret handling and the matching
+admin-console steps lives in [docs/deployment-nixos.md](docs/deployment-nixos.md). For
+local development with `docker compose`, copy [`.env.example`](.env.example) to `.env`
+and fill in the values.
+
+[sops-nix]: https://github.com/Mic92/sops-nix
 
 ### 5. Releases
 

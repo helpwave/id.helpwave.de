@@ -1,5 +1,6 @@
 package de.helpwave.keycloak.picture;
 
+import jakarta.enterprise.inject.Vetoed;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.HeaderParam;
@@ -7,6 +8,7 @@ import jakarta.ws.rs.OPTIONS;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -22,31 +24,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 /**
- * REST endpoint exposed at {@code /realms/{realm}/helpwave-picture}. The browser sends the
- * raw image bytes as the request body with the corresponding {@code Content-Type} header
- * (no multipart wrapper needed). Authentication is the standard Keycloak bearer token.
+ * REST endpoint exposed at {@code /realms/{realm}/helpwave-picture}.
+ *
+ * <p>The browser sends the raw image bytes as the request body with the corresponding
+ * {@code Content-Type} header (no multipart wrapper needed). Authentication is the
+ * standard Keycloak bearer token.
+ *
+ * <p>{@code @Vetoed} keeps Quarkus' Arc CDI scanner from trying to bean-resolve the class
+ * — the resource is constructed manually by {@link ProfilePictureResourceProvider} and
+ * pulls its dependencies from {@link PictureProviderHolder}.
  */
+@Vetoed
 @Path("/")
 public class ProfilePictureResource {
 
     private static final Logger log = Logger.getLogger(ProfilePictureResource.class);
     public static final String ATTR_PICTURE_URL = "picture";
 
-    private static final Set<String> ALLOWED_TYPES = Set.of("image/jpeg", "image/png", "image/webp");
-
-    private final KeycloakSession session;
-    private final PictureConfig config;
-    private final S3Storage storage;
-
-    public ProfilePictureResource(KeycloakSession session, PictureConfig config, S3Storage storage) {
-        this.session = session;
-        this.config = config;
-        this.storage = storage;
-    }
+    @Context
+    KeycloakSession session;
 
     @OPTIONS
     public Response preflight() {
@@ -57,12 +56,15 @@ public class ProfilePictureResource {
     @Consumes({"image/jpeg", "image/png", "image/webp", MediaType.APPLICATION_OCTET_STREAM, MediaType.MULTIPART_FORM_DATA})
     @Produces(MediaType.APPLICATION_JSON)
     public Response upload(@HeaderParam(HttpHeaders.CONTENT_TYPE) String contentType, InputStream body) {
-        if (storage == null) {
+        if (!PictureProviderHolder.isReady()) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE)
                     .entity(Map.of("error", "storage not configured")).build();
         }
         UserModel user = authenticate();
         if (user == null) return unauthorized();
+
+        PictureConfig config = PictureProviderHolder.config();
+        S3Storage storage = PictureProviderHolder.storage();
 
         byte[] bytes;
         try {
@@ -71,7 +73,6 @@ public class ProfilePictureResource {
             return Response.status(Response.Status.BAD_REQUEST).entity(Map.of("error", "read failed")).build();
         }
 
-        // If sent as multipart, extract the first file part.
         if (contentType != null && contentType.toLowerCase().startsWith("multipart/")) {
             byte[] extracted = MultipartParser.extractFirstFile(bytes, contentType);
             if (extracted != null) bytes = extracted;
@@ -121,6 +122,10 @@ public class ProfilePictureResource {
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete() {
+        if (!PictureProviderHolder.isReady()) {
+            return Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                    .entity(Map.of("error", "storage not configured")).build();
+        }
         UserModel user = authenticate();
         if (user == null) return unauthorized();
 
@@ -135,6 +140,8 @@ public class ProfilePictureResource {
 
     private void tryDeletePrevious(String url) {
         try {
+            PictureConfig config = PictureProviderHolder.config();
+            S3Storage storage = PictureProviderHolder.storage();
             String prefix = config.publicBaseUrl().replaceAll("/+$", "") + "/";
             if (!url.startsWith(prefix)) return;
             String relative = url.substring(prefix.length());

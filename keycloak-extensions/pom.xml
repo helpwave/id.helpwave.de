@@ -12,9 +12,9 @@
     <description>Keycloak SPI extensions used by id.helpwave.de</description>
 
     <modules>
-        <module>turnstile-authenticator</module>
-        <module>privacy-acceptance</module>
-        <module>profile-picture</module>
+        <module>captcha</module>
+        <module>privacy</module>
+        <module>picture</module>
     </modules>
 
     <properties>
