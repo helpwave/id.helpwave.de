@@ -6,7 +6,7 @@
 
     <groupId>de.helpwave.keycloak</groupId>
     <artifactId>helpwave-keycloak-extensions</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>pom</packaging>
     <name>helpwave Keycloak Extensions</name>
     <description>Keycloak SPI extensions used by id.helpwave.de</description>
