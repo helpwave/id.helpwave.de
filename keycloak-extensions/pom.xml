@@ -6,14 +6,14 @@
 
     <groupId>de.helpwave.keycloak</groupId>
     <artifactId>helpwave-keycloak-extensions</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <packaging>pom</packaging>
     <name>helpwave Keycloak Extensions</name>
     <description>Keycloak SPI extensions used by id.helpwave.de</description>
 
     <modules>
         <module>captcha</module>
-        <module>privacy</module>
+        <module>policy-acceptance</module>
         <module>picture</module>
     </modules>
 

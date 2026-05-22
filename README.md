@@ -46,7 +46,7 @@ This produces three jars (each plugin lives in its own folder so it can be built
 independently):
 
 - `captcha/target/helpwave-captcha-<v>.jar`
-- `privacy/target/helpwave-privacy-<v>.jar`
+- `policy-acceptance/target/helpwave-policy-acceptance-<v>.jar`
 - `picture/target/helpwave-picture-<v>.jar` (shaded with AWS SDK + Thumbnailator)
 
 Drop all three (alongside the theme jar) into Keycloak's `providers/` directory and run
@@ -91,8 +91,9 @@ For nixos users, see [docs/nixos.md](docs/nixos.md) for nix-shell setup instruct
 - Custom login, register, and forgot password pages
 - Field-level validation matching hightide patterns
 - **Cloudflare Turnstile** CAPTCHA on signup (`helpwave-turnstile` FormAction SPI)
-- **Privacy policy** checkbox on signup with acceptance metadata stored on the user
-  (`helpwave-privacy` FormAction SPI)
+- **Versioned policy consents** (privacy + future forms) via a reusable RequiredAction
+  SPI (`helpwave-policy-acceptance`). Bumping the version on the realm re-prompts every
+  user on next login; acceptance metadata is persisted on the user account.
 - **Profile picture upload** with server-side scaling to multiple sizes and storage in any
   S3-compatible bucket (`helpwave-picture` Realm Resource SPI)
 
@@ -106,28 +107,42 @@ The release workflow publishes the following jars on every version bump in `pack
 |--------------------------------------------------|--------------------------------------------------|
 | `keycloak-theme-for-kc-26.2-and-above.jar`       | The login/account theme                          |
 | `helpwave-captcha-<v>.jar`                       | Cloudflare Turnstile registration form action    |
-| `helpwave-privacy-<v>.jar`                       | Privacy acceptance form action + attribute store |
+| `helpwave-policy-acceptance-<v>.jar`             | Versioned policy consents (privacy + future)     |
 | `helpwave-picture-<v>.jar`                       | Profile picture REST endpoint + R2/S3 upload     |
 
 Copy all jars into Keycloak's `providers/` directory (or mount them into the container)
 and run `kc.sh build` to rebuild the runtime, then start Keycloak normally.
 
-### 1. Enable the Cloudflare Turnstile and Privacy form actions
+### 1. Enable the Cloudflare Turnstile form action
 
 1. Open the Keycloak admin console.
 2. Go to **Authentication** → **Flows** and duplicate the built-in **registration** flow.
-3. In your new copy, add two executions to the *registration form*:
+3. In your new copy, add an execution to the *registration form*:
    - `Cloudflare Turnstile (helpwave)` — set to **Required**
-   - `Privacy Policy Acceptance (helpwave)` — set to **Required**
-4. Click the gear on each execution to configure it:
+4. Click the gear on the execution to configure it:
    - **Turnstile**: set the `Turnstile site key` (public) and `Turnstile secret` (private).
      Get these from <https://dash.cloudflare.com/?to=/:account/turnstile>.
-   - **Privacy**: set the `Privacy policy URL` (defaults to `https://helpwave.de/privacy`)
-     and an optional `Privacy policy version` string. Both are persisted on the user as
-     `privacy_policy_accepted_at` and `privacy_policy_version` attributes.
 5. Set this flow as the realm's **Registration flow** binding.
 
-### 2. Configure the profile picture storage
+### 2. Enable the policy-acceptance required actions
+
+1. **Authentication** → **Required actions** → enable
+   **Privacy Policy Acceptance (helpwave)**.
+2. **Realm settings** → **General** → **Attributes**: set
+   - `helpwave.policy.privacy.url` (defaults to `https://helpwave.de/privacy`)
+   - `helpwave.policy.privacy.version` (defaults to `2024-01`)
+3. On first login after registration, users are prompted to accept the policy. Their
+   acceptance is stored on the user as `privacy_policy_accepted`,
+   `privacy_policy_accepted_at` and `privacy_policy_version`. Bumping the realm version
+   re-prompts every user on their next login.
+
+Add more consent forms (e.g. terms of service, data-processing agreement) by adding a new
+`AbstractPolicyAcceptanceRequiredActionFactory` subclass to
+`keycloak-extensions/policy-acceptance/` and registering it in the `META-INF/services/`
+file. The React `Terms.tsx` page renders the policy variant automatically when a
+`policyId` attribute is set.
+
+### 3. Configure the profile picture storage
 
 The profile picture SPI accepts standard AWS S3 or Cloudflare R2 (any S3-compatible
 backend). It exposes itself at:

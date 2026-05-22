@@ -14,7 +14,8 @@ const kcContextExtension: KcContextExtension = {
 const kcContextExtensionPerPage: KcContextExtensionPerPage = {
     'register.ftl': {
         turnstileSiteKey: '',
-    }
+    },
+    'terms.ftl': {}
 }
 
 export const { getKcContextMock } = createGetKcContextMock({

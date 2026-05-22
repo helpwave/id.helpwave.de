@@ -14,10 +14,10 @@ Every release attaches the following artifacts to the GitHub release:
 |--------------------------------------------|----------------------------------------|-----------------------------------------------------------|
 | `keycloak-theme-for-kc-26.2-and-above.jar` | (root, built by Keycloakify)           | Login + account theme `helpwave-id`.                      |
 | `helpwave-captcha-<VER>.jar`               | `captcha/`                             | `FormAction` SPI: Cloudflare Turnstile CAPTCHA on signup. |
-| `helpwave-privacy-<VER>.jar`               | `privacy/`                             | `FormAction` SPI: privacy checkbox + acceptance attrs.    |
+| `helpwave-policy-acceptance-<VER>.jar`     | `policy-acceptance/`                   | `RequiredAction` SPI: versioned policy consents (privacy + future forms). |
 | `helpwave-picture-<VER>.jar`               | `picture/`                             | `RealmResourceProvider` SPI: avatar upload to S3 / R2.    |
 
-`<VER>` is the SPI Maven version (`keycloak-extensions/pom.xml`, currently `0.2.0`),
+`<VER>` is the SPI Maven version (`keycloak-extensions/pom.xml`, currently `0.3.0`),
 which is independent from the theme/npm version in `package.json`. All four jars go into
 Keycloak's `providers/` directory — `services.keycloak.plugins` does that for you.
 
@@ -28,8 +28,8 @@ Keycloak's `providers/` directory — `services.keycloak.plugins` does that for 
 let
   domain = "id.helpwave.de";
 
-  themeVersion = "0.5.0";   # ⇄ package.json version → release tag v0.5.0
-  spiVersion   = "0.2.0";   # ⇄ keycloak-extensions/pom.xml
+  themeVersion = "0.6.0";   # ⇄ package.json version → release tag v0.6.0
+  spiVersion   = "0.3.0";   # ⇄ keycloak-extensions/pom.xml
 
   release = file: sha:
     pkgs.fetchurl {
@@ -42,7 +42,7 @@ let
                     "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   captchaPlugin = release "helpwave-captcha-${spiVersion}.jar"
                     "sha256-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=";
-  privacyPlugin = release "helpwave-privacy-${spiVersion}.jar"
+  policyPlugin  = release "helpwave-policy-acceptance-${spiVersion}.jar"
                     "sha256-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC=";
   picturePlugin = release "helpwave-picture-${spiVersion}.jar"
                     "sha256-DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD=";
@@ -72,7 +72,7 @@ in
     plugins = [
       themePlugin
       captchaPlugin
-      privacyPlugin
+      policyPlugin
       picturePlugin
     ];
 
@@ -125,15 +125,34 @@ in
 > Or just run `nixos-rebuild switch` once with all four `sha256-AAA…` placeholders, copy
 > each `got: sha256-…` line out of the error message, and paste it back.
 
-## 3. Wiring the auth flow (Turnstile + privacy)
+## 3. Wiring the auth flow (Turnstile + policy consents)
 
-The captcha and privacy SPIs plug into the *registration form* flow as `FormAction`s.
-Their config is **not** read from `keycloak.conf` — it's per-flow so different realms
-can have different keys.
+### Turnstile (registration FormAction)
+
+Turnstile plugs into the *registration form* flow as a `FormAction`. Its config is **not**
+read from `keycloak.conf` — it's per-flow so different realms can have different keys.
+
+### Policy acceptance (RequiredAction)
+
+The privacy consent (and any future policy form) is a `RequiredAction`, not a registration
+form field. The provider auto-evaluates on every login: if the user's stored policy
+version is missing or differs from the version configured on the realm, the user is
+prompted to re-accept before the login completes. Bumping a policy version is therefore a
+one-line realm-attribute change — no migration, no flow surgery.
+
+User attributes the provider writes on success:
+
+```
+<id>_policy_accepted     = "true"
+<id>_policy_accepted_at  = ISO-8601 timestamp
+<id>_policy_version      = the version the user accepted
+```
+
+…where `<id>` is the policy id (`privacy` for now).
 
 ### Option A — Realm export (preferred, declarative)
 
-Ship the flow as part of a realm JSON and load it via
+Ship the flow + required-action enablement as part of a realm JSON and load it via
 `services.keycloak.realmFiles = [ ./customer-realm.json ];`. The interesting bits:
 
 ```json
@@ -160,9 +179,7 @@ Ship the flow as part of a realm JSON and load it via
         { "authenticator": "registration-user-creation", "requirement": "REQUIRED" },
         { "authenticator": "registration-password-action", "requirement": "REQUIRED" },
         { "authenticator": "helpwave-turnstile",       "requirement": "REQUIRED",
-          "authenticatorConfig": "turnstile-config" },
-        { "authenticator": "helpwave-privacy-acceptance", "requirement": "REQUIRED",
-          "authenticatorConfig": "privacy-config" }
+          "authenticatorConfig": "turnstile-config" }
       ]
     }
   ],
@@ -173,15 +190,21 @@ Ship the flow as part of a realm JSON and load it via
         "turnstile.site.key": "0x4AAAAAAAxxxxxxxxxxxxxxxx",
         "turnstile.secret":   "$${env.TURNSTILE_SECRET}"
       }
-    },
-    {
-      "alias": "privacy-config",
-      "config": {
-        "privacy.policy.url":     "https://helpwave.de/privacy",
-        "privacy.policy.version": "2024-01"
-      }
     }
   ],
+  "requiredActions": [
+    {
+      "alias":         "helpwave-privacy-acceptance",
+      "name":          "Privacy Policy Acceptance (helpwave)",
+      "providerId":    "helpwave-privacy-acceptance",
+      "enabled":       true,
+      "defaultAction": false
+    }
+  ],
+  "attributes": {
+    "helpwave.policy.privacy.url":     "https://helpwave.de/privacy",
+    "helpwave.policy.privacy.version": "2024-01"
+  },
   "registrationFlow": "registration-helpwave"
 }
 ```
@@ -192,7 +215,11 @@ disk in cleartext or in the Nix store.
 
 ### Option B — Click through the admin console
 
-Same steps as the manual setup section in [README.md](../README.md#1-enable-the-cloudflare-turnstile-and-privacy-form-actions).
+1. `Authentication → Required actions →` enable **Privacy Policy Acceptance (helpwave)**.
+2. `Realm settings → General → Attributes` (or via the admin API): set
+   `helpwave.policy.privacy.url` and `helpwave.policy.privacy.version`.
+
+See also the manual setup section in [README.md](../README.md#1-enable-the-cloudflare-turnstile-and-privacy-form-actions).
 
 ## 4. Example `.env` (for local dev with `docker compose`)
 

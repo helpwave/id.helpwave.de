@@ -79,8 +79,6 @@ export default function Register({ kcContext }: RegisterProps) {
         return initial
     })
     const [termsAccepted, setTermsAccepted] = useState(false)
-    const [privacyAccepted, setPrivacyAccepted] = useState(false)
-    const [privacyError, setPrivacyError] = useState(false)
     const [captchaError, setCaptchaError] = useState(false)
 
     const { token: captchaToken } = useTurnstile(turnstileSiteKey, 'cf-turnstile-container')
@@ -107,16 +105,10 @@ export default function Register({ kcContext }: RegisterProps) {
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        let ok = true
-        if (!privacyAccepted) {
-            setPrivacyError(true)
-            ok = false
-        }
         if (captchaEnabled && !captchaToken) {
             setCaptchaError(true)
-            ok = false
+            e.preventDefault()
         }
-        if (!ok) e.preventDefault()
     }
 
     const renderField = (attrName: string) => {
@@ -251,52 +243,6 @@ export default function Register({ kcContext }: RegisterProps) {
                             </label>
                         </div>
                     )}
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Checkbox
-                                value={privacyAccepted}
-                                onValueChange={(v: boolean) => {
-                                    setPrivacyAccepted(v)
-                                    if (v) setPrivacyError(false)
-                                }}
-                                onEditComplete={() => {}}
-                                size="md"
-                            />
-                            <label
-                                onClick={() => {
-                                    setPrivacyAccepted((p) => {
-                                        if (!p) setPrivacyError(false)
-                                        return !p
-                                    })
-                                }}
-                                onKeyDown={(e) => e.key === 'Enter' && setPrivacyAccepted((p) => !p)}
-                                style={{ cursor: 'pointer', userSelect: 'none' }}
-                                role="button"
-                                tabIndex={0}
-                            >
-                                {t('acceptPrivacy')}{' '}
-                                <a
-                                    href="https://helpwave.de/privacy"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    {t('privacyPolicy')}
-                                </a>
-                            </label>
-                            <input
-                                type="hidden"
-                                name="privacy-accepted"
-                                value={privacyAccepted ? 'true' : 'false'}
-                            />
-                        </div>
-                        {privacyError && (
-                            <div style={{ color: 'var(--color-negative)', fontSize: '0.875rem' }}>
-                                {t('privacyRequired')}
-                            </div>
-                        )}
-                    </div>
 
                     {captchaEnabled && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>

@@ -7,12 +7,17 @@
     <parent>
         <groupId>de.helpwave.keycloak</groupId>
         <artifactId>helpwave-keycloak-extensions</artifactId>
-        <version>0.2.0</version>
+        <version>0.3.0</version>
     </parent>
 
-    <artifactId>helpwave-privacy</artifactId>
+    <artifactId>helpwave-policy-acceptance</artifactId>
     <packaging>jar</packaging>
-    <name>helpwave Privacy Acceptance Form Action</name>
+    <name>helpwave Policy Acceptance (Required Action)</name>
+    <description>
+        Reusable Keycloak Required Action SPI that asks the user to accept a versioned
+        policy document (privacy, terms, data processing, ...). Stores acceptance metadata
+        on the user account and re-prompts when the version configured on the realm changes.
+    </description>
 
     <dependencies>
         <dependency>
