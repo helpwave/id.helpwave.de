@@ -12,6 +12,18 @@ export type KcContextExtensionPerPage = {
     'register.ftl': {
         turnstileSiteKey?: string,
     },
+    'terms.ftl': {
+        // Set by the helpwave-policy-acceptance Required Action. When present, the page
+        // renders policy-specific UI (a link to the policy + an accept checkbox) instead
+        // of the built-in terms-and-conditions text.
+        policyId?: string,
+        policyUrl?: string,
+        policyVersion?: string,
+        policyAcceptanceLabelKey?: string,
+        policyLinkLabelKey?: string,
+        policyRequiredErrorKey?: string,
+        policyRequiredError?: boolean,
+    },
 };
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;

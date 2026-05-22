@@ -7,7 +7,7 @@ export function Footer() {
         <div className="text-center text-sm pt-4">
             <div className="mb-2">
                 <a
-                    href="https://cdn.helpwave.de/imprint.html"
+                    href="https://helpwave.de/imprint"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mx-2 sm:mx-1"
@@ -16,7 +16,7 @@ export function Footer() {
                 </a>
                 <span className="mx-2 sm:mx-1">•</span>
                 <a
-                    href="https://cdn.helpwave.de/privacy.html"
+                    href="https://helpwave.de/privacy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mx-2 sm:mx-1"

@@ -67,7 +67,7 @@ export function RealmBanner({ kcContext }: RealmBannerProps) {
         <>
             <style>{`
                 :root { --realm-accent: ${accent}; }
-                body { box-shadow: inset 0 0 0 4px ${accent}; }
+                body { box-shadow: inset 0 4px 0 0 ${accent}; }
             `}</style>
 
             <div
@@ -78,7 +78,6 @@ export function RealmBanner({ kcContext }: RealmBannerProps) {
                     background: stripes,
                     color: '#fff',
                     textShadow: '0 1px 1px rgba(0,0,0,0.35)',
-                    borderBottom: `2px solid color-mix(in oklab, ${accent} 60%, black)`,
                 }}
             >
                 <div className="mx-auto flex items-center justify-center gap-3 px-4 py-2 max-w-screen-md sm:gap-2 sm:py-1.5">

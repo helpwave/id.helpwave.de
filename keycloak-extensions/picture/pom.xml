@@ -7,7 +7,7 @@
     <parent>
         <groupId>de.helpwave.keycloak</groupId>
         <artifactId>helpwave-keycloak-extensions</artifactId>
-        <version>0.2.0</version>
+        <version>0.3.0</version>
     </parent>
 
     <artifactId>helpwave-picture</artifactId>
