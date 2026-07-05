@@ -35,7 +35,8 @@ function KindIcon({ kind, className }: { kind: Exclude<RealmKind, 'customer'>, c
  * Full-width, sticky-top banner shown on every non-customer realm. Combines:
  * - bold colored bar across the viewport
  * - large realm name + icon
- * - 4 px outline around the page edge (driven by `--realm-accent`)
+ * - team realms: 4 px viewport outline (fixed, does not grow with scroll)
+ * - other non-customer realms: 4 px top stripe
  * - document title prefix so the realm is visible in the browser tab
  */
 export function RealmBanner({ kcContext }: RealmBannerProps) {
@@ -63,12 +64,22 @@ export function RealmBanner({ kcContext }: RealmBannerProps) {
     const headlineKey = HEADLINE[theme.kind]
     const subtitleKey = SUBTITLE[theme.kind]
 
+    const isTeamRealm = theme.kind === 'team'
+
     return (
         <>
             <style>{`
                 :root { --realm-accent: ${accent}; }
-                body { box-shadow: inset 0 4px 0 0 ${accent}; }
+                ${isTeamRealm ? '' : `body { box-shadow: inset 0 4px 0 0 ${accent}; }`}
             `}</style>
+
+            {isTeamRealm && (
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none fixed inset-0 z-[1200] box-border"
+                    style={{ boxShadow: `inset 0 0 0 4px ${accent}` }}
+                />
+            )}
 
             <div
                 role="banner"
