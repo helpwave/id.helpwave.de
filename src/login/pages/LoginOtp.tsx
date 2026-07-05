@@ -59,16 +59,13 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                 <FormFieldLayout label={t('selectAuthenticatorTitle')} required>
                                     {({ id, ariaAttributes }) => (
                                         <Select
-                                            id={id}
                                             value={selectedCredentialId}
                                             onValueChange={(value: string) => setSelectedCredentialId(value)}
                                             onEditComplete={() => {}}
-                                            {...ariaAttributes}
+                                            buttonProps={{ id, ...ariaAttributes }}
                                         >
                                             {credentials.map((c) => (
-                                                <SelectOption key={c.id} value={c.id}>
-                                                    {c.userLabel}
-                                                </SelectOption>
+                                                <SelectOption key={c.id} value={c.id} label={c.userLabel} />
                                             ))}
                                         </Select>
                                     )}
