@@ -1,6 +1,6 @@
 {
   "name": "id.helpwave.de",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/helpwave/id.helpwave.de.git"
@@ -12,6 +12,7 @@
     "storybook": "storybook dev -p 6006",
     "build-intl": "npx --package=@helpwave/internationalization build-intl --force -i ./locales -o ./src/i18n/translations.ts -n helpwaveIdTranslation",
     "check-translations": "node scripts/check-translation-keys.mjs",
+    "update-nix-pins": "node scripts/update-nixos-plugin-pins.mjs",
     "build": "npm run build-intl && tsc && vite build",
     "build-keycloak-theme": "npm run build && keycloakify build",
     "build-storybook": "storybook build",
