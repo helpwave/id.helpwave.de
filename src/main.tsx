@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { StrictMode } from 'react'
 import { KcPage } from './kc.gen'
 import '@helpwave/hightide/style/globals.css'
+import './fonts.css'
 import './index.css'
 import { HelpwaveLogo, HightideProvider } from '@helpwave/hightide'
 

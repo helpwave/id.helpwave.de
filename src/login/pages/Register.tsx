@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, LabelledCheckbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -219,29 +219,27 @@ export default function Register({ kcContext }: RegisterProps) {
                     )}
 
                     {kcContext.termsAcceptanceRequired && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Checkbox
-                                value={termsAccepted}
-                                onValueChange={(value: boolean) => setTermsAccepted(value)}
-                                onEditComplete={() => {}}
-                                size="md"
-                            />
-                            <label
-                                onClick={() => setTermsAccepted(!termsAccepted)}
-                                onKeyDown={(e) => e.key === 'Enter' && setTermsAccepted((prev) => !prev)}
-                                style={{ cursor: 'pointer', userSelect: 'none' }}
-                                role="button"
-                                tabIndex={0}
-                            >
-                                <a href={(() => {
-                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                    const url = kcContext.url as any
-                                    return url.termsUrl ?? kcContext.url.loginUrl.replace('/login', '/terms')
-                                })()} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                        <LabelledCheckbox
+                            checkPosition="left"
+                            size="md"
+                            value={termsAccepted}
+                            onValueChange={(value: boolean) => setTermsAccepted(value)}
+                            style={{ marginTop: '-1rem', marginBottom: '0.5rem' }}
+                            label={(
+                                <a
+                                    href={(() => {
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                        const url = kcContext.url as any
+                                        return url.termsUrl ?? kcContext.url.loginUrl.replace('/login', '/terms')
+                                    })()}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
                                     {t('acceptTerms')}
                                 </a>
-                            </label>
-                        </div>
+                            )}
+                        />
                     )}
 
                     {captchaEnabled && (

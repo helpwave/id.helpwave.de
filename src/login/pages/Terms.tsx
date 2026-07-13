@@ -1,5 +1,5 @@
 import { ArrowLeft, Check } from 'lucide-react'
-import { Button, Checkbox } from '@helpwave/hightide'
+import { Button, LabelledCheckbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -108,27 +108,17 @@ export default function Terms({ kcContext }: TermsProps) {
                     )}
 
                     <form action={kcContext.url.loginAction} method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Checkbox
-                                value={accepted}
-                                onValueChange={(value: boolean) => setAccepted(value)}
-                                onEditComplete={() => {}}
-                                size="md"
-                            />
-                            <label
-                                onClick={() => setAccepted(!accepted)}
-                                onKeyDown={(e) => e.key === 'Enter' && setAccepted((prev) => !prev)}
-                                style={{ cursor: 'pointer', userSelect: 'none' }}
-                                role="button"
-                                tabIndex={0}
-                            >
-                                {isPolicyVariant ? (
-                                    <PolicyCheckboxLabel kcContext={kcContext} />
-                                ) : (
-                                    t('acceptTerms')
-                                )}
-                            </label>
-                        </div>
+                        <LabelledCheckbox
+                            checkPosition="left"
+                            size="md"
+                            value={accepted}
+                            onValueChange={(value: boolean) => setAccepted(value)}
+                            label={isPolicyVariant ? (
+                                <PolicyCheckboxLabel kcContext={kcContext} />
+                            ) : (
+                                t('acceptTerms')
+                            )}
+                        />
 
                         {isPolicyVariant && kcContext.policyRequiredError && !accepted && (
                             <div style={{ color: 'var(--color-negative)', fontSize: '0.875rem' }}>
