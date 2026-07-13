@@ -25,7 +25,7 @@ export function Branding({ animate = 'loading' }: BrandingProps) {
     return (
         <div className="flex flex-col items-center">
             <HelpwaveLogo animate={effectiveAnimate} height={96} width={96} animationDuration={5} />
-            <div className="font-space text-4xl -translate-y-8 font-[900]">
+            <div className="font-space text-4xl -translate-y-8 font-bold">
                 helpwave id
             </div>
         </div>
