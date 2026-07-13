@@ -50,7 +50,7 @@ npm run update-nix-pins -- --check     # verify the pins are current (CI-friendl
 let
   domain = "id.helpwave.de";
 
-  themeVersion = "0.6.0";
+  themeVersion = "0.6.1";
   spiVersion = "0.3.0";
 
   release =
@@ -63,19 +63,19 @@ let
 
   themePlugin =
     release themeVersion "keycloak-theme-for-kc-26.2-and-above.jar"
-      "sha256-/u43lyHHizfXivbwsTS3ydQZd6dGXEhrsTxlXalkuJc=";
+      "sha256-nhAyu69jEyf3F0W0qph94iGnVdNU69yGEAUzN3IaJOY=";
 
   captchaSPI =
     release themeVersion "helpwave-captcha-${spiVersion}.jar"
-      "sha256-m0Yqi8lCiZlxACpiUxnmT/gOdbrRmatDKDhSV5/o9ME=";
+      "sha256-RSzFG775YXjNLxYlxvCMxxjoRRLYOCUNq2mutrUOaRM=";
 
   pictureSPI =
     release themeVersion "helpwave-picture-${spiVersion}.jar"
-      "sha256-VWL5NsyBGsd1nzah8EYNTwpyao0LOYZAla71vFXJjGY=";
+      "sha256-aReO2U4AVyKMQydMqvZ2vIhl3TfM6MWpS7/rZQWerXg=";
 
   policySPI =
     release themeVersion "helpwave-policy-acceptance-${spiVersion}.jar"
-      "sha256-0E4dv+lgUxe6ZEiNNAYw8L2Of3GtsBlzyunER5Z8pmc=";
+      "sha256-+FZ7skQGOEFD5AmZtIiRAO0xbUwn9bqcZU4Q6SejxBg=";
 in
 {
   # ── sops-nix secrets ──────────────────────────────────────────────────────
