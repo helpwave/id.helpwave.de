@@ -242,7 +242,10 @@ Cutting and consuming a release is a single repeatable motion:
    `themeVersion` / `spiVersion` / `sha256` pins in
    [docs/deployment-nixos.md](docs/deployment-nixos.md) from the release assets' digests
    and commits the result to `main` — the checked-in NixOS snippet always matches the
-   latest release.
+   latest release. Because `main` only accepts pull requests, the pushing identity needs
+   a ruleset bypass: either allow the workflow's `GITHUB_TOKEN` through, or set the
+   Actions secret `NIX_PINS_DEPLOY_KEY` to a write-enabled deploy key and put
+   **Deploy keys** on the bypass list — the job pushes over SSH when the secret is set.
 4. **Deploy**: copy the refreshed pin block into your NixOS config and
    `nixos-rebuild switch`.
 
