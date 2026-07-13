@@ -4,17 +4,42 @@ Keycloak login theme using helpwave hightide components, plus the Keycloak SPI
 extensions that power the registration flow (Cloudflare Turnstile + privacy
 acceptance) and the profile picture upload.
 
-## Quick start
+## Contents
 
-```bash
-npm ci
-```
+- [Features](#features)
+- [Development](#development)
+  - [Quick start](#quick-start)
+  - [Building the theme](#building-the-theme)
+  - [Building the Keycloak SPIs](#building-the-keycloak-spis)
+  - [Local development with Docker](#local-development-with-docker)
+  - [NixOS development](#nixos-development)
+- [Deployment](#deployment)
+  - [1. Install the plugins](#1-install-the-plugins)
+  - [2. Enable the Cloudflare Turnstile form action](#2-enable-the-cloudflare-turnstile-form-action)
+  - [3. Enable the policy-acceptance required actions](#3-enable-the-policy-acceptance-required-actions)
+  - [4. Configure the profile picture storage](#4-configure-the-profile-picture-storage)
+  - [5. Wire the theme to the SPIs](#5-wire-the-theme-to-the-spis)
+- [Releases & version pinning](#releases--version-pinning)
+
+## Features
+
+- hightide component integration
+- Realm indicator chip with deterministic color mapping
+- Custom login, register, and forgot password pages
+- Field-level validation matching hightide patterns
+- **Cloudflare Turnstile** CAPTCHA on signup (`helpwave-turnstile` FormAction SPI)
+- **Versioned policy consents** (privacy + future forms) via a reusable RequiredAction
+  SPI (`helpwave-policy-acceptance`). Bumping the version on the realm re-prompts every
+  user on next login; acceptance metadata is persisted on the user account.
+- **Profile picture upload** with server-side scaling to multiple sizes and storage in any
+  S3-compatible bucket (`helpwave-picture` Realm Resource SPI)
 
 ## Development
 
-### Linting and type checking
+### Quick start
 
 ```bash
+npm ci
 npm run lint
 npm run typecheck
 ```
@@ -52,7 +77,7 @@ independently):
 Drop all three (alongside the theme jar) into Keycloak's `providers/` directory and run
 `kc.sh build`.
 
-## Local development with Docker
+### Local development with Docker
 
 Start keycloak and postgres services:
 
@@ -72,7 +97,8 @@ Default admin credentials:
 - Username: `admin`
 - Password: `admin`
 
-### Verification URLs
+For SPI configuration, copy [`.env.example`](.env.example) to `.env` and fill it in, then
+`docker compose --env-file .env up`.
 
 After starting the services, you can access:
 
@@ -80,28 +106,16 @@ After starting the services, you can access:
 - Team realm login: http://localhost:8080/realms/team/protocol/openid-connect/auth?client_id=account-console&redirect_uri=http://localhost:8080/realms/team/account/&response_type=code&scope=openid
 - Keycloak admin console: http://localhost:8080/admin
 
-## NixOS development
+### NixOS development
 
 For nixos users, see [docs/nixos.md](docs/nixos.md) for nix-shell setup instructions.
 
-## Features
-
-- hightide component integration
-- Realm indicator chip with deterministic color mapping
-- Custom login, register, and forgot password pages
-- Field-level validation matching hightide patterns
-- **Cloudflare Turnstile** CAPTCHA on signup (`helpwave-turnstile` FormAction SPI)
-- **Versioned policy consents** (privacy + future forms) via a reusable RequiredAction
-  SPI (`helpwave-policy-acceptance`). Bumping the version on the realm re-prompts every
-  user on next login; acceptance metadata is persisted on the user account.
-- **Profile picture upload** with server-side scaling to multiple sizes and storage in any
-  S3-compatible bucket (`helpwave-picture` Realm Resource SPI)
-
----
-
 ## Deployment
 
-The release workflow publishes the following jars on every version bump in `package.json`:
+### 1. Install the plugins
+
+Every release publishes the following jars (see
+[Releases & version pinning](#releases--version-pinning) for how releases are cut):
 
 | Jar                                              | Purpose                                          |
 |--------------------------------------------------|--------------------------------------------------|
@@ -113,7 +127,13 @@ The release workflow publishes the following jars on every version bump in `pack
 Copy all jars into Keycloak's `providers/` directory (or mount them into the container)
 and run `kc.sh build` to rebuild the runtime, then start Keycloak normally.
 
-### 1. Enable the Cloudflare Turnstile form action
+**On NixOS**, don't do any of this by hand: a complete `services.keycloak` example —
+including an auto-updated, hash-pinned plugin block and [sops-nix] secret handling —
+lives in [docs/deployment-nixos.md](docs/deployment-nixos.md).
+
+[sops-nix]: https://github.com/Mic92/sops-nix
+
+### 2. Enable the Cloudflare Turnstile form action
 
 1. Open the Keycloak admin console.
 2. Go to **Authentication** → **Flows** and duplicate the built-in **registration** flow.
@@ -124,7 +144,7 @@ and run `kc.sh build` to rebuild the runtime, then start Keycloak normally.
      Get these from <https://dash.cloudflare.com/?to=/:account/turnstile>.
 5. Set this flow as the realm's **Registration flow** binding.
 
-### 2. Enable the policy-acceptance required actions
+### 3. Enable the policy-acceptance required actions
 
 1. **Authentication** → **Required actions** → enable
    **Privacy Policy Acceptance (helpwave)**.
@@ -142,7 +162,7 @@ Add more consent forms (e.g. terms of service, data-processing agreement) by add
 file. The React `Terms.tsx` page renders the policy variant automatically when a
 `policyId` attribute is set.
 
-### 3. Configure the profile picture storage
+### 4. Configure the profile picture storage
 
 The profile picture SPI accepts standard AWS S3 or Cloudflare R2 (any S3-compatible
 backend). It exposes itself at:
@@ -192,7 +212,7 @@ KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_SECRET_KEY=...
 KC_SPI_REALM_RESTAPI_EXTENSION_HELPWAVE_PICTURE_PUBLIC_BASE_URL=https://avatars.helpwave.de
 ```
 
-### 3. Wire the theme to the SPIs
+### 5. Wire the theme to the SPIs
 
 Two Keycloakify env vars expose the SPI to the theme at render time:
 
@@ -210,16 +230,26 @@ KC_PROFILE_PICTURE_API_URL=https://id.helpwave.de/realms/customer/helpwave-pictu
 
 (Keycloakify reads `KC_<NAME>` and exposes it as `kcContext.properties.<NAME>`.)
 
-### 4. NixOS deployment
+## Releases & version pinning
 
-A complete `services.keycloak` example with [sops-nix] secret handling and the matching
-admin-console steps lives in [docs/deployment-nixos.md](docs/deployment-nixos.md). For
-local development with `docker compose`, copy [`.env.example`](.env.example) to `.env`
-and fill in the values.
+Cutting and consuming a release is a single repeatable motion:
 
-[sops-nix]: https://github.com/Mic92/sops-nix
+1. **Bump** `version` in `package.json` on `main` (and the Maven version in
+   `keycloak-extensions/pom.xml` + module poms if the SPIs changed).
+2. **CI releases**: the workflow builds the theme + SPIs and publishes a GitHub release
+   `v<version>` with all jars attached.
+3. **CI re-pins the docs**: the `update_nixos_plugin_pins` job then updates the
+   `themeVersion` / `spiVersion` / `sha256` pins in
+   [docs/deployment-nixos.md](docs/deployment-nixos.md) from the release assets' digests
+   and commits the result to `main` — the checked-in NixOS snippet always matches the
+   latest release.
+4. **Deploy**: copy the refreshed pin block into your NixOS config and
+   `nixos-rebuild switch`.
 
-### 5. Releases
+To re-pin the docs manually (e.g. against a specific release):
 
-Bump `version` in `package.json` on `main`. The CI workflow builds the theme + SPIs and
-publishes a GitHub release with all four jars attached.
+```bash
+npm run update-nix-pins                  # latest release
+npm run update-nix-pins -- --tag v0.6.0  # specific release
+npm run update-nix-pins -- --check       # verify pins are current
+```

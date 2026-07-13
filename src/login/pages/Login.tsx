@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { LogIn, KeyRound, UserPlus } from 'lucide-react'
-import { Button, Input, FormFieldLayout, Checkbox } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, LabelledCheckbox } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -109,15 +109,14 @@ export default function Login({ kcContext }: LoginProps) {
                     </div>
 
                     {kcContext.realm?.rememberMe && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Checkbox
-                                value={rememberMe}
-                                onValueChange={(value: boolean) => setRememberMe(value)}
-                                onEditComplete={() => {}}
-                                size="md"
-                            />
-                            <label htmlFor="rememberMe">{t('rememberMe')}</label>
-                        </div>
+                        <LabelledCheckbox
+                            checkPosition="left"
+                            size="md"
+                            value={rememberMe}
+                            onValueChange={(value: boolean) => setRememberMe(value)}
+                            style={{ marginTop: '-1rem', marginBottom: '0.5rem' }}
+                            label={t('rememberMe')}
+                        />
                     )}
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
