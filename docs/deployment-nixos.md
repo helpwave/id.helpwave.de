@@ -33,7 +33,36 @@ All four jars go into Keycloak's `providers/` directory —
 The pins below are **kept up to date automatically**: after every release, CI recomputes
 the versions and sha256 hashes from the release assets and commits them back to this file
 (see [§6 Updating](#6-updating)). Whatever is checked in here always matches the latest
-release — copy it as-is.
+release — copy it as-is into your module's `let` bindings:
+
+```nix
+  themeVersion = "0.6.1";
+  spiVersion = "0.3.0";
+
+  release =
+    ver: file: sha:
+    pkgs.fetchurl {
+      name = file;
+      url = "https://github.com/helpwave/id.helpwave.de/releases/download/v${ver}/${file}";
+      sha256 = sha;
+    };
+
+  themePlugin =
+    release themeVersion "keycloak-theme-for-kc-26.2-and-above.jar"
+      "sha256-nhAyu69jEyf3F0W0qph94iGnVdNU69yGEAUzN3IaJOY=";
+
+  captchaSPI =
+    release themeVersion "helpwave-captcha-${spiVersion}.jar"
+      "sha256-RSzFG775YXjNLxYlxvCMxxjoRRLYOCUNq2mutrUOaRM=";
+
+  pictureSPI =
+    release themeVersion "helpwave-picture-${spiVersion}.jar"
+      "sha256-aReO2U4AVyKMQydMqvZ2vIhl3TfM6MWpS7/rZQWerXg=";
+
+  policySPI =
+    release themeVersion "helpwave-policy-acceptance-${spiVersion}.jar"
+      "sha256-+FZ7skQGOEFD5AmZtIiRAO0xbUwn9bqcZU4Q6SejxBg=";
+```
 
 To re-pin manually (e.g. against an older release):
 

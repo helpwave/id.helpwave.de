@@ -102,16 +102,20 @@ function findAsset(release, predicate, description) {
     return asset
 }
 
-/** Replaces exactly one occurrence; fails loudly if the doc anchor shape changed. */
-function replaceOnce(content, pattern, replacement, description) {
-    const matches = content.match(new RegExp(pattern, 'g')) ?? []
-    if (matches.length !== 1) {
+/**
+ * Replaces every occurrence (the pins appear both in the copyable block and in
+ * the full module example); fails loudly if the doc anchor shape changed.
+ */
+function replacePins(content, pattern, replacement, description) {
+    const global = new RegExp(pattern, 'g')
+    const matches = content.match(global) ?? []
+    if (matches.length === 0) {
         fail(
-            `Expected exactly 1 match for ${description} in ${path.relative(process.cwd(), DOC_PATH)}, ` +
-            `found ${matches.length}. Did the pin block in the doc change shape?`
+            `Found no match for ${description} in ${path.relative(process.cwd(), DOC_PATH)}. ` +
+            'Did the pin block in the doc change shape?'
         )
     }
-    return content.replace(pattern, replacement)
+    return content.replace(global, replacement)
 }
 
 async function main() {
@@ -149,13 +153,13 @@ async function main() {
     const original = fs.readFileSync(DOC_PATH, 'utf8')
     let content = original
 
-    content = replaceOnce(
+    content = replacePins(
         content,
         /themeVersion = "[^"]+";/,
         `themeVersion = "${themeVersion}";`,
         'themeVersion pin'
     )
-    content = replaceOnce(
+    content = replacePins(
         content,
         /spiVersion = "[^"]+";/,
         `spiVersion = "${spiVersion}";`,
@@ -172,7 +176,7 @@ async function main() {
     }
     for (const [binding, fileAnchor] of Object.entries(bindingAnchors)) {
         const escapedAnchor = fileAnchor.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-        content = replaceOnce(
+        content = replacePins(
             content,
             new RegExp(`(release themeVersion "${escapedAnchor}"\\s*\\n\\s*")sha256-[A-Za-z0-9+/=]+(")`),
             `$1${hashes[binding]}$2`,

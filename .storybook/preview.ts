@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite'
 import React from 'react'
 import '@helpwave/hightide/style/globals.css'
+import '../src/fonts.css'
 import '../src/index.css'
 import { HightideProvider } from '@helpwave/hightide'
 

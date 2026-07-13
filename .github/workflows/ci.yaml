@@ -86,12 +86,16 @@ jobs:
         runs-on: ubuntu-latest
         needs: [check_if_version_upgraded, create_github_release]
         if: needs.check_if_version_upgraded.outputs.is_pre_release != 'true'
-        permissions:
-            contents: write
         steps:
+            # Pushing to main requires a bypass of the pull-request rule.
+            # If the NIX_PINS_DEPLOY_KEY secret is set (a write-enabled deploy
+            # key, with "Deploy keys" on the ruleset bypass list), the push
+            # goes over SSH; when unset, checkout falls back to GITHUB_TOKEN,
+            # which needs the workflow/bot allowed through the ruleset instead.
             - uses: actions/checkout@v4
               with:
                   ref: main
+                  ssh-key: ${{ secrets.NIX_PINS_DEPLOY_KEY }}
             - uses: actions/setup-node@v4
             - name: Re-pin docs/deployment-nixos.md to the new release
               run: node scripts/update-nixos-plugin-pins.mjs --tag v${{ needs.check_if_version_upgraded.outputs.to_version }}
