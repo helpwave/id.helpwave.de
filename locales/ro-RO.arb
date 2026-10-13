@@ -1,0 +1,522 @@
+{
+  "@@locale": "ro-RO",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Title for helpwave id badge"
+  },
+  "nOrganization": "{count, plural, =1{# organizație} few{# organizații} other{# de organizații}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
+  },
+  "imprint": "Informații legale",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Confidențialitate",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Ați uitat parola?",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "Nu aveți cont?",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Înregistrare",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Înapoi la autentificare",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Nume de utilizator sau e-mail",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Nume de utilizator",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Parolă",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Ține-mă minte",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Conectare",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Ați uitat parola?",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Înregistrare",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Sau conectați-vă cu",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "Accept termenii și condițiile",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "acceptPrivacy": "Am citit și accept",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "politica de confidențialitate",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "Trebuie să acceptați politica de confidențialitate pentru a continua.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "Verificarea captcha a eșuat. Vă rugăm să încercați din nou.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "Se încarcă captcha…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Spațiu de lucru al echipei",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Portal de administrare",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Mediu intern",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "Vă conectați la o zonă privilegiată a echipei.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Acces administrativ — fiecare acțiune este auditată.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "Aceasta nu este autentificarea obișnuită pentru clienți.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
+  "passwordNew": "Parolă nouă",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Confirmare parolă",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Trimiteți",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "Parolă unică",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Cod de verificare",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Textul termenilor și condițiilor",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Acceptați",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Refuzați",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Sigur doriți să vă deconectați?",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Deconectare",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doSave": "Salvați",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "doUpdate": "Actualizați",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
+  "updatePassword": "Actualizați parola",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Activ",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Fotografie de profil",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Încărcarea fotografiei de profil – în curând.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Încărcați fotografia",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Eliminați fotografia",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Se încarcă…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Încărcarea a eșuat. Vă rugăm să încercați din nou.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "Fișierul selectat depășește 5 MB.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Sunt acceptate doar imagini JPEG, PNG sau WebP.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG sau WebP, max. 5 MB. Imaginea este redimensionată și stocată în siguranță.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
+  },
+  "accountSectionProfile": "Profil",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Informații personale",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Actualizare parolă",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
+  "securitySectionTitle": "Securitate",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Zonă periculoasă",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
+  "doCancel": "Anulați",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Înapoi la aplicație",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "backToAccount": "Înapoi la cont",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
+  "doContinue": "Continuați",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Vă rugăm să verificați e-mailul pentru linkul de verificare.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Vă rugăm să verificați e-mailul pentru linkul de verificare.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Faceți clic aici",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Reporniți",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "sessionExpired": "Timpul alocat conexiunii a expirat.\nProcesul de autentificare va reîncepe de la început.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
+  },
+  "deleteAccountConfirm": "Sigur doriți să vă ștergeți contul?",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Ștergeți contul",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Sigur doriți să ștergeți aceste date de autentificare?",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Ștergeți",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Deconectare în curs...",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Se asociază furnizorul de identitate...",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Doriți să asociați acest furnizor de identitate contului dumneavoastră?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Asociați",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "Acest furnizor de identitate este deja asociat altui cont. Doriți să îl înlocuiți?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Înlocuiți",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "E-mail",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "firstName": "Prenume",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Nume",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
+  "oauthGrantTitle": "Acordare acces",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "Aplicația solicită acces la contul dumneavoastră",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "Permisiuni solicitate",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "Această pagină a expirat. Vă rugăm să reporniți procesul de autentificare.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Autentificare cu cheie de acces...",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Configurați codul de autentificare pentru recuperare",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Cod de recuperare",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Autentificatorul OTP a fost resetat. Vă rugăm să configurați unul nou.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Scanați acest cod QR cu aplicația de autentificare",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "Cod unic",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Redirecționare către furnizorul de identitate...",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Selectați autentificatorul",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Selectați organizația",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "Informații despre certificatul X.509",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Vă rugăm să furnizați informațiile certificatului X.509",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Autentificați-vă cu cheia de securitate",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "A apărut o eroare în timpul autentificării WebAuthn",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Înregistrați cheia de securitate",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Introduceți codul de utilizator afișat pe dispozitiv",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "Cod de utilizator",
+  "@userCode": {
+    "description": "Label for user code input field"
+  },
+  "errorInvalidUsernameOrPassword": "Nume de utilizator sau parolă nevalide",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login form field error"
+  },
+  "errorInvalidUsername": "Nume de utilizator nevalid",
+  "@errorInvalidUsername": {
+    "description": "Username field error"
+  },
+  "errorInvalidPassword": "Parolă nevalidă",
+  "@errorInvalidPassword": {
+    "description": "Password field error"
+  },
+  "errorInvalidEmail": "E-mail nevalid",
+  "@errorInvalidEmail": {
+    "description": "Email field error"
+  },
+  "errorInvalidCode": "Cod nevalid",
+  "@errorInvalidCode": {
+    "description": "Verification code field error"
+  },
+  "errorInvalidRecoveryCode": "Cod de recuperare nevalid",
+  "@errorInvalidRecoveryCode": {
+    "description": "Recovery code field error"
+  },
+  "errorInvalidUserCode": "Cod de utilizator nevalid",
+  "@errorInvalidUserCode": {
+    "description": "User code field error"
+  },
+  "errorPasswordMismatch": "Parolele nu coincid",
+  "@errorPasswordMismatch": {
+    "description": "Password confirmation field error"
+  },
+  "errorAccountTemporarilyDisabled": "Contul este dezactivat temporar. Contactați administratorul sau încercați din nou mai târziu.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Parola actuală este incorectă",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Parola existentă nu este validă",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Vă rugăm să introduceți parola",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Parola a fost schimbată cu succes",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Autentificatorul mobil a fost configurat",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Contul dumneavoastră a fost actualizat",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
+  },
+  "errorAccountDisabled": "Contul este dezactivat. Contactați administratorul.",
+  "errorUsernameExists": "Numele de utilizator există deja.",
+  "errorEmailExists": "Adresa de e-mail există deja.",
+  "errorExpiredCode": "Sesiunea de autentificare a expirat. Vă rugăm să vă conectați din nou.",
+  "errorExpiredAction": "Acțiunea a expirat. Vă rugăm să continuați acum cu autentificarea.",
+  "errorInvalidTotp": "Cod de autentificare nevalid.",
+  "errorMissingTotp": "Vă rugăm să introduceți codul de autentificare.",
+  "errorConfigureTotp": "Trebuie să configurați autentificatorul mobil pentru a vă activa contul.",
+  "errorEmailSendError": "Trimiterea e-mailului a eșuat. Vă rugăm să încercați din nou mai târziu.",
+  "successPasswordUpdated": "Parola dumneavoastră a fost actualizată.",
+  "successEmailSent": "Veți primi în curând un e-mail cu instrucțiuni suplimentare.",
+  "pageTitleLogin": "Conectare",
+  "pageTitleRegister": "Înregistrare",
+  "pageTitleForgotPassword": "Parolă uitată",
+  "pageTitleInfo": "Informații",
+  "pageTitleError": "Eroare",
+  "pageTitlePageDisabled": "Pagină dezactivată",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
+  "pageTitleCode": "Cod de verificare",
+  "pageTitleLogoutConfirm": "Deconectare",
+  "pageTitleTerms": "Termeni și condiții",
+  "pageTitleLoginOtp": "Cod de verificare",
+  "pageTitleUpdatePassword": "Actualizare parolă",
+  "pageTitleEmailVerification": "Verificare e-mail",
+  "pageTitleDeleteAccountConfirm": "Ștergere cont",
+  "pageTitleDeleteCredential": "Ștergere date de autentificare",
+  "pageTitleFrontchannelLogout": "Deconectare în curs",
+  "pageTitleIdpReviewProfile": "Actualizare informații cont",
+  "pageTitleLinkIdp": "Asociere furnizor de identitate",
+  "pageTitleConfigTotp": "Configurare autentificator mobil",
+  "pageTitleIdpLinkConfirm": "Asociere cont",
+  "pageTitleIdpLinkConfirmOverride": "Înlocuire asociere",
+  "pageTitleIdpLinkEmail": "Asociere cont",
+  "pageTitleOauth2DeviceVerifyUserCode": "Conectare dispozitiv",
+  "pageTitleOauthGrant": "Acordare acces",
+  "pageTitlePageExpired": "Pagină expirată",
+  "pageTitlePasskeysConditionalAuthenticate": "Conectare cu cheie de acces",
+  "pageTitleLoginPassword": "Conectare",
+  "pageTitleRecoveryCodeConfig": "Coduri de recuperare",
+  "pageTitleRecoveryCodeInput": "Cod de recuperare",
+  "pageTitleResetOtp": "Resetare autentificator",
+  "pageTitleUpdateProfile": "Actualizare informații cont",
+  "pageTitleLoginUsername": "Conectare",
+  "pageTitleX509Info": "Certificat X.509",
+  "pageTitleSamlPostForm": "Redirecționare",
+  "pageTitleSelectAuthenticator": "Selectare autentificator",
+  "pageTitleSelectOrganization": "Selectare organizație",
+  "pageTitleUpdateEmail": "Actualizare e-mail",
+  "pageTitleWebauthnAuthenticate": "Conectare cu cheie de acces",
+  "pageTitleWebauthnError": "Eroare cheie de acces",
+  "pageTitleWebauthnRegister": "Înregistrare cheie de acces",
+  "pageTitleAccount": "Cont",
+  "pageTitleAccountPassword": "Parolă",
+  "messageHeaderEmailVerification": "Verificare e-mail",
+  "messageHeaderForgotPassword": "Ați uitat parola?",
+  "messageHeaderEmailUpdateConfirmation": "E-mail de confirmare trimis",
+  "messageHeaderEmailUpdated": "E-mail actualizat",
+  "messageHeaderUpdatePassword": "Actualizare parolă",
+  "messageHeaderSuccessCode": "Cod de succes",
+  "messageHeaderErrorCode": "Cod de eroare",
+  "messageHeaderExecuteActions": "Acțiuni necesare"
+}
