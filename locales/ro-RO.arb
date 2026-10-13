@@ -4,7 +4,7 @@
   "@helpwaveId": {
     "description": "Title for helpwave id badge"
   },
-  "nOrganization": "{count, plural, =1{# organizație} few{# organizații} other{# de organizații}}",
+  "nOrganization": "{count, plural, =1{# organizație} few{# organizații} many{# organizații} other{# organizații}}",
   "@nOrganization": {
     "placeholders": {
       "count": {

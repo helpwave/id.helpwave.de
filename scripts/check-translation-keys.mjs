@@ -26,6 +26,23 @@ function allArbFiles() {
         .map((n) => path.join(localesDir, n))
 }
 
+// The ICU compiler treats ASCII apostrophes as quote characters and silently drops or mangles
+// such messages, and its plural resolution only knows =0, =1, =2, few, many and other
+function findUnsafeMessages(filePath) {
+    const json = JSON.parse(fs.readFileSync(filePath, 'utf8'))
+    const problems = []
+    for (const [key, value] of Object.entries(json)) {
+        if (key.startsWith('@') || typeof value !== 'string') continue
+        if (value.includes("'")) {
+            problems.push(`[${key}] contains an ASCII apostrophe, use ’ instead`)
+        }
+        if (/\b(zero|one|two)\s*\{/.test(value)) {
+            problems.push(`[${key}] uses an unsupported plural category, use =0, =1 or =2 instead`)
+        }
+    }
+    return problems
+}
+
 function collectKeysFromSource(dir, keys = new Set()) {
     if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
         return keys
@@ -62,6 +79,15 @@ function main() {
     for (const p of arbPaths) {
         const locale = path.basename(p, '.arb')
         localeKeys.set(locale, loadArbKeys(p))
+    }
+
+    const unsafe = arbPaths.flatMap((p) => findUnsafeMessages(p).map((msg) => `  ${path.basename(p)} ${msg}`))
+    if (unsafe.length > 0) {
+        console.error('Messages that the ICU compiler cannot handle:\n')
+        for (const line of unsafe) {
+            console.error(line)
+        }
+        process.exit(1)
     }
 
     const allLocales = [...localeKeys.keys()]

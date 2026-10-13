@@ -196,7 +196,7 @@
   "@profilePictureUploadFailed": {
     "description": "Error when profile picture upload fails"
   },
-  "profilePictureTooLarge": "Seçilen dosya 5 MB'tan büyük.",
+  "profilePictureTooLarge": "Seçilen dosya 5 MB’tan büyük.",
   "@profilePictureTooLarge": {
     "description": "Error when picture exceeds size limit"
   },

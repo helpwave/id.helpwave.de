@@ -32,7 +32,7 @@
   "@register": {
     "description": "Register button text"
   },
-  "backToLogin": "Torna all'accesso",
+  "backToLogin": "Torna all’accesso",
   "@backToLogin": {
     "description": "Back to login link text"
   },
@@ -80,7 +80,7 @@
   "@privacyPolicy": {
     "description": "Privacy policy link text"
   },
-  "privacyRequired": "Per continuare deve accettare l'informativa sulla privacy.",
+  "privacyRequired": "Per continuare deve accettare l’informativa sulla privacy.",
   "@privacyRequired": {
     "description": "Error when privacy not accepted"
   },
@@ -104,7 +104,7 @@
   "@realmBannerOther": {
     "description": "Banner headline shown on every page of a non-customer realm"
   },
-  "realmBannerSubtitleTeam": "Sta accedendo a un'area del team con privilegi elevati.",
+  "realmBannerSubtitleTeam": "Sta accedendo a un’area del team con privilegi elevati.",
   "@realmBannerSubtitleTeam": {
     "description": "Subtitle below the team realm banner"
   },
@@ -112,7 +112,7 @@
   "@realmBannerSubtitleAdmin": {
     "description": "Subtitle below the admin realm banner"
   },
-  "realmBannerSubtitleOther": "Questo non è l'accesso standard per i clienti.",
+  "realmBannerSubtitleOther": "Questo non è l’accesso standard per i clienti.",
   "@realmBannerSubtitleOther": {
     "description": "Subtitle below the fallback realm banner"
   },
@@ -176,7 +176,7 @@
   "@profilePicture": {
     "description": "Profile picture section heading"
   },
-  "profilePictureComingSoon": "Caricamento dell'immagine del profilo – presto disponibile.",
+  "profilePictureComingSoon": "Caricamento dell’immagine del profilo – presto disponibile.",
   "@profilePictureComingSoon": {
     "description": "Placeholder for profile picture upload"
   },
@@ -204,7 +204,7 @@
   "@profilePictureWrongType": {
     "description": "Error when picture has unsupported type"
   },
-  "profilePictureHelp": "JPEG, PNG o WebP, max. 5 MB. L'immagine viene ridimensionata e archiviata in modo sicuro.",
+  "profilePictureHelp": "JPEG, PNG o WebP, max. 5 MB. L’immagine viene ridimensionata e archiviata in modo sicuro.",
   "@profilePictureHelp": {
     "description": "Helper text below upload button"
   },
@@ -232,11 +232,11 @@
   "@doCancel": {
     "description": "Cancel button text"
   },
-  "backToApplication": "Torna all'applicazione",
+  "backToApplication": "Torna all’applicazione",
   "@backToApplication": {
     "description": "Back to application button text"
   },
-  "backToAccount": "Torna all'account",
+  "backToAccount": "Torna all’account",
   "@backToAccount": {
     "description": "Back to account button text in account console"
   },
@@ -260,7 +260,7 @@
   "@doRestart": {
     "description": "Restart button text"
   },
-  "sessionExpired": "Il tempo previsto per la connessione è scaduto.\nLa procedura di accesso ricomincerà dall'inizio.",
+  "sessionExpired": "Il tempo previsto per la connessione è scaduto.\nLa procedura di accesso ricomincerà dall’inizio.",
   "@sessionExpired": {
     "description": "Session/timeout expired message"
   },
@@ -320,7 +320,7 @@
   "@oauthGrantTitle": {
     "description": "OAuth grant title"
   },
-  "oauthGrantMessage": "L'applicazione richiede l'accesso al Suo account",
+  "oauthGrantMessage": "L’applicazione richiede l’accesso al Suo account",
   "@oauthGrantMessage": {
     "description": "OAuth grant message"
   },
@@ -336,7 +336,7 @@
   "@passkeysConditionalAuthenticateMessage": {
     "description": "Passkeys conditional authenticate message"
   },
-  "recoveryAuthnCodeConfigMessage": "Configuri il Suo codice di recupero per l'autenticazione",
+  "recoveryAuthnCodeConfigMessage": "Configuri il Suo codice di recupero per l’autenticazione",
   "@recoveryAuthnCodeConfigMessage": {
     "description": "Recovery authentication code config message"
   },
@@ -380,7 +380,7 @@
   "@webauthnAuthenticateMessage": {
     "description": "WebAuthn authenticate message"
   },
-  "webauthnErrorMessage": "Si è verificato un errore durante l'autenticazione WebAuthn",
+  "webauthnErrorMessage": "Si è verificato un errore durante l’autenticazione WebAuthn",
   "@webauthnErrorMessage": {
     "description": "WebAuthn error message"
   },
@@ -428,7 +428,7 @@
   "@errorPasswordMismatch": {
     "description": "Password confirmation field error"
   },
-  "errorAccountTemporarilyDisabled": "L'account è temporaneamente disattivato. Contatti l'amministratore o riprovi più tardi.",
+  "errorAccountTemporarilyDisabled": "L’account è temporaneamente disattivato. Contatti l’amministratore o riprovi più tardi.",
   "@errorAccountTemporarilyDisabled": {
     "description": "Account disabled error"
   },
@@ -456,17 +456,17 @@
   "@successAccountUpdated": {
     "description": "Account update success message"
   },
-  "errorAccountDisabled": "L'account è disattivato. Contatti l'amministratore.",
+  "errorAccountDisabled": "L’account è disattivato. Contatti l’amministratore.",
   "errorUsernameExists": "Il nome utente esiste già.",
-  "errorEmailExists": "L'indirizzo e-mail esiste già.",
-  "errorExpiredCode": "Accesso scaduto. Effettui di nuovo l'accesso.",
-  "errorExpiredAction": "Azione scaduta. Prosegua ora con l'accesso.",
+  "errorEmailExists": "L’indirizzo e-mail esiste già.",
+  "errorExpiredCode": "Accesso scaduto. Effettui di nuovo l’accesso.",
+  "errorExpiredAction": "Azione scaduta. Prosegua ora con l’accesso.",
   "errorInvalidTotp": "Codice di autenticazione non valido.",
   "errorMissingTotp": "Inserisca il codice di autenticazione.",
-  "errorConfigureTotp": "Per attivare l'account deve configurare un autenticatore mobile.",
-  "errorEmailSendError": "Invio dell'e-mail non riuscito. Riprovi più tardi.",
+  "errorConfigureTotp": "Per attivare l’account deve configurare un autenticatore mobile.",
+  "errorEmailSendError": "Invio dell’e-mail non riuscito. Riprovi più tardi.",
   "successPasswordUpdated": "La Sua password è stata aggiornata.",
-  "successEmailSent": "A breve riceverà un'e-mail con ulteriori istruzioni.",
+  "successEmailSent": "A breve riceverà un’e-mail con ulteriori istruzioni.",
   "pageTitleLogin": "Accedi",
   "pageTitleRegister": "Registrazione",
   "pageTitleForgotPassword": "Password dimenticata",
@@ -485,7 +485,7 @@
   "pageTitleDeleteAccountConfirm": "Elimina account",
   "pageTitleDeleteCredential": "Elimina credenziale",
   "pageTitleFrontchannelLogout": "Disconnessione in corso",
-  "pageTitleIdpReviewProfile": "Aggiorna i dati dell'account",
+  "pageTitleIdpReviewProfile": "Aggiorna i dati dell’account",
   "pageTitleLinkIdp": "Collega provider di identità",
   "pageTitleConfigTotp": "Configurazione autenticatore mobile",
   "pageTitleIdpLinkConfirm": "Collega account",
@@ -499,7 +499,7 @@
   "pageTitleRecoveryCodeConfig": "Codici di recupero",
   "pageTitleRecoveryCodeInput": "Codice di recupero",
   "pageTitleResetOtp": "Reimposta autenticatore",
-  "pageTitleUpdateProfile": "Aggiorna i dati dell'account",
+  "pageTitleUpdateProfile": "Aggiorna i dati dell’account",
   "pageTitleLoginUsername": "Accedi",
   "pageTitleX509Info": "Certificato X.509",
   "pageTitleSamlPostForm": "Reindirizzamento",
