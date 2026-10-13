@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ShieldAlert, Users, Tag } from 'lucide-react'
 import { getRealmTheme, type RealmKind } from '../utils/realmColor'
 import { useTranslation } from '../../i18n/useTranslation'
@@ -35,7 +35,7 @@ function KindIcon({ kind, className }: { kind: Exclude<RealmKind, 'customer'>, c
  * Full-width, sticky-top banner shown on every non-customer realm. Combines:
  * - bold colored bar across the viewport
  * - large realm name + icon
- * - team realms: 4 px viewport outline (fixed, does not grow with scroll)
+ * - team realms: 4 px viewport frame below the banner with a rounded inner edge (fixed, does not grow with scroll)
  * - other non-customer realms: 4 px top stripe
  * - document title prefix so the realm is visible in the browser tab
  */
@@ -43,6 +43,8 @@ export function RealmBanner({ kcContext }: RealmBannerProps) {
     const t = useTranslation()
     const realmName = extractRealmName(kcContext.realm)
     const theme = getRealmTheme(realmName)
+    const bannerRef = useRef<HTMLDivElement>(null)
+    const [bannerHeight, setBannerHeight] = useState(0)
 
     useEffect(() => {
         if (theme.kind === 'customer') return
@@ -53,6 +55,14 @@ export function RealmBanner({ kcContext }: RealmBannerProps) {
         document.title = `[${tag}] ${original}`
         return () => { document.title = original }
     }, [theme.kind, realmName])
+
+    useEffect(() => {
+        const banner = bannerRef.current
+        if (!banner) return
+        const observer = new ResizeObserver(() => setBannerHeight(banner.offsetHeight))
+        observer.observe(banner)
+        return () => observer.disconnect()
+    }, [theme.kind])
 
     if (theme.kind === 'customer') return null
 
@@ -76,12 +86,19 @@ export function RealmBanner({ kcContext }: RealmBannerProps) {
             {isTeamRealm && (
                 <div
                     aria-hidden="true"
-                    className="pointer-events-none fixed inset-0 z-[1200] box-border"
-                    style={{ boxShadow: `inset 0 0 0 4px ${accent}` }}
-                />
+                    className="pointer-events-none fixed inset-x-0 bottom-0 z-[1200] overflow-hidden"
+                    style={{ top: bannerHeight }}
+                >
+                    {/* the spread shadow paints the frame and follows the rounded inner box into the corners */}
+                    <div
+                        className="absolute inset-x-1 top-0 bottom-1 rounded-xl"
+                        style={{ boxShadow: `0 0 0 100vmax ${accent}` }}
+                    />
+                </div>
             )}
 
             <div
+                ref={bannerRef}
                 role="banner"
                 aria-label={`${realmName} realm indicator`}
                 className="sticky top-0 z-[1100] w-full"
