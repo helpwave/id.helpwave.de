@@ -1,0 +1,522 @@
+{
+  "@@locale": "nl-NL",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Title for helpwave id badge"
+  },
+  "nOrganization": "{count, plural, =1{# organisatie} other{# organisaties}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
+  },
+  "imprint": "Colofon",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Privacy",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Wachtwoord vergeten?",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "Geen account?",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Registreren",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Terug naar inloggen",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Gebruikersnaam of e-mailadres",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Gebruikersnaam",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Wachtwoord",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Ingelogd blijven",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Inloggen",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Wachtwoord vergeten?",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Registreren",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Of inloggen met",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "Ik ga akkoord met de algemene voorwaarden",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "acceptPrivacy": "Ik heb het",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "privacybeleid gelezen en ga ermee akkoord",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "U moet het privacybeleid accepteren om verder te gaan.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "Captcha-verificatie mislukt. Probeer het opnieuw.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "Captcha laden…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Teamwerkruimte",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Beheerdersportaal",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Interne realm",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "U meldt zich aan bij een beveiligde teamomgeving.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Beheerderstoegang – elke actie wordt vastgelegd.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "Dit is niet de gewone klantenlogin.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
+  "passwordNew": "Nieuw wachtwoord",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Wachtwoord bevestigen",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Verzenden",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "Eenmalig wachtwoord",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Verificatiecode",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Tekst van de algemene voorwaarden",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Accepteren",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Weigeren",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Weet u zeker dat u wilt uitloggen?",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Uitloggen",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doSave": "Opslaan",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "doUpdate": "Bijwerken",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
+  "updatePassword": "Wachtwoord wijzigen",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Actief",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Profielfoto",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Profielfoto uploaden – binnenkort beschikbaar.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Foto uploaden",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Foto verwijderen",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Uploaden…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Uploaden mislukt. Probeer het opnieuw.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "Het geselecteerde bestand is groter dan 5 MB.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Alleen JPEG-, PNG- of WebP-afbeeldingen worden ondersteund.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG of WebP, max. 5 MB. De afbeelding wordt geschaald en veilig opgeslagen.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
+  },
+  "accountSectionProfile": "Profiel",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Persoonlijke gegevens",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Wachtwoord wijzigen",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
+  "securitySectionTitle": "Beveiliging",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Gevarenzone",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
+  "doCancel": "Annuleren",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Terug naar de applicatie",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "backToAccount": "Terug naar account",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
+  "doContinue": "Doorgaan",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Controleer uw e-mail voor een verificatielink.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Controleer uw e-mail voor een verificatielink.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Klik hier",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Opnieuw beginnen",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "sessionExpired": "De beschikbare tijd voor de verbinding is verstreken.\nHet inlogproces wordt opnieuw gestart.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
+  },
+  "deleteAccountConfirm": "Weet u zeker dat u uw account wilt verwijderen?",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Account verwijderen",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Weet u zeker dat u deze inloggegevens wilt verwijderen?",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Verwijderen",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Bezig met uitloggen…",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Identiteitsprovider koppelen…",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Wilt u deze identiteitsprovider aan uw account koppelen?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Koppelen",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "Deze identiteitsprovider is al aan een ander account gekoppeld. Wilt u deze koppeling overschrijven?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Overschrijven",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "E-mailadres",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "firstName": "Voornaam",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Achternaam",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
+  "oauthGrantTitle": "Toegang verlenen",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "De applicatie vraagt toegang tot uw account",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "Gevraagde rechten",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "Deze pagina is verlopen. Start het inlogproces opnieuw.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Authenticeren met passkey…",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Stel uw herstelcode voor authenticatie in",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Herstelcode",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Uw OTP is gereset. Stel een nieuwe in.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Scan deze QR-code met uw authenticator-app",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "Eenmalige code",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Doorsturen naar identiteitsprovider…",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Authenticator kiezen",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Organisatie kiezen",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "Informatie over X.509-certificaat",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Geef de informatie van uw X.509-certificaat op",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Authenticeer met uw beveiligingssleutel",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "Er is een fout opgetreden bij de WebAuthn-authenticatie",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Registreer uw beveiligingssleutel",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Voer de gebruikerscode in die op uw apparaat wordt weergegeven",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "Gebruikerscode",
+  "@userCode": {
+    "description": "Label for user code input field"
+  },
+  "errorInvalidUsernameOrPassword": "Ongeldige gebruikersnaam of ongeldig wachtwoord",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login form field error"
+  },
+  "errorInvalidUsername": "Ongeldige gebruikersnaam",
+  "@errorInvalidUsername": {
+    "description": "Username field error"
+  },
+  "errorInvalidPassword": "Ongeldig wachtwoord",
+  "@errorInvalidPassword": {
+    "description": "Password field error"
+  },
+  "errorInvalidEmail": "Ongeldig e-mailadres",
+  "@errorInvalidEmail": {
+    "description": "Email field error"
+  },
+  "errorInvalidCode": "Ongeldige code",
+  "@errorInvalidCode": {
+    "description": "Verification code field error"
+  },
+  "errorInvalidRecoveryCode": "Ongeldige herstelcode",
+  "@errorInvalidRecoveryCode": {
+    "description": "Recovery code field error"
+  },
+  "errorInvalidUserCode": "Ongeldige gebruikerscode",
+  "@errorInvalidUserCode": {
+    "description": "User code field error"
+  },
+  "errorPasswordMismatch": "Wachtwoorden komen niet overeen",
+  "@errorPasswordMismatch": {
+    "description": "Password confirmation field error"
+  },
+  "errorAccountTemporarilyDisabled": "Account is tijdelijk uitgeschakeld. Neem contact op met uw beheerder of probeer het later opnieuw.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Huidig wachtwoord onjuist",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Bestaand wachtwoord ongeldig",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Voer een wachtwoord in",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Wachtwoord succesvol gewijzigd",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Mobiele authenticator ingesteld",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Uw account is bijgewerkt",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
+  },
+  "errorAccountDisabled": "Account is uitgeschakeld, neem contact op met uw beheerder.",
+  "errorUsernameExists": "Gebruikersnaam bestaat al.",
+  "errorEmailExists": "E-mailadres bestaat al.",
+  "errorExpiredCode": "Inlogtijd verlopen. Log opnieuw in.",
+  "errorExpiredAction": "Actie verlopen. Ga nu verder met inloggen.",
+  "errorInvalidTotp": "Ongeldige authenticatorcode.",
+  "errorMissingTotp": "Voer de authenticatorcode in.",
+  "errorConfigureTotp": "U moet een mobiele authenticator instellen om uw account te activeren.",
+  "errorEmailSendError": "Verzenden van e-mail mislukt, probeer het later opnieuw.",
+  "successPasswordUpdated": "Uw wachtwoord is bijgewerkt.",
+  "successEmailSent": "U ontvangt binnenkort een e-mail met verdere instructies.",
+  "pageTitleLogin": "Inloggen",
+  "pageTitleRegister": "Registreren",
+  "pageTitleForgotPassword": "Wachtwoord vergeten",
+  "pageTitleInfo": "Informatie",
+  "pageTitleError": "Fout",
+  "pageTitlePageDisabled": "Pagina uitgeschakeld",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
+  "pageTitleCode": "Verificatiecode",
+  "pageTitleLogoutConfirm": "Uitloggen",
+  "pageTitleTerms": "Algemene voorwaarden",
+  "pageTitleLoginOtp": "Verificatiecode",
+  "pageTitleUpdatePassword": "Wachtwoord wijzigen",
+  "pageTitleEmailVerification": "E-mailverificatie",
+  "pageTitleDeleteAccountConfirm": "Account verwijderen",
+  "pageTitleDeleteCredential": "Inloggegevens verwijderen",
+  "pageTitleFrontchannelLogout": "Bezig met uitloggen",
+  "pageTitleIdpReviewProfile": "Accountgegevens bijwerken",
+  "pageTitleLinkIdp": "Identiteitsprovider koppelen",
+  "pageTitleConfigTotp": "Mobiele authenticator instellen",
+  "pageTitleIdpLinkConfirm": "Account koppelen",
+  "pageTitleIdpLinkConfirmOverride": "Koppeling overschrijven",
+  "pageTitleIdpLinkEmail": "Account koppelen",
+  "pageTitleOauth2DeviceVerifyUserCode": "Inloggen op apparaat",
+  "pageTitleOauthGrant": "Toegang verlenen",
+  "pageTitlePageExpired": "Pagina verlopen",
+  "pageTitlePasskeysConditionalAuthenticate": "Inloggen met passkey",
+  "pageTitleLoginPassword": "Inloggen",
+  "pageTitleRecoveryCodeConfig": "Herstelcodes",
+  "pageTitleRecoveryCodeInput": "Herstelcode",
+  "pageTitleResetOtp": "Authenticator resetten",
+  "pageTitleUpdateProfile": "Accountgegevens bijwerken",
+  "pageTitleLoginUsername": "Inloggen",
+  "pageTitleX509Info": "X.509-certificaat",
+  "pageTitleSamlPostForm": "Doorsturen",
+  "pageTitleSelectAuthenticator": "Authenticator kiezen",
+  "pageTitleSelectOrganization": "Organisatie kiezen",
+  "pageTitleUpdateEmail": "E-mailadres wijzigen",
+  "pageTitleWebauthnAuthenticate": "Inloggen met passkey",
+  "pageTitleWebauthnError": "Passkey-fout",
+  "pageTitleWebauthnRegister": "Passkey registreren",
+  "pageTitleAccount": "Account",
+  "pageTitleAccountPassword": "Wachtwoord",
+  "messageHeaderEmailVerification": "E-mailverificatie",
+  "messageHeaderForgotPassword": "Wachtwoord vergeten?",
+  "messageHeaderEmailUpdateConfirmation": "Bevestigingsmail verzonden",
+  "messageHeaderEmailUpdated": "E-mailadres bijgewerkt",
+  "messageHeaderUpdatePassword": "Wachtwoord wijzigen",
+  "messageHeaderSuccessCode": "Succescode",
+  "messageHeaderErrorCode": "Foutcode",
+  "messageHeaderExecuteActions": "Vereiste acties"
+}

@@ -1,4 +1,4 @@
-import { helpwaveIdTranslation } from './translations'
-import { useHightideTranslation } from '@helpwave/hightide'
+import type { HelpwaveIdTranslationEntries, HelpwaveIdTranslationLocales } from './translations'
+import { useTranslation as useHightideContextTranslation } from '@helpwave/hightide'
 
-export const useTranslation = () => useHightideTranslation(helpwaveIdTranslation)
+export const useTranslation = () => useHightideContextTranslation<HelpwaveIdTranslationLocales, HelpwaveIdTranslationEntries>()

@@ -4,6 +4,7 @@ import '@helpwave/hightide/style/globals.css'
 import '../src/fonts.css'
 import '../src/index.css'
 import { HightideProvider } from '@helpwave/hightide'
+import { translations } from '../src/i18n/hightideConfig'
 
 if (typeof window !== 'undefined' && typeof (globalThis as { process?: { env: Record<string, string> } }).process === 'undefined') {
     (globalThis as { process: { env: Record<string, string> } }).process = { env: {} }
@@ -47,7 +48,7 @@ const preview: Preview = {
             }
             return React.createElement(
                 HightideProvider,
-                {},
+                { translation: { translation: translations } },
                 React.createElement(Story)
             )
         }

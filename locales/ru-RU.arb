@@ -1,0 +1,522 @@
+{
+  "@@locale": "ru-RU",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Title for helpwave id badge"
+  },
+  "nOrganization": "{count, plural, =1{# организация} few{# организации} many{# организаций} other{# организации}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
+  },
+  "imprint": "Выходные данные",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Конфиденциальность",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Забыли пароль?",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "Нет учётной записи?",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Зарегистрироваться",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Вернуться ко входу",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Имя пользователя или эл. почта",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Имя пользователя",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Пароль",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Запомнить меня",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Войти",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Забыли пароль?",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Зарегистрироваться",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Или войдите с помощью",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "Я принимаю условия использования",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "acceptPrivacy": "Я прочитал(а) и принимаю",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "политику конфиденциальности",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "Чтобы продолжить, необходимо принять политику конфиденциальности.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "Не удалось пройти проверку CAPTCHA. Пожалуйста, попробуйте ещё раз.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "Загрузка CAPTCHA…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Рабочая область команды",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Портал администратора",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Внутренняя область",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "Вы входите в привилегированную командную область.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Административный доступ — все действия протоколируются.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "Это не стандартный вход для клиентов.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
+  "passwordNew": "Новый пароль",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Подтверждение пароля",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Отправить",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "Одноразовый пароль",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Код подтверждения",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Текст условий использования",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Принять",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Отклонить",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Вы действительно хотите выйти?",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Выйти",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doSave": "Сохранить",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "doUpdate": "Обновить",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
+  "updatePassword": "Изменить пароль",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Активен",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Фото профиля",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Загрузка фото профиля — скоро.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Загрузить фото",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Удалить фото",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Загрузка…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Не удалось загрузить. Пожалуйста, попробуйте ещё раз.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "Размер выбранного файла превышает 5 МБ.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Поддерживаются только изображения JPEG, PNG и WebP.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG или WebP, не более 5 МБ. Изображение масштабируется и надёжно хранится.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
+  },
+  "accountSectionProfile": "Профиль",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Личные данные",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Изменение пароля",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
+  "securitySectionTitle": "Безопасность",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Опасная зона",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
+  "doCancel": "Отмена",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Вернуться в приложение",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "backToAccount": "Вернуться к учётной записи",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
+  "doContinue": "Продолжить",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Пожалуйста, проверьте почту: мы отправили Вам ссылку для подтверждения.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Пожалуйста, проверьте почту: мы отправили Вам ссылку для подтверждения.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Нажмите здесь",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Начать заново",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "sessionExpired": "Время, отведённое на подключение, истекло.\nВход будет начат заново.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
+  },
+  "deleteAccountConfirm": "Вы действительно хотите удалить свою учётную запись?",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Удалить учётную запись",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Вы действительно хотите удалить эти учётные данные?",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Удалить",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Выполняется выход…",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Привязка поставщика удостоверений…",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Привязать этого поставщика удостоверений к Вашей учётной записи?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Привязать",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "Этот поставщик удостоверений уже привязан к другой учётной записи. Заменить привязку?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Заменить",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "Эл. почта",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "firstName": "Имя",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Фамилия",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
+  "oauthGrantTitle": "Предоставление доступа",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "Приложение запрашивает доступ к Вашей учётной записи",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "Запрашиваемые разрешения",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "Срок действия этой страницы истёк. Пожалуйста, начните вход заново.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Вход с помощью ключа доступа…",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Настройте коды восстановления",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Код восстановления",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Ваш одноразовый пароль (OTP) сброшен. Пожалуйста, настройте новый.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Отсканируйте этот QR-код в приложении-аутентификаторе",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "Одноразовый код",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Перенаправление к поставщику удостоверений…",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Выберите способ аутентификации",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Выберите организацию",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "Сведения о сертификате X.509",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Пожалуйста, укажите сведения о Вашем сертификате X.509",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Выполните вход с помощью ключа безопасности",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "При аутентификации WebAuthn произошла ошибка",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Зарегистрируйте свой ключ безопасности",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Введите код пользователя, отображаемый на Вашем устройстве",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "Код пользователя",
+  "@userCode": {
+    "description": "Label for user code input field"
+  },
+  "errorInvalidUsernameOrPassword": "Неверное имя пользователя или пароль",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login form field error"
+  },
+  "errorInvalidUsername": "Неверное имя пользователя",
+  "@errorInvalidUsername": {
+    "description": "Username field error"
+  },
+  "errorInvalidPassword": "Неверный пароль",
+  "@errorInvalidPassword": {
+    "description": "Password field error"
+  },
+  "errorInvalidEmail": "Неверный адрес эл. почты",
+  "@errorInvalidEmail": {
+    "description": "Email field error"
+  },
+  "errorInvalidCode": "Неверный код",
+  "@errorInvalidCode": {
+    "description": "Verification code field error"
+  },
+  "errorInvalidRecoveryCode": "Неверный код восстановления",
+  "@errorInvalidRecoveryCode": {
+    "description": "Recovery code field error"
+  },
+  "errorInvalidUserCode": "Неверный код пользователя",
+  "@errorInvalidUserCode": {
+    "description": "User code field error"
+  },
+  "errorPasswordMismatch": "Пароли не совпадают",
+  "@errorPasswordMismatch": {
+    "description": "Password confirmation field error"
+  },
+  "errorAccountTemporarilyDisabled": "Учётная запись временно заблокирована. Обратитесь к администратору или повторите попытку позже.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Неверный текущий пароль",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Неверный текущий пароль",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Пожалуйста, введите пароль",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Пароль успешно изменён",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Мобильный аутентификатор настроен",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Ваша учётная запись обновлена",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
+  },
+  "errorAccountDisabled": "Учётная запись заблокирована, обратитесь к администратору.",
+  "errorUsernameExists": "Имя пользователя уже занято.",
+  "errorEmailExists": "Этот адрес эл. почты уже используется.",
+  "errorExpiredCode": "Время входа истекло. Пожалуйста, войдите снова.",
+  "errorExpiredAction": "Срок действия истёк. Пожалуйста, продолжите вход.",
+  "errorInvalidTotp": "Неверный код аутентификатора.",
+  "errorMissingTotp": "Пожалуйста, введите код аутентификатора.",
+  "errorConfigureTotp": "Для активации учётной записи необходимо настроить мобильный аутентификатор.",
+  "errorEmailSendError": "Не удалось отправить письмо. Пожалуйста, повторите попытку позже.",
+  "successPasswordUpdated": "Ваш пароль обновлён.",
+  "successEmailSent": "В ближайшее время Вы получите письмо с дальнейшими инструкциями.",
+  "pageTitleLogin": "Вход",
+  "pageTitleRegister": "Регистрация",
+  "pageTitleForgotPassword": "Восстановление пароля",
+  "pageTitleInfo": "Информация",
+  "pageTitleError": "Ошибка",
+  "pageTitlePageDisabled": "Страница отключена",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
+  "pageTitleCode": "Код подтверждения",
+  "pageTitleLogoutConfirm": "Выход",
+  "pageTitleTerms": "Условия использования",
+  "pageTitleLoginOtp": "Код подтверждения",
+  "pageTitleUpdatePassword": "Изменение пароля",
+  "pageTitleEmailVerification": "Подтверждение эл. почты",
+  "pageTitleDeleteAccountConfirm": "Удаление учётной записи",
+  "pageTitleDeleteCredential": "Удаление учётных данных",
+  "pageTitleFrontchannelLogout": "Выход из системы",
+  "pageTitleIdpReviewProfile": "Обновление данных учётной записи",
+  "pageTitleLinkIdp": "Привязка поставщика удостоверений",
+  "pageTitleConfigTotp": "Настройка мобильного аутентификатора",
+  "pageTitleIdpLinkConfirm": "Привязка учётной записи",
+  "pageTitleIdpLinkConfirmOverride": "Замена привязки",
+  "pageTitleIdpLinkEmail": "Привязка учётной записи",
+  "pageTitleOauth2DeviceVerifyUserCode": "Вход с устройства",
+  "pageTitleOauthGrant": "Предоставление доступа",
+  "pageTitlePageExpired": "Срок действия страницы истёк",
+  "pageTitlePasskeysConditionalAuthenticate": "Вход с ключом доступа",
+  "pageTitleLoginPassword": "Вход",
+  "pageTitleRecoveryCodeConfig": "Коды восстановления",
+  "pageTitleRecoveryCodeInput": "Код восстановления",
+  "pageTitleResetOtp": "Сброс аутентификатора",
+  "pageTitleUpdateProfile": "Обновление данных учётной записи",
+  "pageTitleLoginUsername": "Вход",
+  "pageTitleX509Info": "Сертификат X.509",
+  "pageTitleSamlPostForm": "Перенаправление",
+  "pageTitleSelectAuthenticator": "Выбор способа аутентификации",
+  "pageTitleSelectOrganization": "Выбор организации",
+  "pageTitleUpdateEmail": "Изменение эл. почты",
+  "pageTitleWebauthnAuthenticate": "Вход с ключом доступа",
+  "pageTitleWebauthnError": "Ошибка ключа доступа",
+  "pageTitleWebauthnRegister": "Регистрация ключа доступа",
+  "pageTitleAccount": "Учётная запись",
+  "pageTitleAccountPassword": "Пароль",
+  "messageHeaderEmailVerification": "Подтверждение эл. почты",
+  "messageHeaderForgotPassword": "Забыли пароль?",
+  "messageHeaderEmailUpdateConfirmation": "Письмо с подтверждением отправлено",
+  "messageHeaderEmailUpdated": "Адрес эл. почты обновлён",
+  "messageHeaderUpdatePassword": "Изменение пароля",
+  "messageHeaderSuccessCode": "Код успеха",
+  "messageHeaderErrorCode": "Код ошибки",
+  "messageHeaderExecuteActions": "Необходимые действия"
+}
