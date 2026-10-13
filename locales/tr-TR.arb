@@ -1,0 +1,522 @@
+{
+  "@@locale": "tr-TR",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Title for helpwave id badge"
+  },
+  "nOrganization": "{count, plural, =1{# kuruluş} other{# kuruluş}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
+  },
+  "imprint": "Künye",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Gizlilik",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Şifrenizi mi unuttunuz?",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "Hesabınız yok mu?",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Kaydolun",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Girişe dön",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Kullanıcı adı veya e-posta",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Kullanıcı adı",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Şifre",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Beni hatırla",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Giriş yap",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Şifrenizi mi unuttunuz?",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Kaydol",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Veya şununla giriş yapın",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "Kullanım koşullarını kabul ediyorum",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "acceptPrivacy": "Okudum ve kabul ediyorum:",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "gizlilik politikası",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "Devam etmek için gizlilik politikasını kabul etmeniz gerekir.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "CAPTCHA doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "CAPTCHA yükleniyor…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Ekip çalışma alanı",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Yönetici portalı",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Dahili alan",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "Ayrıcalıklı bir ekip alanında oturum açıyorsunuz.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Yönetici erişimi — her işlem denetim kaydına alınır.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "Bu, normal müşteri girişi değildir.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
+  "passwordNew": "Yeni şifre",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Şifre onayı",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Gönder",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "Tek kullanımlık şifre",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Doğrulama kodu",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Kullanım koşulları metni",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Kabul et",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Reddet",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Çıkış yapmak istediğinizden emin misiniz?",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Çıkış yap",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doSave": "Kaydet",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "doUpdate": "Güncelle",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
+  "updatePassword": "Şifreyi güncelle",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Aktif",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Profil fotoğrafı",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Profil fotoğrafı yükleme — yakında.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Fotoğraf yükle",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Fotoğrafı kaldır",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Yükleniyor…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Yükleme başarısız oldu. Lütfen tekrar deneyin.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "Seçilen dosya 5 MB'tan büyük.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Yalnızca JPEG, PNG veya WebP görselleri desteklenir.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG veya WebP, en fazla 5 MB. Görsel ölçeklendirilir ve güvenli şekilde saklanır.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
+  },
+  "accountSectionProfile": "Profil",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Kişisel bilgiler",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Şifreyi güncelle",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
+  "securitySectionTitle": "Güvenlik",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Tehlikeli bölge",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
+  "doCancel": "İptal",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Uygulamaya dön",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "backToAccount": "Hesaba dön",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
+  "doContinue": "Devam et",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Lütfen doğrulama bağlantısı için e-postanızı kontrol edin.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Lütfen doğrulama bağlantısı için e-postanızı kontrol edin.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Buraya tıklayın",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Yeniden başlat",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "sessionExpired": "Bağlantı için ayrılan süre doldu.\nGiriş işlemi baştan başlatılacak.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
+  },
+  "deleteAccountConfirm": "Hesabınızı silmek istediğinizden emin misiniz?",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Hesabı sil",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Bu kimlik bilgisini silmek istediğinizden emin misiniz?",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Sil",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Çıkış yapılıyor…",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Kimlik sağlayıcı bağlanıyor…",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Bu kimlik sağlayıcıyı hesabınıza bağlamak istiyor musunuz?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Bağla",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "Bu kimlik sağlayıcı zaten başka bir hesaba bağlı. Bağlantıyı değiştirmek istiyor musunuz?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Değiştir",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "E-posta",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "firstName": "Ad",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Soyad",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
+  "oauthGrantTitle": "Erişim izni ver",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "Uygulama hesabınıza erişim istiyor",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "İstenen izinler",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "Bu sayfanın süresi doldu. Lütfen giriş işlemini yeniden başlatın.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Geçiş anahtarıyla kimlik doğrulanıyor…",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Kurtarma kodlarınızı yapılandırın",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Kurtarma kodu",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Tek kullanımlık şifreniz (OTP) sıfırlandı. Lütfen yenisini yapılandırın.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Bu QR kodunu kimlik doğrulama uygulamanızla tarayın",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "Tek kullanımlık kod",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Kimlik sağlayıcıya yönlendiriliyor…",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Kimlik doğrulayıcı seçin",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Kuruluş seçin",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "X.509 sertifika bilgileri",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Lütfen X.509 sertifika bilgilerinizi girin",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Güvenlik anahtarınızla kimliğinizi doğrulayın",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "WebAuthn kimlik doğrulaması sırasında bir hata oluştu",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Güvenlik anahtarınızı kaydedin",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Cihazınızda görüntülenen kullanıcı kodunu girin",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "Kullanıcı kodu",
+  "@userCode": {
+    "description": "Label for user code input field"
+  },
+  "errorInvalidUsernameOrPassword": "Geçersiz kullanıcı adı veya şifre",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login form field error"
+  },
+  "errorInvalidUsername": "Geçersiz kullanıcı adı",
+  "@errorInvalidUsername": {
+    "description": "Username field error"
+  },
+  "errorInvalidPassword": "Geçersiz şifre",
+  "@errorInvalidPassword": {
+    "description": "Password field error"
+  },
+  "errorInvalidEmail": "Geçersiz e-posta",
+  "@errorInvalidEmail": {
+    "description": "Email field error"
+  },
+  "errorInvalidCode": "Geçersiz kod",
+  "@errorInvalidCode": {
+    "description": "Verification code field error"
+  },
+  "errorInvalidRecoveryCode": "Geçersiz kurtarma kodu",
+  "@errorInvalidRecoveryCode": {
+    "description": "Recovery code field error"
+  },
+  "errorInvalidUserCode": "Geçersiz kullanıcı kodu",
+  "@errorInvalidUserCode": {
+    "description": "User code field error"
+  },
+  "errorPasswordMismatch": "Şifreler eşleşmiyor",
+  "@errorPasswordMismatch": {
+    "description": "Password confirmation field error"
+  },
+  "errorAccountTemporarilyDisabled": "Hesap geçici olarak devre dışı. Yöneticinize başvurun veya daha sonra tekrar deneyin.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Mevcut şifre yanlış",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Geçersiz mevcut şifre",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Lütfen şifre girin",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Şifre başarıyla değiştirildi",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Mobil kimlik doğrulayıcı yapılandırıldı",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Hesabınız güncellendi",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
+  },
+  "errorAccountDisabled": "Hesap devre dışı, yöneticinize başvurun.",
+  "errorUsernameExists": "Bu kullanıcı adı zaten mevcut.",
+  "errorEmailExists": "Bu e-posta adresi zaten kullanılıyor.",
+  "errorExpiredCode": "Giriş zaman aşımına uğradı. Lütfen tekrar giriş yapın.",
+  "errorExpiredAction": "İşlemin süresi doldu. Lütfen şimdi girişe devam edin.",
+  "errorInvalidTotp": "Geçersiz kimlik doğrulayıcı kodu.",
+  "errorMissingTotp": "Lütfen kimlik doğrulayıcı kodunu girin.",
+  "errorConfigureTotp": "Hesabınızı etkinleştirmek için mobil kimlik doğrulayıcıyı kurmanız gerekir.",
+  "errorEmailSendError": "E-posta gönderilemedi, lütfen daha sonra tekrar deneyin.",
+  "successPasswordUpdated": "Şifreniz güncellendi.",
+  "successEmailSent": "Kısa süre içinde ek talimatlar içeren bir e-posta alacaksınız.",
+  "pageTitleLogin": "Giriş yap",
+  "pageTitleRegister": "Kaydol",
+  "pageTitleForgotPassword": "Şifremi unuttum",
+  "pageTitleInfo": "Bilgi",
+  "pageTitleError": "Hata",
+  "pageTitlePageDisabled": "Sayfa devre dışı",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
+  "pageTitleCode": "Doğrulama kodu",
+  "pageTitleLogoutConfirm": "Çıkış yap",
+  "pageTitleTerms": "Kullanım koşulları",
+  "pageTitleLoginOtp": "Doğrulama kodu",
+  "pageTitleUpdatePassword": "Şifreyi güncelle",
+  "pageTitleEmailVerification": "E-posta doğrulama",
+  "pageTitleDeleteAccountConfirm": "Hesabı sil",
+  "pageTitleDeleteCredential": "Kimlik bilgisini sil",
+  "pageTitleFrontchannelLogout": "Çıkış yapılıyor",
+  "pageTitleIdpReviewProfile": "Hesap bilgilerini güncelle",
+  "pageTitleLinkIdp": "Kimlik sağlayıcı bağla",
+  "pageTitleConfigTotp": "Mobil kimlik doğrulayıcı kurulumu",
+  "pageTitleIdpLinkConfirm": "Hesabı bağla",
+  "pageTitleIdpLinkConfirmOverride": "Bağlantıyı değiştir",
+  "pageTitleIdpLinkEmail": "Hesabı bağla",
+  "pageTitleOauth2DeviceVerifyUserCode": "Cihaz girişi",
+  "pageTitleOauthGrant": "Erişim izni ver",
+  "pageTitlePageExpired": "Sayfanın süresi doldu",
+  "pageTitlePasskeysConditionalAuthenticate": "Geçiş anahtarıyla giriş",
+  "pageTitleLoginPassword": "Giriş yap",
+  "pageTitleRecoveryCodeConfig": "Kurtarma kodları",
+  "pageTitleRecoveryCodeInput": "Kurtarma kodu",
+  "pageTitleResetOtp": "Kimlik doğrulayıcıyı sıfırla",
+  "pageTitleUpdateProfile": "Hesap bilgilerini güncelle",
+  "pageTitleLoginUsername": "Giriş yap",
+  "pageTitleX509Info": "X.509 sertifikası",
+  "pageTitleSamlPostForm": "Yönlendiriliyor",
+  "pageTitleSelectAuthenticator": "Kimlik doğrulayıcı seçin",
+  "pageTitleSelectOrganization": "Kuruluş seçin",
+  "pageTitleUpdateEmail": "E-postayı güncelle",
+  "pageTitleWebauthnAuthenticate": "Geçiş anahtarıyla giriş",
+  "pageTitleWebauthnError": "Geçiş anahtarı hatası",
+  "pageTitleWebauthnRegister": "Geçiş anahtarı kaydı",
+  "pageTitleAccount": "Hesap",
+  "pageTitleAccountPassword": "Şifre",
+  "messageHeaderEmailVerification": "E-posta doğrulama",
+  "messageHeaderForgotPassword": "Şifrenizi mi unuttunuz?",
+  "messageHeaderEmailUpdateConfirmation": "Onay e-postası gönderildi",
+  "messageHeaderEmailUpdated": "E-posta güncellendi",
+  "messageHeaderUpdatePassword": "Şifreyi güncelle",
+  "messageHeaderSuccessCode": "Başarı kodu",
+  "messageHeaderErrorCode": "Hata kodu",
+  "messageHeaderExecuteActions": "Gerekli işlemler"
+}

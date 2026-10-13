@@ -1,0 +1,522 @@
+{
+  "@@locale": "el-GR",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Title for helpwave id badge"
+  },
+  "nOrganization": "{count, plural, =1{# οργανισμός} other{# οργανισμοί}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
+  },
+  "imprint": "Στοιχεία εκδότη",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Απόρρητο",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Ξεχάσατε τον κωδικό πρόσβασης;",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "Δεν έχετε λογαριασμό;",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Εγγραφή",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Επιστροφή στη σύνδεση",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Όνομα χρήστη ή email",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Όνομα χρήστη",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Κωδικός πρόσβασης",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Να με θυμάσαι",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Σύνδεση",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Ξεχάσατε τον κωδικό πρόσβασης;",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Εγγραφή",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Ή συνδεθείτε με",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "Αποδέχομαι τους όρους και τις προϋποθέσεις",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "acceptPrivacy": "Έχω διαβάσει και αποδέχομαι την",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "πολιτική απορρήτου",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "Πρέπει να αποδεχτείτε την πολιτική απορρήτου για να συνεχίσετε.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "Η επαλήθευση captcha απέτυχε. Δοκιμάστε ξανά.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "Φόρτωση captcha…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Χώρος εργασίας ομάδας",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Πύλη διαχειριστή",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Εσωτερικό realm",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "Συνδέεστε σε μια προνομιακή περιοχή ομάδας.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Πρόσβαση διαχειριστή — κάθε ενέργεια καταγράφεται.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "Αυτή δεν είναι η κανονική σύνδεση πελατών.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
+  "passwordNew": "Νέος κωδικός πρόσβασης",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Επιβεβαίωση κωδικού πρόσβασης",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Υποβολή",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "Κωδικός μίας χρήσης",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Κωδικός επαλήθευσης",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Κείμενο όρων και προϋποθέσεων",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Αποδοχή",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Απόρριψη",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Είστε βέβαιοι ότι θέλετε να αποσυνδεθείτε;",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Αποσύνδεση",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doSave": "Αποθήκευση",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "doUpdate": "Ενημέρωση",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
+  "updatePassword": "Ενημέρωση κωδικού πρόσβασης",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Ενεργός",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Εικόνα προφίλ",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Μεταφόρτωση εικόνας προφίλ – σύντομα διαθέσιμη.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Μεταφόρτωση εικόνας",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Αφαίρεση εικόνας",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Μεταφόρτωση…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Η μεταφόρτωση απέτυχε. Δοκιμάστε ξανά.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "Το επιλεγμένο αρχείο είναι μεγαλύτερο από 5 MB.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Υποστηρίζονται μόνο εικόνες JPEG, PNG ή WebP.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG ή WebP, έως 5 MB. Η εικόνα προσαρμόζεται σε μέγεθος και αποθηκεύεται με ασφάλεια.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
+  },
+  "accountSectionProfile": "Προφίλ",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Προσωπικά στοιχεία",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Ενημέρωση κωδικού πρόσβασης",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
+  "securitySectionTitle": "Ασφάλεια",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Ζώνη κινδύνου",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
+  "doCancel": "Ακύρωση",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Επιστροφή στην εφαρμογή",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "backToAccount": "Επιστροφή στον λογαριασμό",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
+  "doContinue": "Συνέχεια",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Ελέγξτε το email σας για έναν σύνδεσμο επαλήθευσης.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Ελέγξτε το email σας για έναν σύνδεσμο επαλήθευσης.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Κάντε κλικ εδώ",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Επανεκκίνηση",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "sessionExpired": "Ο χρόνος που διατέθηκε για τη σύνδεση έχει λήξει.\nΗ διαδικασία σύνδεσης θα ξεκινήσει από την αρχή.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
+  },
+  "deleteAccountConfirm": "Είστε βέβαιοι ότι θέλετε να διαγράψετε τον λογαριασμό σας;",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Διαγραφή λογαριασμού",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το διαπιστευτήριο;",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Διαγραφή",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Αποσύνδεση...",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Σύνδεση παρόχου ταυτότητας...",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Θέλετε να συνδέσετε αυτόν τον πάροχο ταυτότητας με τον λογαριασμό σας;",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Συσχέτιση",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "Αυτός ο πάροχος ταυτότητας είναι ήδη συνδεδεμένος με άλλον λογαριασμό. Θέλετε να τον αντικαταστήσετε;",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Αντικατάσταση",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "firstName": "Όνομα",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Επώνυμο",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
+  "oauthGrantTitle": "Παραχώρηση πρόσβασης",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "Η εφαρμογή ζητά πρόσβαση στον λογαριασμό σας",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "Ζητούμενα δικαιώματα",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "Αυτή η σελίδα έχει λήξει. Ξεκινήστε ξανά τη διαδικασία σύνδεσης.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Έλεγχος ταυτότητας με passkey...",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Ρυθμίστε τον κωδικό ανάκτησης για τον έλεγχο ταυτότητας",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Κωδικός ανάκτησης",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Ο κωδικός OTP σας επαναφέρθηκε. Ρυθμίστε έναν νέο.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Σαρώστε αυτόν τον κωδικό QR με την εφαρμογή ελέγχου ταυτότητας",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "Κωδικός μίας χρήσης",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Ανακατεύθυνση στον πάροχο ταυτότητας...",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Επιλογή μεθόδου ελέγχου ταυτότητας",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Επιλογή οργανισμού",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "Πληροφορίες πιστοποιητικού X.509",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Δώστε τις πληροφορίες του πιστοποιητικού X.509 σας",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Έλεγχος ταυτότητας με το κλειδί ασφαλείας σας",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "Παρουσιάστηκε σφάλμα κατά τον έλεγχο ταυτότητας WebAuthn",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Καταχωρίστε το κλειδί ασφαλείας σας",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Εισαγάγετε τον κωδικό χρήστη που εμφανίζεται στη συσκευή σας",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "Κωδικός χρήστη",
+  "@userCode": {
+    "description": "Label for user code input field"
+  },
+  "errorInvalidUsernameOrPassword": "Μη έγκυρο όνομα χρήστη ή κωδικός πρόσβασης",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login form field error"
+  },
+  "errorInvalidUsername": "Μη έγκυρο όνομα χρήστη",
+  "@errorInvalidUsername": {
+    "description": "Username field error"
+  },
+  "errorInvalidPassword": "Μη έγκυρος κωδικός πρόσβασης",
+  "@errorInvalidPassword": {
+    "description": "Password field error"
+  },
+  "errorInvalidEmail": "Μη έγκυρο email",
+  "@errorInvalidEmail": {
+    "description": "Email field error"
+  },
+  "errorInvalidCode": "Μη έγκυρος κωδικός",
+  "@errorInvalidCode": {
+    "description": "Verification code field error"
+  },
+  "errorInvalidRecoveryCode": "Μη έγκυρος κωδικός ανάκτησης",
+  "@errorInvalidRecoveryCode": {
+    "description": "Recovery code field error"
+  },
+  "errorInvalidUserCode": "Μη έγκυρος κωδικός χρήστη",
+  "@errorInvalidUserCode": {
+    "description": "User code field error"
+  },
+  "errorPasswordMismatch": "Οι κωδικοί πρόσβασης δεν ταιριάζουν",
+  "@errorPasswordMismatch": {
+    "description": "Password confirmation field error"
+  },
+  "errorAccountTemporarilyDisabled": "Ο λογαριασμός είναι προσωρινά απενεργοποιημένος. Επικοινωνήστε με τον διαχειριστή σας ή δοκιμάστε ξανά αργότερα.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Λανθασμένος τρέχων κωδικός πρόσβασης",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Μη έγκυρος υπάρχων κωδικός πρόσβασης",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Εισαγάγετε κωδικό πρόσβασης",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Ο κωδικός πρόσβασης άλλαξε με επιτυχία",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Η εφαρμογή ελέγχου ταυτότητας ρυθμίστηκε",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Ο λογαριασμός σας ενημερώθηκε",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
+  },
+  "errorAccountDisabled": "Ο λογαριασμός είναι απενεργοποιημένος. Επικοινωνήστε με τον διαχειριστή σας.",
+  "errorUsernameExists": "Το όνομα χρήστη υπάρχει ήδη.",
+  "errorEmailExists": "Το email υπάρχει ήδη.",
+  "errorExpiredCode": "Η σύνδεση έληξε. Συνδεθείτε ξανά.",
+  "errorExpiredAction": "Η ενέργεια έληξε. Συνεχίστε τώρα με τη σύνδεση.",
+  "errorInvalidTotp": "Μη έγκυρος κωδικός ελέγχου ταυτότητας.",
+  "errorMissingTotp": "Εισαγάγετε τον κωδικό ελέγχου ταυτότητας.",
+  "errorConfigureTotp": "Πρέπει να ρυθμίσετε μια εφαρμογή ελέγχου ταυτότητας για να ενεργοποιήσετε τον λογαριασμό σας.",
+  "errorEmailSendError": "Η αποστολή του email απέτυχε. Δοκιμάστε ξανά αργότερα.",
+  "successPasswordUpdated": "Ο κωδικός πρόσβασής σας ενημερώθηκε.",
+  "successEmailSent": "Σύντομα θα λάβετε ένα email με περαιτέρω οδηγίες.",
+  "pageTitleLogin": "Σύνδεση",
+  "pageTitleRegister": "Εγγραφή",
+  "pageTitleForgotPassword": "Ξεχάσατε τον κωδικό πρόσβασης",
+  "pageTitleInfo": "Πληροφορίες",
+  "pageTitleError": "Σφάλμα",
+  "pageTitlePageDisabled": "Η σελίδα είναι απενεργοποιημένη",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
+  "pageTitleCode": "Κωδικός επαλήθευσης",
+  "pageTitleLogoutConfirm": "Αποσύνδεση",
+  "pageTitleTerms": "Όροι και προϋποθέσεις",
+  "pageTitleLoginOtp": "Κωδικός επαλήθευσης",
+  "pageTitleUpdatePassword": "Ενημέρωση κωδικού πρόσβασης",
+  "pageTitleEmailVerification": "Επαλήθευση email",
+  "pageTitleDeleteAccountConfirm": "Διαγραφή λογαριασμού",
+  "pageTitleDeleteCredential": "Διαγραφή διαπιστευτηρίου",
+  "pageTitleFrontchannelLogout": "Αποσύνδεση",
+  "pageTitleIdpReviewProfile": "Ενημέρωση στοιχείων λογαριασμού",
+  "pageTitleLinkIdp": "Σύνδεση παρόχου ταυτότητας",
+  "pageTitleConfigTotp": "Ρύθμιση εφαρμογής ελέγχου ταυτότητας",
+  "pageTitleIdpLinkConfirm": "Συσχέτιση λογαριασμού",
+  "pageTitleIdpLinkConfirmOverride": "Αντικατάσταση σύνδεσης",
+  "pageTitleIdpLinkEmail": "Σύνδεση λογαριασμού",
+  "pageTitleOauth2DeviceVerifyUserCode": "Σύνδεση συσκευής",
+  "pageTitleOauthGrant": "Παραχώρηση πρόσβασης",
+  "pageTitlePageExpired": "Η σελίδα έληξε",
+  "pageTitlePasskeysConditionalAuthenticate": "Σύνδεση με passkey",
+  "pageTitleLoginPassword": "Σύνδεση",
+  "pageTitleRecoveryCodeConfig": "Κωδικοί ανάκτησης",
+  "pageTitleRecoveryCodeInput": "Κωδικός ανάκτησης",
+  "pageTitleResetOtp": "Επαναφορά εφαρμογής ελέγχου ταυτότητας",
+  "pageTitleUpdateProfile": "Ενημέρωση στοιχείων λογαριασμού",
+  "pageTitleLoginUsername": "Σύνδεση",
+  "pageTitleX509Info": "Πιστοποιητικό X.509",
+  "pageTitleSamlPostForm": "Ανακατεύθυνση",
+  "pageTitleSelectAuthenticator": "Επιλογή μεθόδου ελέγχου ταυτότητας",
+  "pageTitleSelectOrganization": "Επιλογή οργανισμού",
+  "pageTitleUpdateEmail": "Ενημέρωση email",
+  "pageTitleWebauthnAuthenticate": "Σύνδεση με passkey",
+  "pageTitleWebauthnError": "Σφάλμα passkey",
+  "pageTitleWebauthnRegister": "Καταχώριση passkey",
+  "pageTitleAccount": "Λογαριασμός",
+  "pageTitleAccountPassword": "Κωδικός πρόσβασης",
+  "messageHeaderEmailVerification": "Επαλήθευση email",
+  "messageHeaderForgotPassword": "Ξεχάσατε τον κωδικό πρόσβασής σας;",
+  "messageHeaderEmailUpdateConfirmation": "Το email επιβεβαίωσης στάλθηκε",
+  "messageHeaderEmailUpdated": "Το email ενημερώθηκε",
+  "messageHeaderUpdatePassword": "Ενημέρωση κωδικού πρόσβασης",
+  "messageHeaderSuccessCode": "Κωδικός επιτυχίας",
+  "messageHeaderErrorCode": "Κωδικός σφάλματος",
+  "messageHeaderExecuteActions": "Απαιτούμενες ενέργειες"
+}

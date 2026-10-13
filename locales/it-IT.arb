@@ -1,0 +1,522 @@
+{
+  "@@locale": "it-IT",
+  "helpwaveId": "helpwave id",
+  "@helpwaveId": {
+    "description": "Title for helpwave id badge"
+  },
+  "nOrganization": "{count, plural, =1{# organizzazione} other{# organizzazioni}}",
+  "@nOrganization": {
+    "placeholders": {
+      "count": {
+        "type": "number"
+      }
+    }
+  },
+  "imprint": "Note legali",
+  "@imprint": {
+    "description": "Link text for imprint"
+  },
+  "privacy": "Privacy",
+  "@privacy": {
+    "description": "Link text for privacy policy"
+  },
+  "forgotPassword": "Password dimenticata?",
+  "@forgotPassword": {
+    "description": "Link text for forgot password"
+  },
+  "noAccount": "Non ha un account?",
+  "@noAccount": {
+    "description": "Text before register link"
+  },
+  "register": "Registrati",
+  "@register": {
+    "description": "Register button text"
+  },
+  "backToLogin": "Torna all'accesso",
+  "@backToLogin": {
+    "description": "Back to login link text"
+  },
+  "usernameOrEmail": "Nome utente o e-mail",
+  "@usernameOrEmail": {
+    "description": "Label for username or email input field"
+  },
+  "username": "Nome utente",
+  "@username": {
+    "description": "Label for username input field"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Label for password input field"
+  },
+  "rememberMe": "Ricordami",
+  "@rememberMe": {
+    "description": "Label for remember me checkbox"
+  },
+  "doLogIn": "Accedi",
+  "@doLogIn": {
+    "description": "Log in button text"
+  },
+  "doForgotPassword": "Password dimenticata?",
+  "@doForgotPassword": {
+    "description": "Forgot password button text"
+  },
+  "doRegister": "Registrati",
+  "@doRegister": {
+    "description": "Register button text"
+  },
+  "identity-provider-redirector": "Oppure accedi con",
+  "@identity-provider-redirector": {
+    "description": "Text before social login providers"
+  },
+  "acceptTerms": "Accetto i termini e le condizioni",
+  "@acceptTerms": {
+    "description": "Text for terms acceptance checkbox"
+  },
+  "acceptPrivacy": "Ho letto e accetto la",
+  "@acceptPrivacy": {
+    "description": "Privacy policy acceptance prefix"
+  },
+  "privacyPolicy": "informativa sulla privacy",
+  "@privacyPolicy": {
+    "description": "Privacy policy link text"
+  },
+  "privacyRequired": "Per continuare deve accettare l'informativa sulla privacy.",
+  "@privacyRequired": {
+    "description": "Error when privacy not accepted"
+  },
+  "captchaFailed": "Verifica captcha non riuscita. Riprovi.",
+  "@captchaFailed": {
+    "description": "Error when captcha verification fails"
+  },
+  "captchaLoading": "Caricamento captcha…",
+  "@captchaLoading": {
+    "description": "Captcha loading placeholder"
+  },
+  "realmBannerTeam": "Area di lavoro del team",
+  "@realmBannerTeam": {
+    "description": "Banner headline shown on every page of the team realm"
+  },
+  "realmBannerAdmin": "Portale amministratore",
+  "@realmBannerAdmin": {
+    "description": "Banner headline shown on every page of the admin/master realm"
+  },
+  "realmBannerOther": "Realm interno",
+  "@realmBannerOther": {
+    "description": "Banner headline shown on every page of a non-customer realm"
+  },
+  "realmBannerSubtitleTeam": "Sta accedendo a un'area del team con privilegi elevati.",
+  "@realmBannerSubtitleTeam": {
+    "description": "Subtitle below the team realm banner"
+  },
+  "realmBannerSubtitleAdmin": "Accesso amministrativo — ogni azione viene registrata.",
+  "@realmBannerSubtitleAdmin": {
+    "description": "Subtitle below the admin realm banner"
+  },
+  "realmBannerSubtitleOther": "Questo non è l'accesso standard per i clienti.",
+  "@realmBannerSubtitleOther": {
+    "description": "Subtitle below the fallback realm banner"
+  },
+  "passwordNew": "Nuova password",
+  "@passwordNew": {
+    "description": "Label for new password input field"
+  },
+  "passwordConfirm": "Conferma password",
+  "@passwordConfirm": {
+    "description": "Label for password confirmation input field"
+  },
+  "doSubmit": "Invia",
+  "@doSubmit": {
+    "description": "Submit button text"
+  },
+  "otp": "Password monouso",
+  "@otp": {
+    "description": "Label for OTP input field"
+  },
+  "loginOtp": "Codice di verifica",
+  "@loginOtp": {
+    "description": "Label for login OTP/verification code input field"
+  },
+  "termsText": "Testo dei termini e condizioni",
+  "@termsText": {
+    "description": "Default terms and conditions text"
+  },
+  "doAccept": "Accetta",
+  "@doAccept": {
+    "description": "Accept button text"
+  },
+  "doDecline": "Rifiuta",
+  "@doDecline": {
+    "description": "Decline button text"
+  },
+  "logoutConfirmHeader": "Vuole davvero disconnettersi?",
+  "@logoutConfirmHeader": {
+    "description": "Logout confirmation message"
+  },
+  "doLogout": "Esci",
+  "@doLogout": {
+    "description": "Logout button text"
+  },
+  "doSave": "Salva",
+  "@doSave": {
+    "description": "Save button text"
+  },
+  "doUpdate": "Aggiorna",
+  "@doUpdate": {
+    "description": "Update button text for password form"
+  },
+  "updatePassword": "Aggiorna password",
+  "@updatePassword": {
+    "description": "Update password button text"
+  },
+  "accountStatusActive": "Attivo",
+  "@accountStatusActive": {
+    "description": "Account status label when signed in"
+  },
+  "profilePicture": "Immagine del profilo",
+  "@profilePicture": {
+    "description": "Profile picture section heading"
+  },
+  "profilePictureComingSoon": "Caricamento dell'immagine del profilo – presto disponibile.",
+  "@profilePictureComingSoon": {
+    "description": "Placeholder for profile picture upload"
+  },
+  "uploadProfilePicture": "Carica immagine",
+  "@uploadProfilePicture": {
+    "description": "Button to upload profile picture"
+  },
+  "removeProfilePicture": "Rimuovi immagine",
+  "@removeProfilePicture": {
+    "description": "Button to remove profile picture"
+  },
+  "profilePictureUploading": "Caricamento in corso…",
+  "@profilePictureUploading": {
+    "description": "Status while profile picture is being uploaded"
+  },
+  "profilePictureUploadFailed": "Caricamento non riuscito. Riprovi.",
+  "@profilePictureUploadFailed": {
+    "description": "Error when profile picture upload fails"
+  },
+  "profilePictureTooLarge": "Il file selezionato supera i 5 MB.",
+  "@profilePictureTooLarge": {
+    "description": "Error when picture exceeds size limit"
+  },
+  "profilePictureWrongType": "Sono supportate solo immagini JPEG, PNG o WebP.",
+  "@profilePictureWrongType": {
+    "description": "Error when picture has unsupported type"
+  },
+  "profilePictureHelp": "JPEG, PNG o WebP, max. 5 MB. L'immagine viene ridimensionata e archiviata in modo sicuro.",
+  "@profilePictureHelp": {
+    "description": "Helper text below upload button"
+  },
+  "accountSectionProfile": "Profilo",
+  "@accountSectionProfile": {
+    "description": "Account profile section title"
+  },
+  "personalInfoTitle": "Informazioni personali",
+  "@personalInfoTitle": {
+    "description": "Personal info section title"
+  },
+  "passwordSectionTitle": "Aggiorna password",
+  "@passwordSectionTitle": {
+    "description": "Password section title"
+  },
+  "securitySectionTitle": "Sicurezza",
+  "@securitySectionTitle": {
+    "description": "Security section title"
+  },
+  "dangerZoneTitle": "Zona pericolosa",
+  "@dangerZoneTitle": {
+    "description": "Danger zone section title"
+  },
+  "doCancel": "Annulla",
+  "@doCancel": {
+    "description": "Cancel button text"
+  },
+  "backToApplication": "Torna all'applicazione",
+  "@backToApplication": {
+    "description": "Back to application button text"
+  },
+  "backToAccount": "Torna all'account",
+  "@backToAccount": {
+    "description": "Back to account button text in account console"
+  },
+  "doContinue": "Continua",
+  "@doContinue": {
+    "description": "Continue button text"
+  },
+  "emailVerificationBody1": "Controlli la Sua e-mail per trovare il link di verifica.",
+  "@emailVerificationBody1": {
+    "description": "Email verification instruction text"
+  },
+  "emailVerificationBody": "Controlli la Sua e-mail per trovare il link di verifica.",
+  "@emailVerificationBody": {
+    "description": "Email verification instruction text (alternative key)"
+  },
+  "doClickHere": "Clicchi qui",
+  "@doClickHere": {
+    "description": "Click here button/link text"
+  },
+  "doRestart": "Ricomincia",
+  "@doRestart": {
+    "description": "Restart button text"
+  },
+  "sessionExpired": "Il tempo previsto per la connessione è scaduto.\nLa procedura di accesso ricomincerà dall'inizio.",
+  "@sessionExpired": {
+    "description": "Session/timeout expired message"
+  },
+  "deleteAccountConfirm": "Vuole davvero eliminare il Suo account?",
+  "@deleteAccountConfirm": {
+    "description": "Delete account confirmation message"
+  },
+  "doDeleteAccount": "Elimina account",
+  "@doDeleteAccount": {
+    "description": "Delete account button text"
+  },
+  "deleteCredentialConfirm": "Vuole davvero eliminare questa credenziale?",
+  "@deleteCredentialConfirm": {
+    "description": "Delete credential confirmation message"
+  },
+  "doDelete": "Elimina",
+  "@doDelete": {
+    "description": "Delete button text"
+  },
+  "frontchannelLogoutMessage": "Disconnessione in corso...",
+  "@frontchannelLogoutMessage": {
+    "description": "Frontchannel logout message"
+  },
+  "linkIdpMessage": "Collegamento del provider di identità...",
+  "@linkIdpMessage": {
+    "description": "Link identity provider message"
+  },
+  "idpLinkConfirmMessage": "Vuole collegare questo provider di identità al Suo account?",
+  "@idpLinkConfirmMessage": {
+    "description": "IDP link confirmation message"
+  },
+  "doLink": "Collega",
+  "@doLink": {
+    "description": "Link button text"
+  },
+  "idpLinkConfirmOverrideMessage": "Questo provider di identità è già collegato a un altro account. Vuole sovrascrivere il collegamento?",
+  "@idpLinkConfirmOverrideMessage": {
+    "description": "IDP link override confirmation message"
+  },
+  "doOverride": "Sovrascrivi",
+  "@doOverride": {
+    "description": "Override button text"
+  },
+  "email": "E-mail",
+  "@email": {
+    "description": "Label for email input field"
+  },
+  "firstName": "Nome",
+  "@firstName": {
+    "description": "Label for first name input field"
+  },
+  "lastName": "Cognome",
+  "@lastName": {
+    "description": "Label for last name input field"
+  },
+  "oauthGrantTitle": "Concedi accesso",
+  "@oauthGrantTitle": {
+    "description": "OAuth grant title"
+  },
+  "oauthGrantMessage": "L'applicazione richiede l'accesso al Suo account",
+  "@oauthGrantMessage": {
+    "description": "OAuth grant message"
+  },
+  "oauthGrantScopes": "Autorizzazioni richieste",
+  "@oauthGrantScopes": {
+    "description": "OAuth grant scopes label"
+  },
+  "pageExpiredMessage": "Questa pagina è scaduta. Ricominci la procedura di accesso.",
+  "@pageExpiredMessage": {
+    "description": "Page expired message"
+  },
+  "passkeysConditionalAuthenticateMessage": "Autenticazione con passkey...",
+  "@passkeysConditionalAuthenticateMessage": {
+    "description": "Passkeys conditional authenticate message"
+  },
+  "recoveryAuthnCodeConfigMessage": "Configuri il Suo codice di recupero per l'autenticazione",
+  "@recoveryAuthnCodeConfigMessage": {
+    "description": "Recovery authentication code config message"
+  },
+  "recoveryCode": "Codice di recupero",
+  "@recoveryCode": {
+    "description": "Label for recovery code input field"
+  },
+  "resetOtpMessage": "Il Suo OTP è stato reimpostato. Ne configuri uno nuovo.",
+  "@resetOtpMessage": {
+    "description": "Reset OTP message"
+  },
+  "loginTotpScanBarcode": "Scansioni questo codice QR con la Sua app di autenticazione",
+  "@loginTotpScanBarcode": {
+    "description": "TOTP scan barcode instruction"
+  },
+  "loginTotpOneTime": "Codice monouso",
+  "@loginTotpOneTime": {
+    "description": "Label for TOTP one-time code input field"
+  },
+  "samlPostFormMessage": "Reindirizzamento al provider di identità...",
+  "@samlPostFormMessage": {
+    "description": "SAML post form message"
+  },
+  "selectAuthenticatorTitle": "Seleziona metodo di autenticazione",
+  "@selectAuthenticatorTitle": {
+    "description": "Select authenticator title"
+  },
+  "selectOrganizationTitle": "Seleziona organizzazione",
+  "@selectOrganizationTitle": {
+    "description": "Select organization title"
+  },
+  "x509InfoTitle": "Informazioni sul certificato X.509",
+  "@x509InfoTitle": {
+    "description": "X.509 info title"
+  },
+  "x509InfoMessage": "Fornisca le informazioni del Suo certificato X.509",
+  "@x509InfoMessage": {
+    "description": "X.509 info message"
+  },
+  "webauthnAuthenticateMessage": "Si autentichi con la Sua chiave di sicurezza",
+  "@webauthnAuthenticateMessage": {
+    "description": "WebAuthn authenticate message"
+  },
+  "webauthnErrorMessage": "Si è verificato un errore durante l'autenticazione WebAuthn",
+  "@webauthnErrorMessage": {
+    "description": "WebAuthn error message"
+  },
+  "webauthnRegisterMessage": "Registri la Sua chiave di sicurezza",
+  "@webauthnRegisterMessage": {
+    "description": "WebAuthn register message"
+  },
+  "oauth2DeviceVerifyUserCodeMessage": "Inserisca il codice utente visualizzato sul Suo dispositivo",
+  "@oauth2DeviceVerifyUserCodeMessage": {
+    "description": "OAuth2 device verify user code message"
+  },
+  "userCode": "Codice utente",
+  "@userCode": {
+    "description": "Label for user code input field"
+  },
+  "errorInvalidUsernameOrPassword": "Nome utente o password non validi",
+  "@errorInvalidUsernameOrPassword": {
+    "description": "Login form field error"
+  },
+  "errorInvalidUsername": "Nome utente non valido",
+  "@errorInvalidUsername": {
+    "description": "Username field error"
+  },
+  "errorInvalidPassword": "Password non valida",
+  "@errorInvalidPassword": {
+    "description": "Password field error"
+  },
+  "errorInvalidEmail": "E-mail non valida",
+  "@errorInvalidEmail": {
+    "description": "Email field error"
+  },
+  "errorInvalidCode": "Codice non valido",
+  "@errorInvalidCode": {
+    "description": "Verification code field error"
+  },
+  "errorInvalidRecoveryCode": "Codice di recupero non valido",
+  "@errorInvalidRecoveryCode": {
+    "description": "Recovery code field error"
+  },
+  "errorInvalidUserCode": "Codice utente non valido",
+  "@errorInvalidUserCode": {
+    "description": "User code field error"
+  },
+  "errorPasswordMismatch": "Le password non corrispondono",
+  "@errorPasswordMismatch": {
+    "description": "Password confirmation field error"
+  },
+  "errorAccountTemporarilyDisabled": "L'account è temporaneamente disattivato. Contatti l'amministratore o riprovi più tardi.",
+  "@errorAccountTemporarilyDisabled": {
+    "description": "Account disabled error"
+  },
+  "errorIncorrectCurrentPassword": "Password attuale errata",
+  "@errorIncorrectCurrentPassword": {
+    "description": "Current password field error on account"
+  },
+  "errorInvalidExistingPassword": "Password esistente non valida",
+  "@errorInvalidExistingPassword": {
+    "description": "Existing password invalid on account"
+  },
+  "errorPleaseSpecifyPassword": "Inserisca la password",
+  "@errorPleaseSpecifyPassword": {
+    "description": "Password required validation message"
+  },
+  "successPasswordChanged": "Password modificata correttamente",
+  "@successPasswordChanged": {
+    "description": "Password change success message"
+  },
+  "successMobileAuthenticatorConfigured": "Autenticatore mobile configurato",
+  "@successMobileAuthenticatorConfigured": {
+    "description": "TOTP/authenticator success message"
+  },
+  "successAccountUpdated": "Il Suo account è stato aggiornato",
+  "@successAccountUpdated": {
+    "description": "Account update success message"
+  },
+  "errorAccountDisabled": "L'account è disattivato. Contatti l'amministratore.",
+  "errorUsernameExists": "Il nome utente esiste già.",
+  "errorEmailExists": "L'indirizzo e-mail esiste già.",
+  "errorExpiredCode": "Accesso scaduto. Effettui di nuovo l'accesso.",
+  "errorExpiredAction": "Azione scaduta. Prosegua ora con l'accesso.",
+  "errorInvalidTotp": "Codice di autenticazione non valido.",
+  "errorMissingTotp": "Inserisca il codice di autenticazione.",
+  "errorConfigureTotp": "Per attivare l'account deve configurare un autenticatore mobile.",
+  "errorEmailSendError": "Invio dell'e-mail non riuscito. Riprovi più tardi.",
+  "successPasswordUpdated": "La Sua password è stata aggiornata.",
+  "successEmailSent": "A breve riceverà un'e-mail con ulteriori istruzioni.",
+  "pageTitleLogin": "Accedi",
+  "pageTitleRegister": "Registrazione",
+  "pageTitleForgotPassword": "Password dimenticata",
+  "pageTitleInfo": "Informazioni",
+  "pageTitleError": "Errore",
+  "pageTitlePageDisabled": "Pagina disattivata",
+  "@pageTitlePageDisabled": {
+    "description": "Title for disabled/error page"
+  },
+  "pageTitleCode": "Codice di verifica",
+  "pageTitleLogoutConfirm": "Disconnessione",
+  "pageTitleTerms": "Termini e condizioni",
+  "pageTitleLoginOtp": "Codice di verifica",
+  "pageTitleUpdatePassword": "Aggiorna password",
+  "pageTitleEmailVerification": "Verifica e-mail",
+  "pageTitleDeleteAccountConfirm": "Elimina account",
+  "pageTitleDeleteCredential": "Elimina credenziale",
+  "pageTitleFrontchannelLogout": "Disconnessione in corso",
+  "pageTitleIdpReviewProfile": "Aggiorna i dati dell'account",
+  "pageTitleLinkIdp": "Collega provider di identità",
+  "pageTitleConfigTotp": "Configurazione autenticatore mobile",
+  "pageTitleIdpLinkConfirm": "Collega account",
+  "pageTitleIdpLinkConfirmOverride": "Sovrascrivi collegamento",
+  "pageTitleIdpLinkEmail": "Collega account",
+  "pageTitleOauth2DeviceVerifyUserCode": "Accesso dal dispositivo",
+  "pageTitleOauthGrant": "Concedi accesso",
+  "pageTitlePageExpired": "Pagina scaduta",
+  "pageTitlePasskeysConditionalAuthenticate": "Accesso con passkey",
+  "pageTitleLoginPassword": "Accedi",
+  "pageTitleRecoveryCodeConfig": "Codici di recupero",
+  "pageTitleRecoveryCodeInput": "Codice di recupero",
+  "pageTitleResetOtp": "Reimposta autenticatore",
+  "pageTitleUpdateProfile": "Aggiorna i dati dell'account",
+  "pageTitleLoginUsername": "Accedi",
+  "pageTitleX509Info": "Certificato X.509",
+  "pageTitleSamlPostForm": "Reindirizzamento",
+  "pageTitleSelectAuthenticator": "Seleziona metodo di autenticazione",
+  "pageTitleSelectOrganization": "Seleziona organizzazione",
+  "pageTitleUpdateEmail": "Aggiorna e-mail",
+  "pageTitleWebauthnAuthenticate": "Accesso con passkey",
+  "pageTitleWebauthnError": "Errore passkey",
+  "pageTitleWebauthnRegister": "Registrazione passkey",
+  "pageTitleAccount": "Account",
+  "pageTitleAccountPassword": "Password",
+  "messageHeaderEmailVerification": "Verifica e-mail",
+  "messageHeaderForgotPassword": "Ha dimenticato la password?",
+  "messageHeaderEmailUpdateConfirmation": "E-mail di conferma inviata",
+  "messageHeaderEmailUpdated": "E-mail aggiornata",
+  "messageHeaderUpdatePassword": "Aggiorna password",
+  "messageHeaderSuccessCode": "Codice di successo",
+  "messageHeaderErrorCode": "Codice di errore",
+  "messageHeaderExecuteActions": "Azioni richieste"
+}
