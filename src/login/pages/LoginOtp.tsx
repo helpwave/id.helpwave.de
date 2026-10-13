@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { LogIn } from 'lucide-react'
-import { Button, Input, FormFieldLayout, Select, SelectOption } from '@helpwave/hightide'
+import { Button, Input, FormFieldLayout, Select } from '@helpwave/hightide'
 import type { KcContext } from '../KcContext'
 import { useI18n } from '../i18n'
 import Template from 'keycloakify/login/Template'
@@ -62,10 +62,10 @@ export default function LoginOtp({ kcContext }: LoginOtpProps) {
                                             value={selectedCredentialId}
                                             onValueChange={(value: string) => setSelectedCredentialId(value)}
                                             onEditComplete={() => {}}
-                                            buttonProps={{ id, ...ariaAttributes }}
+                                            triggerProps={{ id, ...ariaAttributes }}
                                         >
                                             {credentials.map((c) => (
-                                                <SelectOption key={c.id} value={c.id} label={c.userLabel} />
+                                                <Select.Option key={c.id} value={c.id} label={c.userLabel} />
                                             ))}
                                         </Select>
                                     )}
