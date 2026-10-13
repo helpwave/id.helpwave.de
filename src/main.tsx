@@ -5,7 +5,7 @@ import '@helpwave/hightide/style/globals.css'
 import './fonts.css'
 import './index.css'
 import { HelpwaveLogo, HightideProvider } from '@helpwave/hightide'
-import { hightideProviderProps } from './i18n/hightideConfig'
+import { translations } from './i18n/hightideConfig'
 
 // The following block can be uncommented to test a specific page with `yarn dev`
 // Don't forget to comment back or your bundle size will increase
@@ -22,7 +22,7 @@ if (import.meta.env.DEV) {
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <HightideProvider {...hightideProviderProps}>
+        <HightideProvider translation={{ translation: translations }}>
             {!window.kcContext ? (
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
                     <HelpwaveLogo animate="loading" color="currentColor" height={128} width={128} />
