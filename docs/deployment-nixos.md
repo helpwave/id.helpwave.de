@@ -36,7 +36,7 @@ the versions and sha256 hashes from the release assets and commits them back to 
 release — copy it as-is into your module's `let` bindings:
 
 ```nix
-  themeVersion = "0.6.2";
+  themeVersion = "0.7.0";
   spiVersion = "0.3.0";
 
   release =
@@ -49,19 +49,19 @@ release — copy it as-is into your module's `let` bindings:
 
   themePlugin =
     release themeVersion "keycloak-theme-for-kc-26.2-and-above.jar"
-      "sha256-Z+YDizMr9kFB3p6f5On7cKLrImeDAWu5Dj6VyU3pBxo=";
+      "sha256-A7dJKTwzml/A105zLXiTOde/SAg5+Q5gDr4OCuUTJXc=";
 
   captchaSPI =
     release themeVersion "helpwave-captcha-${spiVersion}.jar"
-      "sha256-LUwnteE39jdOjcXzAafiyQjdw0SgkeI9kLkc0zabpYc=";
+      "sha256-BvKPL5i9DG330pp0j+1KnH6NSCeIYiwVbUFUG0a6xpc=";
 
   pictureSPI =
     release themeVersion "helpwave-picture-${spiVersion}.jar"
-      "sha256-NGb2Ep7cEEwzx4Hf9yrfCv08PyVak894Z+SbOUzMDes=";
+      "sha256-dIRHneMZoxdPjxirFYP88LYaE51/QkYHlIfgDcAuqD8=";
 
   policySPI =
     release themeVersion "helpwave-policy-acceptance-${spiVersion}.jar"
-      "sha256-BBuZndUWK6e3VdTwrbvT0DESNeEdUAGqiWTEQATPXf8=";
+      "sha256-6/tDoO9YhomemhPUZNRt8NZMu1qDwUCvGoEzaQXzZnU=";
 ```
 
 To re-pin manually (e.g. against an older release):
@@ -79,7 +79,7 @@ npm run update-nix-pins -- --check     # verify the pins are current (CI-friendl
 let
   domain = "id.helpwave.de";
 
-  themeVersion = "0.6.2";
+  themeVersion = "0.7.0";
   spiVersion = "0.3.0";
 
   release =
@@ -92,19 +92,19 @@ let
 
   themePlugin =
     release themeVersion "keycloak-theme-for-kc-26.2-and-above.jar"
-      "sha256-Z+YDizMr9kFB3p6f5On7cKLrImeDAWu5Dj6VyU3pBxo=";
+      "sha256-A7dJKTwzml/A105zLXiTOde/SAg5+Q5gDr4OCuUTJXc=";
 
   captchaSPI =
     release themeVersion "helpwave-captcha-${spiVersion}.jar"
-      "sha256-LUwnteE39jdOjcXzAafiyQjdw0SgkeI9kLkc0zabpYc=";
+      "sha256-BvKPL5i9DG330pp0j+1KnH6NSCeIYiwVbUFUG0a6xpc=";
 
   pictureSPI =
     release themeVersion "helpwave-picture-${spiVersion}.jar"
-      "sha256-NGb2Ep7cEEwzx4Hf9yrfCv08PyVak894Z+SbOUzMDes=";
+      "sha256-dIRHneMZoxdPjxirFYP88LYaE51/QkYHlIfgDcAuqD8=";
 
   policySPI =
     release themeVersion "helpwave-policy-acceptance-${spiVersion}.jar"
-      "sha256-BBuZndUWK6e3VdTwrbvT0DESNeEdUAGqiWTEQATPXf8=";
+      "sha256-6/tDoO9YhomemhPUZNRt8NZMu1qDwUCvGoEzaQXzZnU=";
 in
 {
   # ── sops-nix secrets ──────────────────────────────────────────────────────
